@@ -1,0 +1,344 @@
+# =============================================================================
+# IBKR Trading Bot Configuration
+# =============================================================================
+# Copy this file to config.yaml and adjust values for your setup.
+# Sensitive values (passwords, tokens, webhook URLs) can be overridden via
+# environment variables using the TRADING_BOT_ prefix with __ as nested delimiter.
+# Example: TRADING_BOT_DATABASE__URL overrides database.url
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Connection Settings — IBKR TWS or IB Gateway connectivity
+# -----------------------------------------------------------------------------
+connection:
+  # Connection mode: "gateway" (IB Gateway) or "tws" (Trader Workstation)
+  mode: "gateway"
+  # Host where TWS/Gateway is running
+  host: "127.0.0.1"
+  # Port mapping:
+  #   TWS live: 7496, TWS paper: 7497
+  #   Gateway live: 4001, Gateway paper: 4002
+  port: 4002
+  # Unique client ID for this bot instance (use different IDs for multiple bots)
+  client_id: 1
+  # Connection timeout in seconds
+  timeout: 30
+  # Read-only mode: true prevents order submission (useful for monitoring only)
+  readonly: false
+
+# -----------------------------------------------------------------------------
+# Strategies — Trading strategy configuration
+# -----------------------------------------------------------------------------
+# Each strategy has:
+#   enabled: bool — whether the strategy runs at startup
+#   frequency: evaluation interval (tick, 1min, 5min, 15min, 1hour, daily, weekly)
+#   symbols: list of instruments to trade
+#   asset_classes: allowed asset classes (equity, option, future, forex)
+#   parameters: strategy-specific tuning parameters
+# -----------------------------------------------------------------------------
+strategies:
+  momentum:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "AAPL"
+      - "MSFT"
+      - "GOOGL"
+      - "AMZN"
+    asset_classes:
+      - "equity"
+    parameters:
+      # Number of bars to measure momentum over
+      lookback_period: 20
+      # Minimum momentum score to trigger a signal (0.0 to 1.0)
+      momentum_threshold: 0.02
+
+  ma_crossover:
+    enabled: true
+    frequency: "1hour"
+    symbols:
+      - "SPY"
+      - "QQQ"
+      - "IWM"
+    asset_classes:
+      - "equity"
+    parameters:
+      # Fast moving average period (bars)
+      fast_period: 10
+      # Slow moving average period (bars)
+      slow_period: 30
+      # Moving average type: "sma" or "ema"
+      ma_type: "ema"
+
+  mean_reversion:
+    enabled: true
+    frequency: "5min"
+    symbols:
+      - "SPY"
+      - "QQQ"
+    asset_classes:
+      - "equity"
+    parameters:
+      # Lookback window for mean calculation (bars)
+      lookback_period: 20
+      # Z-score threshold to trigger entry (standard deviations from mean)
+      z_score_threshold: 2.0
+
+  # --- Uncomment and configure additional strategies as needed ---
+
+  # pairs_trading:
+  #   enabled: false
+  #   frequency: "5min"
+  #   symbols:
+  #     - "KO"
+  #     - "PEP"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Symbols forming the pair [symbol_a, symbol_b]
+  #     pair_symbols: ["KO", "PEP"]
+  #     # Window for cointegration test (bars)
+  #     cointegration_window: 60
+  #     # Z-score of spread to enter trade
+  #     entry_z: 2.0
+  #     # Z-score of spread to exit trade
+  #     exit_z: 0.5
+
+  # breakout:
+  #   enabled: false
+  #   frequency: "15min"
+  #   symbols:
+  #     - "AAPL"
+  #     - "TSLA"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Number of bars defining the consolidation range
+  #     consolidation_period: 20
+  #     # ATR multiple above/below range to confirm breakout
+  #     breakout_atr_multiple: 1.5
+
+  # rsi_divergence:
+  #   enabled: false
+  #   frequency: "15min"
+  #   symbols:
+  #     - "AAPL"
+  #     - "MSFT"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # RSI calculation period
+  #     rsi_period: 14
+  #     # RSI level considered overbought
+  #     overbought: 70
+  #     # RSI level considered oversold
+  #     oversold: 30
+
+  # vwap:
+  #   enabled: false
+  #   frequency: "1min"
+  #   symbols:
+  #     - "SPY"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Percentage deviation from VWAP to trigger signal
+  #     deviation_threshold: 0.01
+  #     # Session type: "full" (regular + extended) or "regular"
+  #     session_type: "regular"
+
+  # bollinger:
+  #   enabled: false
+  #   frequency: "5min"
+  #   symbols:
+  #     - "SPY"
+  #     - "QQQ"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Bollinger Band period (bars)
+  #     bb_period: 20
+  #     # Number of standard deviations for bands
+  #     bb_std: 2.0
+  #     # Which band triggers entry: "lower", "upper", or "both"
+  #     entry_band: "both"
+
+  # trend_following:
+  #   enabled: false
+  #   frequency: "1hour"
+  #   symbols:
+  #     - "SPY"
+  #     - "GLD"
+  #     - "TLT"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Fast moving average period
+  #     fast_ma: 20
+  #     # Slow moving average period
+  #     slow_ma: 50
+  #     # ATR filter: minimum ATR to confirm trend strength
+  #     atr_filter: 1.0
+
+  # market_making:
+  #   enabled: false
+  #   frequency: "tick"
+  #   symbols:
+  #     - "SPY"
+  #   asset_classes:
+  #     - "equity"
+  #   parameters:
+  #     # Spread in basis points between bid and ask quotes
+  #     spread_bps: 10
+  #     # Maximum inventory (shares) before skewing quotes
+  #     inventory_limit: 1000
+  #     # Skew factor: how aggressively to skew quotes when inventory builds
+  #     skew_factor: 0.5
+
+# -----------------------------------------------------------------------------
+# Risk Management — Position limits, drawdown controls, diversification
+# -----------------------------------------------------------------------------
+risk:
+  # Maximum position size per instrument as fraction of total portfolio
+  max_position_pct: 0.05
+  # Maximum portfolio drawdown from peak equity before halting all trading
+  max_drawdown_pct: 0.10
+  # Maximum daily loss as fraction of portfolio before halting for the day
+  max_daily_loss_pct: 0.02
+  # Maximum fraction of capital in any single sector
+  max_sector_concentration: 0.25
+  # Correlation threshold: limit exposure to positions correlated above this
+  max_correlation: 0.7
+  # VaR confidence level (0.95 = 95th percentile)
+  var_confidence: 0.95
+  # Number of historical trading days for VaR calculation
+  var_lookback_days: 252
+  # Stop-loss configuration
+  stop_loss:
+    # Stop type: "atr_trailing" (ATR-based trailing stop) or "fixed_pct" (fixed percentage)
+    type: "atr_trailing"
+    # ATR multiplier for trailing stop distance (used when type is atr_trailing)
+    atr_multiplier: 2.0
+    # Fixed stop-loss percentage below entry (used when type is fixed_pct)
+    fixed_pct: 0.03
+
+# -----------------------------------------------------------------------------
+# Capital Allocation — How capital is distributed across strategies
+# -----------------------------------------------------------------------------
+capital:
+  # Total capital available for trading (USD)
+  total_capital: 100000.00
+  # Allocation mode: "equal_weight", "fixed_amount", or "percentage"
+  #   equal_weight: split evenly across all enabled strategies
+  #   fixed_amount: assign specific dollar amounts per strategy
+  #   percentage: assign specific percentages per strategy
+  allocation_mode: "equal_weight"
+  # Per-strategy allocations (used with fixed_amount or percentage modes)
+  # For fixed_amount mode: values are dollar amounts
+  # For percentage mode: values are fractions (must sum to <= 1.0)
+  allocations:
+    momentum: 0.34
+    ma_crossover: 0.33
+    mean_reversion: 0.33
+
+# -----------------------------------------------------------------------------
+# Alerts — Notification channels and event routing
+# -----------------------------------------------------------------------------
+alerts:
+  channels:
+    slack:
+      enabled: false
+      # Slack incoming webhook URL (override via TRADING_BOT_ALERTS__CHANNELS__SLACK__WEBHOOK_URL)
+      webhook_url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+    email:
+      enabled: false
+      smtp_host: "smtp.gmail.com"
+      smtp_port: 587
+      smtp_user: "your-email@gmail.com"
+      # SMTP password (override via TRADING_BOT_ALERTS__CHANNELS__EMAIL__SMTP_PASSWORD)
+      smtp_password: "your-app-password"
+      from_email: "your-email@gmail.com"
+      to_emails:
+        - "alerts@yourdomain.com"
+    webhook:
+      enabled: false
+      # Generic HTTP webhook endpoint
+      url: "https://your-webhook-endpoint.com/trading-alerts"
+  # Event routing: map event types to notification channels
+  # Valid event types: trade_executed, risk_breach, connection_lost, error, daily_report
+  routing:
+    trade_executed:
+      - "slack"
+    risk_breach:
+      - "slack"
+      - "email"
+    connection_lost:
+      - "slack"
+      - "email"
+    error:
+      - "slack"
+      - "email"
+    daily_report:
+      - "email"
+
+# -----------------------------------------------------------------------------
+# Backtesting — Simulation parameters for strategy backtests
+# -----------------------------------------------------------------------------
+backtesting:
+  # Slippage model in basis points (1 bps = 0.01%)
+  slippage_bps: 5
+  # Commission cost per share (USD)
+  commission_per_share: 0.005
+  # Market impact in basis points
+  market_impact_bps: 2
+  # Data source for historical data: "ibkr" (IBKR Historical Data API) or "csv" (local files)
+  data_source: "ibkr"
+  # Directory containing CSV historical data files (used when data_source is "csv")
+  csv_directory: "./data/historical"
+  # Directory to store backtest result files
+  results_directory: "./data/backtest_results"
+
+# -----------------------------------------------------------------------------
+# Database — PostgreSQL connection for state persistence
+# -----------------------------------------------------------------------------
+database:
+  # Async PostgreSQL connection URL
+  # Override via TRADING_BOT_DATABASE__URL environment variable
+  url: "postgresql+asyncpg://bot:bot@localhost:5432/trading"
+  # Connection pool size (concurrent connections)
+  pool_size: 5
+  # Maximum overflow connections beyond pool_size
+  max_overflow: 10
+
+# -----------------------------------------------------------------------------
+# Dashboard — Web monitoring interface settings
+# -----------------------------------------------------------------------------
+dashboard:
+  # Port for the FastAPI dashboard server
+  port: 8080
+  # Authentication token for API access (override via TRADING_BOT_DASHBOARD__AUTH_TOKEN)
+  # Set to null to disable authentication (not recommended for production)
+  auth_token: null
+  # Allowed CORS origins for the frontend
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8080"
+
+# -----------------------------------------------------------------------------
+# Logging — Structured logging configuration
+# -----------------------------------------------------------------------------
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  # Output logs as JSON (true) or human-readable text (false)
+  json_output: true
+  # Log file path (null = stdout only, set a path for file logging)
+  log_file: null
+
+# -----------------------------------------------------------------------------
+# Redis — Cache and pub/sub for real-time data
+# -----------------------------------------------------------------------------
+redis:
+  # Redis connection URL
+  # Override via TRADING_BOT_REDIS__URL environment variable
+  url: "redis://localhost:6379/0"

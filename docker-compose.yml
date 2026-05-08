@@ -1,0 +1,79 @@
+services:
+  trading-bot:
+    build: .
+    container_name: ibkr-trading-bot
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - bot-data:/app/data
+      - bot-logs:/app/logs
+    environment:
+      - TRADING_BOT_DATABASE__URL=postgresql+asyncpg://bot:bot@postgres:5432/trading
+      - TRADING_BOT_REDIS__URL=redis://redis:6379/0
+      - TRADING_BOT_DASHBOARD__PORT=8080
+    ports:
+      - "${DASHBOARD_PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: ibkr-postgres
+    environment:
+      POSTGRES_USER: bot
+      POSTGRES_PASSWORD: bot
+      POSTGRES_DB: trading
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: ibkr-redis
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  dashboard-ui:
+    build: ./dashboard-ui
+    container_name: ibkr-dashboard-ui
+    depends_on:
+      trading-bot:
+        condition: service_healthy
+    ports:
+      - "${UI_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  redis-data:
+  bot-data:
+  bot-logs:

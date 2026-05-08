@@ -1,0 +1,55 @@
+# Version control
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv
+venv
+env
+
+# Environment files (secrets)
+.env
+.env.*
+!.env.example
+
+# Data directory (mounted as volume)
+data/
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Testing and coverage
+.pytest_cache
+.ruff_cache
+.coverage
+htmlcov/
+.tox
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+
+# Logs (mounted as volume)
+logs/
+*.log
+
+# Dashboard UI (built separately)
+dashboard-ui/node_modules
+dashboard-ui/dist
