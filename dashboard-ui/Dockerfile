@@ -4,10 +4,10 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 COPY package.json ./
-RUN npm install --include=dev
+RUN npm install
 
 COPY . .
-RUN npx tsc && npx vite build
+RUN ./node_modules/.bin/vite build
 
 # Production stage
 FROM nginx:alpine
