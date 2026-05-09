@@ -12,7 +12,7 @@ services:
       - bot-data:/app/data
       - bot-logs:/app/logs
     environment:
-      - TRADING_BOT_DATABASE__URL=postgresql+asyncpg://bot:bot@postgres:5432/trading
+      - TRADING_BOT_DATABASE__URL=postgresql+asyncpg://${POSTGRES_USER:-bot}:${POSTGRES_PASSWORD:-bot}@postgres:5432/${POSTGRES_DB:-trading}
       - TRADING_BOT_REDIS__URL=redis://redis:6379/0
       - TRADING_BOT_DASHBOARD__PORT=8080
     ports:
@@ -24,14 +24,17 @@ services:
       retries: 3
       start_period: 30s
     restart: unless-stopped
+    networks:
+      - backend
+      - frontend
 
   postgres:
     image: postgres:15-alpine
     container_name: ibkr-postgres
     environment:
-      POSTGRES_USER: bot
-      POSTGRES_PASSWORD: bot
-      POSTGRES_DB: trading
+      POSTGRES_USER: ${POSTGRES_USER:-bot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bot}
+      POSTGRES_DB: ${POSTGRES_DB:-trading}
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
@@ -42,6 +45,8 @@ services:
       timeout: 5s
       retries: 5
     restart: unless-stopped
+    networks:
+      - backend
 
   redis:
     image: redis:7-alpine
@@ -56,6 +61,8 @@ services:
       timeout: 5s
       retries: 5
     restart: unless-stopped
+    networks:
+      - backend
 
   dashboard-ui:
     build: ./dashboard-ui
@@ -66,14 +73,20 @@ services:
     ports:
       - "${UI_PORT:-3000}:3000"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:3000/ || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
     restart: unless-stopped
+    networks:
+      - frontend
 
 volumes:
   postgres-data:
   redis-data:
   bot-data:
   bot-logs:
+
+networks:
+  backend:
+  frontend:

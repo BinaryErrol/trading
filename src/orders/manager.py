@@ -387,13 +387,12 @@ class OrderManager:
         # Request cancellation via IBKR
         if self._connection.is_connected:
             try:
-                # ib_async cancel uses the order object
                 ib = self._connection.ib
-                # Create a minimal order-like object for cancellation
                 if hasattr(ib, "cancelOrder"):
-                    # In real usage, we'd pass the actual ib_async Order object
-                    # For now, we mark it cancelled locally
-                    pass
+                    from ib_async import Order as IBOrder
+                    ib_order = IBOrder()
+                    ib_order.orderId = order_id
+                    ib.cancelOrder(ib_order)
             except Exception as exc:
                 logger.error("cancel_order_failed", order_id=order_id, error=str(exc))
 

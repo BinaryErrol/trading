@@ -589,13 +589,26 @@ class TradingBot:
         # which calls _on_signal_generated
         log.info("signal_flow_wired")
 
+    def _spawn_task(self, coro, name: str = "unnamed") -> None:
+        """Spawn an async task with exception logging."""
+        task = asyncio.ensure_future(coro)
+        task.add_done_callback(lambda t: self._handle_task_exception(t, name))
+
+    @staticmethod
+    def _handle_task_exception(task: asyncio.Task, name: str) -> None:
+        """Log exceptions from fire-and-forget tasks."""
+        if task.cancelled():
+            return
+        exc = task.exception()
+        if exc is not None:
+            log.error("background_task_failed", task_name=name, error=str(exc), exc_info=exc)
+
     def _on_signal_generated(self, signal: Signal) -> None:
         """Handle a signal from the strategy engine.
 
         Runs the signal through risk checks, capital allocation, and order submission.
-        Uses asyncio.ensure_future for async processing from sync callback.
         """
-        asyncio.ensure_future(self._process_signal(signal))
+        self._spawn_task(self._process_signal(signal), "process_signal")
 
     async def _process_signal(self, signal: Signal) -> None:
         """Process a signal through the full pipeline.
@@ -670,7 +683,7 @@ class TradingBot:
         - CapitalAllocator (deployed capital tracking)
         - AlertService (trade notification)
         """
-        asyncio.ensure_future(self._process_fill(managed_order, fill))
+        self._spawn_task(self._process_fill(managed_order, fill), "process_fill")
 
     async def _process_fill(self, managed_order: ManagedOrder, fill: Any) -> None:
         """Process a fill event through all downstream components."""
@@ -739,7 +752,7 @@ class TradingBot:
         log.critical("trading_halted_by_risk_manager", reason=reason)
 
         if self._alert_service:
-            asyncio.ensure_future(
+            self._spawn_task(
                 self._alert_service.send_critical(
                     Alert(
                         event_type=AlertEventType.RISK_BREACH,
@@ -748,7 +761,8 @@ class TradingBot:
                         message=f"Risk limit breached: {reason}",
                         metadata={"reason": reason},
                     )
-                )
+                ),
+                "trading_halted_alert",
             )
 
     # ------------------------------------------------------------------
@@ -762,6 +776,27 @@ class TradingBot:
             name="stale-data-monitor",
         )
 
+    @staticmethod
+    def _is_market_hours() -> bool:
+        """Check if current time is within US equity market hours (9:30-16:00 ET)."""
+        from datetime import datetime, timezone, timedelta
+
+        # US Eastern Time (UTC-5, or UTC-4 during DST)
+        # Simplified: use UTC and approximate ET as UTC-4 (EDT)
+        now_utc = datetime.now(timezone.utc)
+        # Approximate ET offset (this is simplified; production should use pytz/zoneinfo)
+        et_offset = timedelta(hours=-4)  # EDT
+        now_et = now_utc + et_offset
+
+        # Market hours: Mon-Fri, 9:30 AM - 4:00 PM ET
+        if now_et.weekday() >= 5:  # Saturday=5, Sunday=6
+            return False
+
+        market_open = now_et.replace(hour=9, minute=30, second=0, microsecond=0)
+        market_close = now_et.replace(hour=16, minute=0, second=0, microsecond=0)
+
+        return market_open <= now_et <= market_close
+
     async def _stale_data_loop(self) -> None:
         """Periodically check for stale market data.
 
@@ -774,6 +809,9 @@ class TradingBot:
                 await asyncio.sleep(30)  # Check every 30 seconds
 
                 if not self._market_data_hub:
+                    continue
+
+                if not self._is_market_hours():
                     continue
 
                 for symbol in self._market_data_hub.subscribed_symbols:

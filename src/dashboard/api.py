@@ -7,6 +7,7 @@ and a health check endpoint for Docker.
 
 from __future__ import annotations
 
+import hmac
 import os
 from datetime import date
 from typing import Any
@@ -175,7 +176,7 @@ async def verify_auth(request: Request) -> None:
     if len(parts) != 2 or parts[0].lower() != "bearer":
         raise HTTPException(status_code=401, detail="Invalid Authorization header format")
 
-    if parts[1] != token:
+    if not hmac.compare_digest(parts[1], token):
         raise HTTPException(status_code=403, detail="Invalid authentication token")
 
 
