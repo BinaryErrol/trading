@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from collections import deque
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
@@ -70,7 +71,7 @@ class BarBuilder:
     _close: float | None = field(default=None, init=False, repr=False)
     _volume: float = field(default=0.0, init=False, repr=False)
     _bar_start: float | None = field(default=None, init=False, repr=False)
-    _completed_bars: list[Bar] = field(default_factory=list, init=False, repr=False)
+    _completed_bars: deque[Bar] = field(default_factory=lambda: deque(maxlen=1000), init=False, repr=False)
 
     def _get_bar_boundary(self, tick_time: float) -> float:
         """Calculate the start of the current bar period for a given timestamp."""
@@ -180,6 +181,7 @@ class BarBuilder:
         """Return all completed bars accumulated by this builder."""
         return list(self._completed_bars)
 
+
     def get_latest_completed_bar(self) -> Bar | None:
         """Return the most recently completed bar, or None."""
         if self._completed_bars:
@@ -196,7 +198,7 @@ class BarBuilder:
             List of bars, most recent last. May be shorter than periods
             if fewer bars have been completed.
         """
-        return self._completed_bars[-periods:]
+        return list(self._completed_bars)[-periods:]
 
     def reset(self) -> None:
         """Reset the builder state, clearing all accumulated bars."""
@@ -206,4 +208,4 @@ class BarBuilder:
         self._close = None
         self._volume = 0.0
         self._bar_start = None
-        self._completed_bars = []
+        self._completed_bars = deque(maxlen=1000)

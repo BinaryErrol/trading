@@ -178,6 +178,16 @@ class CapitalAllocator:
             KeyError: If strategy has no allocation.
         """
         allocation = self._get_allocation(strategy_name)
+
+        if allocation.deployed + fill_value > allocation.allocated:
+            logger.warning(
+                "capital_over_deployment",
+                strategy=strategy_name,
+                deployed=str(allocation.deployed),
+                fill_value=str(fill_value),
+                allocated=str(allocation.allocated),
+            )
+
         allocation.deployed += fill_value
         allocation.realized_pnl += pnl
 

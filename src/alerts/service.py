@@ -184,8 +184,6 @@ class AlertService:
             )
             return
 
-        self._rate_limiter.record_send(alert.event_type)
-
         delivered_channels: list[str] = []
         for channel in channels:
             try:
@@ -198,6 +196,10 @@ class AlertService:
                     channel=channel.name,
                     event_type=alert.event_type.value,
                 )
+
+        # Only record the send if at least one delivery succeeded
+        if delivered_channels:
+            self._rate_limiter.record_send(alert.event_type)
 
         logger.info(
             "alert_sent",

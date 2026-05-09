@@ -37,6 +37,8 @@ class ConfigWatcher:
         logger.info("config_watcher_started", path=str(self._path))
         async for _changes in awatch(self._path):
             logger.info("config_file_changed", path=str(self._path))
+            # Debounce: wait for rapid successive changes to settle
+            await asyncio.sleep(0.5)
             try:
                 new_settings = load_settings(self._path)
             except ValidationError as exc:

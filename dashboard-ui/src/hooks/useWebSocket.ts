@@ -24,6 +24,8 @@ export function useWebSocket({
   const [lastMessage, setLastMessage] = useState<WebSocketMessage | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const onMessageRef = useRef(onMessage);
+  onMessageRef.current = onMessage;
 
   const connect = useCallback(() => {
     const wsUrl = token ? `${url}?token=${token}` : url;
@@ -39,7 +41,7 @@ export function useWebSocket({
         try {
           const message: WebSocketMessage = JSON.parse(event.data);
           setLastMessage(message);
-          onMessage?.(message);
+          onMessageRef.current?.(message);
         } catch {
           // Ignore non-JSON messages
         }
@@ -61,7 +63,7 @@ export function useWebSocket({
       // Connection failed, retry
       reconnectTimerRef.current = setTimeout(connect, reconnectInterval);
     }
-  }, [url, token, onMessage, reconnectInterval]);
+  }, [url, token, reconnectInterval]);
 
   useEffect(() => {
     connect();

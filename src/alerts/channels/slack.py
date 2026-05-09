@@ -14,11 +14,12 @@ class SlackChannel(AlertChannel):
     """Delivers alerts via Slack incoming webhook.
 
     Sends a formatted message to the configured Slack webhook URL
-    using an httpx async POST request.
+    using a persistent httpx async client.
     """
 
     def __init__(self, webhook_url: str) -> None:
         self._webhook_url = webhook_url
+        self._client: httpx.AsyncClient | None = None
 
     @property
     def name(self) -> str:
@@ -50,18 +51,25 @@ class SlackChannel(AlertChannel):
         payload = self._format_payload(alert)
 
         try:
-            async with httpx.AsyncClient(timeout=10.0) as client:
-                response = await client.post(self._webhook_url, json=payload)
-                if response.status_code == 200:
-                    logger.debug("slack_alert_delivered", title=alert.title)
-                    return True
-                else:
-                    logger.warning(
-                        "slack_alert_failed",
-                        status_code=response.status_code,
-                        response_text=response.text,
-                    )
-                    return False
+            if self._client is None:
+                self._client = httpx.AsyncClient(timeout=10.0)
+            response = await self._client.post(self._webhook_url, json=payload)
+            if response.status_code == 200:
+                logger.debug("slack_alert_delivered", title=alert.title)
+                return True
+            else:
+                logger.warning(
+                    "slack_alert_failed",
+                    status_code=response.status_code,
+                    response_text=response.text,
+                )
+                return False
         except httpx.HTTPError as exc:
             logger.error("slack_alert_error", error=str(exc))
             return False
+
+    async def close(self) -> None:
+        """Close the persistent HTTP client."""
+        if self._client:
+            await self._client.aclose()
+            self._client = None

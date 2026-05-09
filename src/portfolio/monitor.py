@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import math
+from collections import deque
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from decimal import Decimal
@@ -101,7 +102,9 @@ class PortfolioMonitor:
         self._total_equity: Decimal = initial_equity
         self._trades: list[Trade] = []
         self._daily_returns: list[float] = []
-        self._equity_history: list[Decimal] = [initial_equity] if initial_equity else []
+        self._equity_history: deque[Decimal] = deque(maxlen=2520)
+        if initial_equity:
+            self._equity_history.append(initial_equity)
 
     @property
     def positions(self) -> dict[str, Position]:

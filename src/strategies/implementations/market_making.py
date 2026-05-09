@@ -70,6 +70,24 @@ class MarketMakingStrategy(BaseStrategy):
     def current_inventory(self, value: int) -> None:
         self._current_inventory = value
 
+    def update_inventory(self, quantity: int) -> None:
+        """Update the current inventory position.
+
+        This should be called by the fill handler when a fill is received
+        to keep the market maker's inventory tracking in sync with actual
+        positions.
+
+        Args:
+            quantity: The fill quantity (positive for buys, negative for sells).
+        """
+        self._current_inventory += quantity
+        logger.info(
+            "inventory_updated",
+            strategy=self.name,
+            fill_quantity=quantity,
+            new_inventory=self._current_inventory,
+        )
+
     def update_parameters(self, parameters: dict) -> None:
         """Update market making parameters at runtime for hot-reload support."""
         super().update_parameters(parameters)

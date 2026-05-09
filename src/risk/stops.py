@@ -33,6 +33,7 @@ class StopLevel:
         highest_price: Highest price observed since entry (for trailing).
         stop_type: "fixed_pct" or "atr_trailing".
         strategy_name: Strategy that owns this position.
+        direction: Direction of the position (LONG or SHORT).
     """
 
     symbol: str
@@ -41,6 +42,7 @@ class StopLevel:
     highest_price: Decimal
     stop_type: Literal["fixed_pct", "atr_trailing"]
     strategy_name: str
+    direction: SignalDirection = SignalDirection.LONG
 
 
 class StopMonitor:
@@ -71,6 +73,7 @@ class StopMonitor:
         strategy_name: str,
         atr: Decimal | None = None,
         stop_type: Literal["fixed_pct", "atr_trailing"] | None = None,
+        direction: SignalDirection = SignalDirection.LONG,
     ) -> StopLevel:
         """Register a new position for stop monitoring.
 
@@ -80,6 +83,7 @@ class StopMonitor:
             strategy_name: Strategy that owns this position.
             atr: Current ATR value (required for atr_trailing type).
             stop_type: Override the default stop type from config.
+            direction: Direction of the position (LONG or SHORT).
 
         Returns:
             The computed StopLevel for this position.
@@ -90,11 +94,17 @@ class StopMonitor:
         effective_type = stop_type or self._config.type
 
         if effective_type == "fixed_pct":
-            stop_price = entry_price * (1 - Decimal(str(self._config.fixed_pct)))
+            if direction == SignalDirection.SHORT:
+                stop_price = entry_price * (1 + Decimal(str(self._config.fixed_pct)))
+            else:
+                stop_price = entry_price * (1 - Decimal(str(self._config.fixed_pct)))
         elif effective_type == "atr_trailing":
             if atr is None:
                 raise ValueError("ATR value required for atr_trailing stop type")
-            stop_price = entry_price - Decimal(str(self._config.atr_multiplier)) * atr
+            if direction == SignalDirection.SHORT:
+                stop_price = entry_price + Decimal(str(self._config.atr_multiplier)) * atr
+            else:
+                stop_price = entry_price - Decimal(str(self._config.atr_multiplier)) * atr
         else:
             raise ValueError(f"Unknown stop type: {effective_type}")
 
@@ -105,6 +115,7 @@ class StopMonitor:
             highest_price=entry_price,
             stop_type=effective_type,
             strategy_name=strategy_name,
+            direction=direction,
         )
         self._stops[symbol] = stop_level
 
@@ -114,6 +125,7 @@ class StopMonitor:
             entry_price=str(entry_price),
             stop_price=str(stop_price),
             stop_type=effective_type,
+            direction=direction.value,
         )
         return stop_level
 
@@ -166,8 +178,8 @@ class StopMonitor:
     def monitor_stops(self, current_prices: dict[str, Decimal]) -> list[Signal]:
         """Check all tracked positions against their stop levels.
 
-        For each position where current_price <= stop_price, generates a
-        CLOSE signal.
+        For LONG positions: triggers when price <= stop_price.
+        For SHORT positions: triggers when price >= stop_price.
 
         Args:
             current_prices: Mapping of symbol to current market price.
@@ -176,13 +188,21 @@ class StopMonitor:
             List of CLOSE signals for positions that hit their stops.
         """
         close_signals: list[Signal] = []
+        triggered_symbols: list[str] = []
 
         for symbol, stop in list(self._stops.items()):
             price = current_prices.get(symbol)
             if price is None:
                 continue
 
-            if price <= stop.stop_price:
+            if stop.direction == SignalDirection.LONG:
+                triggered = price <= stop.stop_price
+            elif stop.direction == SignalDirection.SHORT:
+                triggered = price >= stop.stop_price
+            else:
+                triggered = False
+
+            if triggered:
                 signal = Signal(
                     strategy_name=stop.strategy_name,
                     symbol=symbol,
@@ -196,10 +216,12 @@ class StopMonitor:
                         "stop_price": str(stop.stop_price),
                         "trigger_price": str(price),
                         "entry_price": str(stop.entry_price),
+                        "direction": stop.direction.value,
                     },
                     timestamp=datetime.now(timezone.utc),
                 )
                 close_signals.append(signal)
+                triggered_symbols.append(symbol)
 
                 logger.warning(
                     "stop_loss_triggered",
@@ -208,6 +230,11 @@ class StopMonitor:
                     stop_price=str(stop.stop_price),
                     trigger_price=str(price),
                     strategy=stop.strategy_name,
+                    direction=stop.direction.value,
                 )
+
+        # Remove stops after trigger to prevent duplicate signals
+        for symbol in triggered_symbols:
+            del self._stops[symbol]
 
         return close_signals

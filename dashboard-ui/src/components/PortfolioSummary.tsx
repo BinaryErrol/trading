@@ -42,7 +42,9 @@ export function PortfolioSummaryPanel() {
           {pnlSign}{formatCurrency(portfolio.unrealized_pnl)}
         </p>
         <p className="text-gray-500 text-sm mt-1">
-          {pnlSign}{((portfolio.unrealized_pnl / portfolio.total_value) * 100).toFixed(2)}%
+          {portfolio.total_value !== 0
+            ? `${pnlSign}${((portfolio.unrealized_pnl / portfolio.total_value) * 100).toFixed(2)}%`
+            : `${pnlSign}0.00%`}
         </p>
       </div>
 

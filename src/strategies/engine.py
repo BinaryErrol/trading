@@ -219,6 +219,9 @@ class StrategyEngine:
             interval_seconds=interval,
         )
 
+        consecutive_failures = 0
+        MAX_CONSECUTIVE_FAILURES = 5
+
         try:
             while True:
                 # Suppress intraday strategies outside market hours
@@ -237,7 +240,17 @@ class StrategyEngine:
                     if signals:
                         for signal in signals:
                             self._route_signal(signal)
+                    consecutive_failures = 0
                 except Exception as exc:
+                    consecutive_failures += 1
+                    if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                        strategy.state = StrategyState.HALTED
+                        logger.error(
+                            "strategy_halted_consecutive_failures",
+                            strategy=strategy.name,
+                            failures=consecutive_failures,
+                        )
+                        break
                     logger.error(
                         "strategy_evaluation_error",
                         strategy=strategy.name,
@@ -249,8 +262,8 @@ class StrategyEngine:
                 if interval > 0:
                     await asyncio.sleep(interval)
                 else:
-                    # Tick frequency: yield control but don't sleep
-                    await asyncio.sleep(0)
+                    # Tick frequency: minimum 10ms to prevent hot loops
+                    await asyncio.sleep(max(interval, 0.01))
 
         except asyncio.CancelledError:
             logger.info("strategy_loop_cancelled", strategy=strategy.name)

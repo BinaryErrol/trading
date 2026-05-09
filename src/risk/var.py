@@ -49,6 +49,11 @@ def calculate_var(
     if arr.size == 0:
         raise ValueError("returns array must not be empty")
 
+    # Remove NaN/Inf values
+    arr = arr[np.isfinite(arr)]
+    if arr.size == 0:
+        return 0.0
+
     # VaR percentile: for 95% confidence, we want the 5th percentile
     percentile_level = (1 - confidence) * 100  # e.g. 5.0 for 95% confidence
     var_return = np.percentile(arr, percentile_level)

@@ -35,6 +35,11 @@ async def save_position(
     If a position with the same symbol and strategy already exists,
     it will be updated. Otherwise, a new record is created.
 
+    # NOTE: This upsert is not protected against concurrent calls for the same
+    # symbol+strategy. In practice, only one coroutine writes positions at a time
+    # (the reconciliation or fill handler), but if this changes, add a DB-level
+    # unique constraint and use INSERT ... ON CONFLICT.
+
     Returns:
         The saved PositionRecord.
     """

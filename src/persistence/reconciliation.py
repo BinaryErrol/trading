@@ -6,6 +6,7 @@ actual IBKR account state to detect and resolve discrepancies.
 
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any, Protocol
@@ -87,7 +88,9 @@ async def reconcile_positions(
 
     # Load persisted positions
     db_positions = await load_positions(session)
-    db_by_symbol: dict[str, PositionRecord] = {p.symbol: p for p in db_positions}
+    db_by_symbol: dict[str, list[PositionRecord]] = defaultdict(list)
+    for p in db_positions:
+        db_by_symbol[p.symbol].append(p)
 
     # Build set of IBKR symbols
     ibkr_by_symbol: dict[str, dict[str, Any]] = {p["symbol"]: p for p in ibkr_positions}
@@ -97,18 +100,23 @@ async def reconcile_positions(
         ibkr_qty = Decimal(str(ibkr_pos["quantity"]))
 
         if symbol in db_by_symbol:
-            db_pos = db_by_symbol[symbol]
-            if db_pos.quantity == ibkr_qty:
+            db_records = db_by_symbol[symbol]
+            db_total_qty = sum(r.quantity for r in db_records)
+            if db_total_qty == ibkr_qty:
                 result.matched.append(symbol)
             else:
                 result.quantity_mismatches.append({
                     "symbol": symbol,
-                    "db_quantity": db_pos.quantity,
+                    "db_quantity": db_total_qty,
                     "ibkr_quantity": ibkr_qty,
                 })
                 if auto_fix:
-                    db_pos.quantity = ibkr_qty
-                    db_pos.avg_entry_price = Decimal(str(ibkr_pos["avg_cost"]))
+                    # Proportionally adjust quantities
+                    if db_total_qty != 0:
+                        ratio = ibkr_qty / db_total_qty
+                        for r in db_records:
+                            r.quantity = r.quantity * ratio
+                        db_records[0].avg_entry_price = Decimal(str(ibkr_pos["avg_cost"]))
                     await session.flush()
         else:
             # Position in IBKR but not in DB
@@ -118,21 +126,22 @@ async def reconcile_positions(
                     session=session,
                     symbol=symbol,
                     asset_class=ibkr_pos.get("asset_class", "STK"),
-                    strategy_name="unknown",
+                    strategy_name="unassigned",
                     quantity=ibkr_qty,
                     avg_entry_price=Decimal(str(ibkr_pos["avg_cost"])),
                 )
 
     # Check for positions in DB but not in IBKR (closed externally)
-    for symbol in db_by_symbol:
+    for symbol, db_records in db_by_symbol.items():
         if symbol not in ibkr_by_symbol:
             result.removed.append(symbol)
             if auto_fix:
-                await remove_position(
-                    session=session,
-                    symbol=symbol,
-                    strategy_name=db_by_symbol[symbol].strategy_name,
-                )
+                for r in db_records:
+                    await remove_position(
+                        session=session,
+                        symbol=symbol,
+                        strategy_name=r.strategy_name,
+                    )
 
     logger.info(
         "reconciliation_complete",

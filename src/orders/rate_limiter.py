@@ -38,9 +38,11 @@ class RateLimiter:
 
     @property
     def available_tokens(self) -> float:
-        """Current number of available tokens (approximate, without lock)."""
-        self._refill()
-        return self._tokens
+        """Current number of available tokens (approximate, read-only)."""
+        now = time.monotonic()
+        elapsed = now - self._last_refill
+        new_tokens = elapsed * self._max_per_second
+        return min(self._tokens + new_tokens, float(self._burst_size))
 
     def _refill(self) -> None:
         """Refill tokens based on elapsed time since last refill."""

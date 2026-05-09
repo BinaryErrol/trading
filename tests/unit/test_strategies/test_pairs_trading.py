@@ -37,8 +37,8 @@ class TestPairsTradingStrategy:
     async def test_long_spread_when_z_below_negative_entry(self):
         """Z-score below -entry_z generates LONG A + SHORT B signals."""
         # Symbol A drops sharply relative to B, making spread very negative
-        prices_a = [100.0] * 9 + [85.0]  # A drops
-        prices_b = [50.0] * 10  # B stays flat
+        prices_a = [100.0, 101.0, 99.0, 100.5, 100.0, 100.2, 99.8, 100.1, 100.0, 80.0]  # A drops
+        prices_b = [50.0, 51.0, 49.0, 50.5, 50.0, 50.2, 49.8, 50.1, 50.0, 50.0]  # B stays near flat
 
         data_hub = FakeDataHub()
         data_hub.set_bars("AAPL", Timeframe.FIVE_MIN, make_bars("AAPL", prices_a))
@@ -61,8 +61,8 @@ class TestPairsTradingStrategy:
     async def test_short_spread_when_z_above_positive_entry(self):
         """Z-score above +entry_z generates SHORT A + LONG B signals."""
         # Symbol A spikes relative to B, making spread very positive
-        prices_a = [100.0] * 9 + [115.0]  # A spikes
-        prices_b = [50.0] * 10  # B stays flat
+        prices_a = [100.0, 101.0, 99.0, 100.5, 100.0, 100.2, 99.8, 100.1, 100.0, 120.0]  # A spikes
+        prices_b = [50.0, 51.0, 49.0, 50.5, 50.0, 50.2, 49.8, 50.1, 50.0, 50.0]  # B stays near flat
 
         data_hub = FakeDataHub()
         data_hub.set_bars("AAPL", Timeframe.FIVE_MIN, make_bars("AAPL", prices_a))
@@ -93,6 +93,8 @@ class TestPairsTradingStrategy:
         data_hub.set_bars("MSFT", Timeframe.FIVE_MIN, make_bars("MSFT", prices_b))
 
         strategy = self._make_strategy(data_hub, cointegration_window=10, entry_z=2.0, exit_z=0.5)
+        # Simulate that a position is already open
+        strategy._position_open = True
         signals = await strategy.evaluate()
 
         assert len(signals) == 2
@@ -105,8 +107,8 @@ class TestPairsTradingStrategy:
     async def test_no_signal_when_z_between_exit_and_entry(self):
         """No signal when z-score is between exit_z and entry_z (dead zone)."""
         # Moderate deviation — z-score between 0.5 and 2.0
-        prices_a = [100.0] * 9 + [104.0]  # Moderate move
-        prices_b = [50.0] * 10
+        prices_a = [100.0, 101.0, 99.0, 100.5, 100.0, 100.2, 99.8, 100.1, 100.0, 104.0]  # Moderate move
+        prices_b = [50.0, 51.0, 49.0, 50.5, 50.0, 50.2, 49.8, 50.1, 50.0, 50.0]
 
         data_hub = FakeDataHub()
         data_hub.set_bars("AAPL", Timeframe.FIVE_MIN, make_bars("AAPL", prices_a))
@@ -139,8 +141,8 @@ class TestPairsTradingStrategy:
 
     @pytest.mark.asyncio
     async def test_no_signal_with_zero_spread_std(self):
-        """No signal when spread has zero standard deviation."""
-        # Both symbols have constant prices with exact ratio
+        """No signal when spread has zero standard deviation (or zero var_b)."""
+        # Both symbols have constant prices — var(B) = 0 so returns early
         prices_a = [100.0] * 10
         prices_b = [50.0] * 10
 
@@ -181,8 +183,8 @@ class TestPairsTradingStrategy:
     @pytest.mark.asyncio
     async def test_metadata_contains_spread_info(self):
         """Signal metadata includes z-score, spread, hedge ratio, and symbols."""
-        prices_a = [100.0] * 9 + [85.0]
-        prices_b = [50.0] * 10
+        prices_a = [100.0, 101.0, 99.0, 100.5, 100.0, 100.2, 99.8, 100.1, 100.0, 80.0]
+        prices_b = [50.0, 51.0, 49.0, 50.5, 50.0, 50.2, 49.8, 50.1, 50.0, 50.0]
 
         data_hub = FakeDataHub()
         data_hub.set_bars("AAPL", Timeframe.FIVE_MIN, make_bars("AAPL", prices_a))
