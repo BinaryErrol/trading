@@ -3,11 +3,11 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+COPY package.json ./
+RUN npm install --include=dev
 
 COPY . .
-RUN npm run build
+RUN npx tsc && npx vite build
 
 # Production stage
 FROM nginx:alpine

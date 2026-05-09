@@ -440,15 +440,16 @@ class TestStrategyIsolation:
         working = WorkingStrategy()
 
         engine = StrategyEngine(strategies=[failing, working])
-        await engine.start()
+        with patch("src.strategies.engine._is_market_open", return_value=True):
+            await engine.start()
 
-        # Let strategies run for a bit
-        await asyncio.sleep(0.2)
+            # Let strategies run for a bit
+            await asyncio.sleep(0.2)
 
-        # Working strategy should still be running
-        assert working.state == StrategyState.RUNNING
+            # Working strategy should still be running
+            assert working.state == StrategyState.RUNNING
 
-        await engine.stop()
+            await engine.stop()
 
         # Working strategy should have evaluated at least once
         assert working.eval_count >= 1
