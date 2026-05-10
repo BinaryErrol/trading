@@ -196,31 +196,32 @@ docker compose down -v
 
 ## Running a Backtest
 
-From the project root (not inside Docker):
+The backtest CLI automatically downloads historical data from Yahoo Finance and runs any strategy. No IBKR connection needed.
 
 ```bash
+# Install dependencies (first time only)
 pip install -e ".[dev]"
+pip install yfinance
 
-python -c "
-import asyncio
-from src.backtesting.engine import BacktestEngine
-from src.strategies.implementations.momentum import MomentumStrategy
-from src.config.settings import BacktestConfig, StrategyConfig
+# Test momentum on AAPL, 2 years back
+python scripts/backtest.py --symbol AAPL --strategy momentum --years 2
 
-async def main():
-    engine = BacktestEngine(BacktestConfig(slippage_bps=5))
-    data = await engine.load_data('AAPL', source='csv', filepath='data/historical/AAPL.csv')
-    config = StrategyConfig(
-        enabled=True, frequency='daily', symbols=['AAPL'],
-        asset_classes=['equity'], parameters={'lookback_period': 14}
-    )
-    strategy = MomentumStrategy(config, None)
-    result = await engine.run(strategy, data)
-    print(f'Return: {result.total_return:.2%}, Sharpe: {result.sharpe_ratio:.2f}')
+# Test MA crossover on multiple symbols, 5 years
+python scripts/backtest.py --symbol SPY,QQQ,IWM --strategy ma_crossover --years 5
 
-asyncio.run(main())
-"
+# Test with specific date range
+python scripts/backtest.py --symbol MSFT --strategy mean_reversion --start 2020-01-01 --end 2024-12-31
+
+# Test with custom parameters
+python scripts/backtest.py --symbol AAPL --strategy bollinger --years 3 --params bb_period=30,bb_std=2.5
+
+# Higher slippage for more realistic simulation
+python scripts/backtest.py --symbol TSLA --strategy breakout --years 1 --slippage 10
 ```
+
+Data is cached in `data/historical/` so subsequent runs are instant.
+
+Available strategies: `momentum`, `ma_crossover`, `mean_reversion`, `bollinger`, `rsi_divergence`, `trend_following`, `breakout`, `vwap`
 
 ---
 
