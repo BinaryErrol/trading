@@ -193,6 +193,10 @@ class AdaptiveStrategy(BaseStrategy):
         """
         self._bar_count += 1
 
+        # Sync data_hub to children (backtest engine may have replaced it)
+        for child in self._child_strategies.values():
+            child._data_hub = self._data_hub
+
         # Step 1: Resolve pending signals from previous evaluations
         self._resolve_pending_signals()
 
