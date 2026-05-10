@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
 connection:
   # Connection mode: "gateway" (IB Gateway) or "tws" (Trader Workstation)
-  mode: "gateway"
+  mode: "tws"
   # Host where TWS/Gateway is running
   host: "127.0.0.1"
   # Port mapping:
