@@ -14,11 +14,12 @@ connection:
   # Connection mode: "gateway" (IB Gateway) or "tws" (Trader Workstation)
   mode: "tws"
   # Host where TWS/Gateway is running
-  host: "127.0.0.1"
+  # Use "host.docker.internal" when running in Docker to reach the Windows host
+  host: "host.docker.internal"
   # Port mapping:
   #   TWS live: 7496, TWS paper: 7497
   #   Gateway live: 4001, Gateway paper: 4002
-  port: 4002
+  port: 7497
   # Unique client ID for this bot instance (use different IDs for multiple bots)
   client_id: 1
   # Connection timeout in seconds
