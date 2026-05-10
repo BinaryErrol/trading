@@ -309,6 +309,7 @@ Examples:
   python scripts/backtest.py --symbol SPY,QQQ,IWM --strategy ma_crossover --years 5
   python scripts/backtest.py --symbol MSFT --strategy bollinger --start 2020-01-01 --end 2024-12-31
   python scripts/backtest.py --symbol AAPL --strategy momentum --years 3 --params lookback_period=20
+  python scripts/backtest.py --symbol AAPL --compare-all --years 2
 
 Available strategies:
   momentum, ma_crossover, mean_reversion, bollinger, rsi_divergence,
@@ -317,7 +318,8 @@ Available strategies:
     )
 
     parser.add_argument("--symbol", "-s", required=True, help="Comma-separated tickers (e.g. AAPL,MSFT)")
-    parser.add_argument("--strategy", "-t", required=True, choices=list(STRATEGIES.keys()), help="Strategy to test")
+    parser.add_argument("--strategy", "-t", choices=list(STRATEGIES.keys()), help="Strategy to test")
+    parser.add_argument("--compare-all", "-c", action="store_true", help="Run ALL strategies and show comparison")
     parser.add_argument("--years", "-y", type=float, default=None, help="How many years back (e.g. 2)")
     parser.add_argument("--start", type=str, default=None, help="Start date YYYY-MM-DD (overrides --years)")
     parser.add_argument("--end", type=str, default=None, help="End date YYYY-MM-DD (default: today)")
@@ -326,6 +328,9 @@ Available strategies:
     parser.add_argument("--no-save", action="store_true", help="Don't cache downloaded CSVs")
 
     args = parser.parse_args()
+
+    if not args.strategy and not args.compare_all:
+        parser.error("Either --strategy or --compare-all is required")
 
     symbols = [s.strip().upper() for s in args.symbol.split(",")]
     end_date = date.fromisoformat(args.end) if args.end else date.today()
@@ -337,17 +342,109 @@ Available strategies:
     else:
         start_date = end_date - timedelta(days=365)
 
-    params = parse_params(args.params)
+    if args.compare_all:
+        asyncio.run(run_compare_all(
+            symbols=symbols,
+            start=start_date,
+            end=end_date,
+            slippage_bps=args.slippage,
+            save_data=not args.no_save,
+        ))
+    else:
+        params = parse_params(args.params)
+        asyncio.run(run_backtest(
+            symbols=symbols,
+            strategy_name=args.strategy,
+            start=start_date,
+            end=end_date,
+            params=params,
+            slippage_bps=args.slippage,
+            save_data=not args.no_save,
+        ))
 
-    asyncio.run(run_backtest(
-        symbols=symbols,
-        strategy_name=args.strategy,
-        start=start_date,
-        end=end_date,
-        params=params,
-        slippage_bps=args.slippage,
-        save_data=not args.no_save,
+
+async def run_compare_all(
+    symbols: list[str],
+    start: date,
+    end: date,
+    slippage_bps: float = 5.0,
+    save_data: bool = True,
+) -> None:
+    """Run ALL strategies on the same data and print a comparison table."""
+    print(f"\n{'='*70}")
+    print(f"  STRATEGY COMPARISON: {', '.join(symbols)}")
+    print(f"  Period: {start} to {end} ({(end - start).days} days)")
+    print(f"{'='*70}\n")
+
+    # Download data once
+    print("Downloading historical data...")
+    all_data = {}
+    for symbol in symbols:
+        csv_path = Path(f"data/historical/{symbol}.csv")
+        if csv_path.exists():
+            df = pd.read_csv(csv_path, parse_dates=True, index_col=0)
+            df.columns = [c.lower() for c in df.columns]
+            if hasattr(df.index, 'tz') and df.index.tz is not None:
+                df.index = df.index.tz_localize(None)
+            print(f"  Loaded {len(df)} bars for {symbol} from cache")
+        else:
+            df = download_yahoo_data(symbol, start, end)
+            if save_data:
+                save_csv(df, symbol)
+        all_data[symbol] = df
+
+    # Run each strategy
+    engine = BacktestEngine(BacktestConfig(
+        slippage_bps=slippage_bps,
+        commission_per_share=Decimal("0.005"),
+        market_impact_bps=2.0,
     ))
+
+    results = {}
+    for strategy_name in STRATEGIES:
+        print(f"\n  Running {strategy_name}...", end=" ")
+        try:
+            strategy = load_strategy(strategy_name, symbols, {})
+            data = all_data[symbols[0]]
+            result = await engine.run(strategy, data, start_date=start, end_date=end)
+            results[strategy_name] = result
+            print(f"Return: {result.total_return:.2%}, Sharpe: {result.sharpe_ratio:.2f}")
+        except Exception as exc:
+            print(f"ERROR: {exc}")
+            results[strategy_name] = None
+
+    # Print comparison table
+    print(f"\n\n{'='*70}")
+    print(f"  COMPARISON SUMMARY")
+    print(f"{'='*70}")
+    print(f"\n  {'Strategy':<16} {'Return':>8} {'Annual':>8} {'Sharpe':>7} {'Sortino':>8} {'MaxDD':>7} {'Trades':>7}")
+    print(f"  {'─'*16} {'─'*8} {'─'*8} {'─'*7} {'─'*8} {'─'*7} {'─'*7}")
+
+    ranked = []
+    for name, result in results.items():
+        if result is None:
+            print(f"  {name:<16} {'ERROR':>8}")
+            continue
+        print(
+            f"  {name:<16} "
+            f"{result.total_return:>7.2%} "
+            f"{result.annualized_return:>7.2%} "
+            f"{result.sharpe_ratio:>7.2f} "
+            f"{result.sortino_ratio:>8.2f} "
+            f"{result.max_drawdown:>6.2%} "
+            f"{result.total_trades:>7d}"
+        )
+        ranked.append((name, float(result.sharpe_ratio)))
+
+    # Rank by Sharpe
+    ranked.sort(key=lambda x: x[1], reverse=True)
+    print(f"\n  {'─'*70}")
+    print(f"  RANKING (by Sharpe Ratio):")
+    for i, (name, sharpe) in enumerate(ranked, 1):
+        marker = " ★" if i == 1 else ""
+        print(f"    {i}. {name} (Sharpe: {sharpe:.2f}){marker}")
+
+    print(f"\n{'='*70}\n")
 
 
 if __name__ == "__main__":
