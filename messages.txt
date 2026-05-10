@@ -1,25 +1,15 @@
-PS C:\Users\binar\PycharmProjects\trading> git pull origin main
-remote: Enumerating objects: 5, done.                                                                                                                            
-remote: Counting objects: 100% (5/5), done.                                                                                                                      
-remote: Compressing objects: 100% (1/1), done.                                                                                                                   
-remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0 (from 0)                                                                                            
-Unpacking objects: 100% (3/3), 420 bytes | 42.00 KiB/s, done.                                                                                                    
-From https://github.com/BinaryErrol/trading                                                                                                                      
- * branch            main       -> FETCH_HEAD                                                                                                                    
-   1714586..e697398  main       -> origin/main                                                                                                                   
-Updating 1714586..e697398                                                                                                                                        
-Fast-forward                                                                                                                                                     
- config.yaml | 5 +++--                                                                                                                                           
- 1 file changed, 3 insertions(+), 2 deletions(-)                                                                                                                 
-PS C:\Users\binar\PycharmProjects\trading> docker compose restart trading-bot                                                                                    
-[+] Restarting 1/1                                                                                                                                                ✔ Container ibkr-trading-bot  Started                                                                                                                      0.2s PS C:\Users\binar\PycharmProjects\trading> Test-NetConnection -ComputerName localhost -Port 7497                                                                 WARNING: TCP connect to (::1 : 7497) failed                                                                                                                      WARNING: TCP connect to (127.0.0.1 : 7497) failed                                                                                                                                                                                                                                                                                                                                                                                                                                                  ComputerName           : localhost                                                                                                                               RemoteAddress          : ::1
-RemotePort             : 7497
-InterfaceAlias         : Loopback Pseudo-Interface 1
-SourceAddress          : ::1
-PingSucceeded          : True
-PingReplyDetails (RTT) : 0 ms
-TcpTestSucceeded       : False
+PS C:\Users\binar\PycharmProjects\trading> Test-NetConnection -ComputerName localhost -Port 7497
+
+ComputerName     : localhost
+RemoteAddress    : ::1
+RemotePort       : 7497
+InterfaceAlias   : Loopback Pseudo-Interface 1
+SourceAddress    : ::1
+TcpTestSucceeded : True
 
 
 
+PS C:\Users\binar\PycharmProjects\trading> docker compose restart trading-bot
+[+] Restarting 1/1
+ ✔ Container ibkr-trading-bot  Started                                                                                                                      0.2s
 PS C:\Users\binar\PycharmProjects\trading>
