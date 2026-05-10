@@ -1,19 +1,3 @@
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=momentum error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=ma_crossover error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 21:13:51 [info     ] adaptive_rebalance             bar_count=500 best_strategy=momentum score=0.0 symbol=DIS
-2026-05-10 21:13:51 [info     ] backtest_complete              max_drawdown=0.0 sharpe=0.0 strategy=AdaptiveStrategy total_return=0.0 total_trades=0
   adaptive         — 15/15 symbols completed
 
 
@@ -32,7 +16,7 @@
   │ trend_following   -2.93%   -0.56  5.36%      19
   │ breakout          -3.34%   -0.75  4.14%       3
   │ vwap              -2.83%   -0.49  5.65%      11
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           3.97%    0.76  3.11%      20
   └─────────────────────────────────────────────────────────────────
 
   ┌─ MSFT ────────────────────────────────────────────────────────
@@ -46,7 +30,7 @@
   │ trend_following   -1.74%   -0.37  4.25%      25
   │ breakout          -0.17%   -0.04  4.22%       1
   │ vwap               1.45%    0.32  4.48%      13
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive          -2.49%   -0.52  4.24%      25
   └─────────────────────────────────────────────────────────────────
 
   ┌─ GOOGL ───────────────────────────────────────────────────────
@@ -60,7 +44,7 @@
   │ trend_following   10.01%    1.48  3.11%      11
   │ breakout          10.60%    1.62  3.34%       1
   │ vwap             -10.56%   -1.53 11.42%       7
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive          -1.50%   -0.24  7.69%      13
   └─────────────────────────────────────────────────────────────────
 
   ┌─ NVDA ────────────────────────────────────────────────────────
@@ -74,7 +58,7 @@
   │ trend_following   -6.20%   -0.68 10.54%      19
   │ breakout           6.56%    1.03  3.04%       1
   │ vwap               2.30%    0.24  7.45%      19
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           3.26%    0.36  4.26%       7
   └─────────────────────────────────────────────────────────────────
 
   ┌─ TSLA ────────────────────────────────────────────────────────
@@ -88,7 +72,7 @@
   │ trend_following    2.77%    0.25  8.31%      19
   │ breakout           8.52%    0.57 10.07%       1
   │ vwap              -4.94%   -0.34 10.96%      15
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           8.81%    0.54 10.72%       3
   └─────────────────────────────────────────────────────────────────
 
   ┌─ SPY ─────────────────────────────────────────────────────────
@@ -102,7 +86,7 @@
   │ trend_following    2.19%    0.70  1.31%      11
   │ breakout          -4.77%   -1.63  4.93%       1
   │ vwap              -1.06%   -0.31  2.64%       7
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           3.40%    0.98  1.98%      11
   └─────────────────────────────────────────────────────────────────
 
   ┌─ QQQ ─────────────────────────────────────────────────────────
@@ -116,7 +100,7 @@
   │ trend_following    1.75%    0.44  1.86%      15
   │ breakout          -6.92%   -1.79  7.05%       1
   │ vwap              -1.53%   -0.35  3.24%       9
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive          -2.85%   -0.70  3.09%      17
   └─────────────────────────────────────────────────────────────────
 
   ┌─ META ────────────────────────────────────────────────────────
@@ -130,7 +114,7 @@
   │ trend_following   -7.91%   -1.22  8.04%      25
   │ breakout          -4.03%   -0.97  5.62%       2
   │ vwap               1.07%    0.17  4.66%      12
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive          -2.96%   -0.42  8.41%      24
   └─────────────────────────────────────────────────────────────────
 
   ┌─ AMZN ────────────────────────────────────────────────────────
@@ -144,7 +128,7 @@
   │ trend_following    2.61%    0.43  4.54%      19
   │ breakout           3.06%    0.69  2.59%       1
   │ vwap               0.64%    0.12  3.81%      14
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           2.19%    0.36  4.07%       4
   └─────────────────────────────────────────────────────────────────
 
   ┌─ AMD ─────────────────────────────────────────────────────────
@@ -158,7 +142,7 @@
   │ trend_following   13.36%    0.99  6.95%      17
   │ breakout          -3.12%   -0.18 15.05%       2
   │ vwap             -12.26%   -0.77 16.93%      17
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive          27.56%    1.66  5.17%       7
   └─────────────────────────────────────────────────────────────────
 
   ┌─ NFLX ────────────────────────────────────────────────────────
@@ -172,7 +156,7 @@
   │ trend_following    1.51%    0.25  3.70%      16
   │ breakout          -0.92%   -0.43  2.08%       1
   │ vwap              -2.97%   -0.41  6.02%      12
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           2.43%    0.39  3.74%      14
   └─────────────────────────────────────────────────────────────────
 
   ┌─ JPM ─────────────────────────────────────────────────────────
@@ -186,7 +170,7 @@
   │ trend_following   -0.73%   -0.14  3.04%      19
   │ breakout          -3.20%   -0.58  5.76%       2
   │ vwap              -1.08%   -0.19  5.29%      10
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           0.74%    0.16  3.38%      14
   └─────────────────────────────────────────────────────────────────
 
   ┌─ V ───────────────────────────────────────────────────────────
@@ -200,7 +184,7 @@
   │ trend_following   -3.12%   -0.73  4.83%      18
   │ breakout           0.48%    0.12  2.43%       1
   │ vwap               2.31%    0.51  3.43%      10
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           1.34%    0.32  2.36%      14
   └─────────────────────────────────────────────────────────────────
 
   ┌─ MA ──────────────────────────────────────────────────────────
@@ -214,7 +198,7 @@
   │ trend_following   -1.84%   -0.44  3.11%      13
   │ breakout          -1.56%   -0.38  3.78%       2
   │ vwap               2.60%    0.61  2.92%      11
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           0.62%    0.16  1.95%      10
   └─────────────────────────────────────────────────────────────────
 
   ┌─ DIS ─────────────────────────────────────────────────────────
@@ -228,7 +212,7 @@
   │ trend_following    4.80%    0.92  3.22%      20
   │ breakout          -5.28%   -0.99  6.00%       5
   │ vwap              -2.69%   -0.50  4.70%       8
-  │ adaptive           0.00%    0.00  0.00%       0
+  │ adaptive           3.77%    0.72  2.35%       6
   └─────────────────────────────────────────────────────────────────
 
 
@@ -238,28 +222,28 @@
 
   #    Strategy          Avg Sharpe  Avg Return
   ──── ──────────────── ─────────── ───────────
-  1    mean_reversion          0.10      0.50% ★ BEST
-  2    bollinger               0.10      0.50%
-  3    trend_following         0.09      0.97%
-  4    rsi_divergence          0.01      0.28%
-  5    momentum                0.01      0.35%
-  6    adaptive                0.00      0.00%
+  1    adaptive                0.30      3.22% ★ BEST
+  2    mean_reversion          0.10      0.50%
+  3    bollinger               0.10      0.50%
+  4    trend_following         0.09      0.97%
+  5    rsi_divergence          0.01      0.28%
+  6    momentum                0.01      0.35%
   7    ma_crossover           -0.02     -0.60%
   8    vwap                   -0.20     -1.97%
   9    breakout               -0.25     -0.27%
 
   ──────────────────────────────────────────────────────────────────────
   BEST STRATEGY PER SYMBOL:
-    AAPL   → rsi_divergence (Sharpe: 0.55, Return: 3.12%)
+    AAPL   → adaptive (Sharpe: 0.76, Return: 3.97%)
     MSFT   → momentum (Sharpe: 0.50, Return: 2.36%)
     GOOGL  → breakout (Sharpe: 1.62, Return: 10.60%)
     NVDA   → breakout (Sharpe: 1.03, Return: 6.56%)
     TSLA   → mean_reversion (Sharpe: 0.64, Return: 8.02%)
-    SPY    → mean_reversion (Sharpe: 0.78, Return: 2.48%)
+    SPY    → adaptive (Sharpe: 0.98, Return: 3.40%)
     QQQ    → ma_crossover (Sharpe: 0.56, Return: 2.32%)
     META   → mean_reversion (Sharpe: 1.16, Return: 8.33%)
     AMZN   → breakout (Sharpe: 0.69, Return: 3.06%)
-    AMD    → trend_following (Sharpe: 0.99, Return: 13.36%)
+    AMD    → adaptive (Sharpe: 1.66, Return: 27.56%)
     NFLX   → ma_crossover (Sharpe: 0.83, Return: 5.51%)
     JPM    → mean_reversion (Sharpe: 0.65, Return: 3.17%)
     V      → vwap (Sharpe: 0.51, Return: 2.31%)
