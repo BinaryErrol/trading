@@ -1,58 +1,49 @@
-:\Users\binar\PycharmProjects\trading> docker compose build --no-cache trading-bot
-[+] Building 91.1s (19/19) FINISHED
- => [internal] load local bake definitions                                                                                                                  0.0s
- => => reading from stdin 427B                                                                                                                              0.0s
- => [internal] load build definition from Dockerfile                                                                                                        0.0s
- => => transferring dockerfile: 987B                                                                                                                        0.0s
- => [internal] load metadata for docker.io/library/python:3.11-slim                                                                                         2.4s
- => [internal] load .dockerignore                                                                                                                           0.0s
- => => transferring context: 661B                                                                                                                           0.0s
- => [ 1/12] FROM docker.io/library/python:3.11-slim@sha256:a5b427ace4900267d93db34138e512325c6fa6af84ad5e4ed5f3b36258cc4142                                 0.0s
- => [internal] load build context                                                                                                                           0.0s
- => => transferring context: 47.83kB                                                                                                                        0.0s
- => CACHED [ 2/12] WORKDIR /app                                                                                                                             0.0s
- => [ 3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*                       8.6s
- => [ 4/12] COPY pyproject.toml ./                                                                                                                          0.0s
- => [ 5/12] COPY src/ src/                                                                                                                                  0.0s
- => [ 6/12] COPY alembic/ alembic/                                                                                                                          0.0s
- => [ 7/12] COPY alembic.ini ./                                                                                                                             0.0s
- => [ 8/12] COPY scripts/ scripts/                                                                                                                          0.0s
- => [ 9/12] RUN pip install --no-cache-dir -e .                                                                                                            78.2s
- => [10/12] COPY config.yaml ./                                                                                                                             0.0s
- => [11/12] RUN dos2unix scripts/start.sh && chmod +x scripts/start.sh                                                                                      0.2s
- => [12/12] RUN mkdir -p /app/data /app/logs                                                                                                                0.2s
- => exporting to image                                                                                                                                      1.1s
- => => exporting layers                                                                                                                                     1.1s
- => => writing image sha256:0beb38259f3245ea051480ec4ceaefa445a439140f93f3e3652fc7555a4d389c                                                                0.0s
- => => naming to docker.io/library/trading-trading-bot                                                                                                      0.0s
- => resolving provenance for metadata file                                                                                                                  0.0s
-[+] Building 1/1
- ✔ trading-bot  Built                                                                                                                                       0.0s
-PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
-[+] Running 2/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- - Container ibkr-trading-bot  Waiting                                                                                                                     89.9s
-[+] Running 2/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- - Container ibkr-trading-bot  Waiting                                                                                                                     90.0s
-[+] Running 2/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- - Container ibkr-trading-bot  Waiting                                                                                                                     90.1s
-[+] Running 2/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- - Container ibkr-trading-bot  Waiting                                                                                                                     90.2s
-[+] Running 2/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ trading-bot  Built                                                                                                                                       0.0s
-PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
-[+] Running 3/3
- ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
- ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- ✘ Container ibkr-trading-bot  Error                                                                                                                       91.9s
-dependency failed to start: container ibkr-trading-bot is unhealthy
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | Waiting for database to be ready...
+ibkr-trading-bot  | Running database migrations...
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot  | Starting IBKR Trading Bot...
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] paper_trading_mode             port=7497
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] database_connected
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] account_verified               account_id=DUP075366 account_type=paper total_accounts=1
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] connected_to_ibkr              host=host.docker.internal port=7497
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] ibkr_connected                 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-10 14:34:26 [info     ] components_initialized
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] positions_loaded               count=0
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] reconciliation_complete        has_discrepancies=False summary='matched=0'
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] reconciliation_clean           summary='matched=0'
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] signal_flow_wired
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] event_flow_wired
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=momentum total_allocated=33333.33333333333333333333333
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=ma_crossover total_allocated=66666.66666666666666666666666
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=mean_reversion total_allocated=99999.99999999999999999999999
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_engine_starting       strategy_count=3
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [warning  ] capital_allocation_not_found   strategy=MACrossoverStrategy tried=['MACrossoverStrategy', 'macrossover', 'm_a_crossover']
+ibkr-trading-bot  | 2026-05-10 14:34:27 [warning  ] insufficient_capital           allocated=0 minimum=1000 strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [warning  ] strategy_enable_failed_capital allocated=0 strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_state_changed         new=running previous=idle strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_enabled               strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_engine_started        active_strategies=['MomentumStrategy', 'MeanReversionStrategy']
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategies_started             count=3 names=['MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy']
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [info     ] strategy_loop_started          frequency=5min interval_seconds=300.0 strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 14:34:27 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 14:35:27 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:35:27 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 14:36:27 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 14:36:27 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
 PS C:\Users\binar\PycharmProjects\trading>
+
+
 
