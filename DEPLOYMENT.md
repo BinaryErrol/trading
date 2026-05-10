@@ -217,6 +217,9 @@ python scripts/backtest.py --symbol AAPL --strategy bollinger --years 3 --params
 
 # Higher slippage for more realistic simulation
 python scripts/backtest.py --symbol TSLA --strategy breakout --years 1 --slippage 10
+
+# Compare ALL strategies on one symbol (prints ranked summary table)
+python scripts/backtest.py --symbol AAPL --compare-all --years 2
 ```
 
 Data is cached in `data/historical/` so subsequent runs are instant.
