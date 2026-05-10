@@ -69,3 +69,48 @@ export interface WebSocketMessage {
   type: string;
   data: Record<string, unknown>;
 }
+
+export interface StrategyPnL {
+  strategy_name: string;
+  realized_pnl: number;
+  unrealized_pnl: number;
+  total_pnl: number;
+}
+
+export interface StrategyComparison {
+  name: string;
+  total_return: number;
+  sharpe_ratio: number;
+  sortino_ratio: number;
+  max_drawdown: number;
+  win_rate: number;
+  profit_factor: number;
+  total_trades: number;
+  realized_pnl: number;
+  unrealized_pnl: number;
+}
+
+export interface EquityPoint {
+  date: string;
+  equity: number;
+}
+
+export interface TradeDetail {
+  id: number;
+  strategy_name: string;
+  symbol: string;
+  direction: string;
+  entry_price: number;
+  exit_price: number | null;
+  quantity: number;
+  realized_pnl: number;
+  opened_at: string;
+  closed_at: string | null;
+}
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  limit: number;
+  offset: number;
+}

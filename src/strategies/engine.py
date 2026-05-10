@@ -272,9 +272,36 @@ class StrategyEngine:
     def _route_signal(self, signal: Signal) -> None:
         """Route a signal to the on_signal callback.
 
+        If the signal carries option_params, builds an ib_async Option contract
+        via build_option_contract and attaches it as signal metadata for the
+        OrderManager to use instead of the default _make_contract logic.
+
         Args:
             signal: The trading signal to route.
         """
+        # Build options contract if signal has option_params
+        if signal.option_params is not None:
+            try:
+                from src.orders.options_contract import build_option_contract
+
+                contract = build_option_contract(signal.option_params)
+                signal.metadata["_option_contract"] = contract
+                logger.debug(
+                    "option_contract_built",
+                    strategy=signal.strategy_name,
+                    symbol=signal.symbol,
+                    underlying=signal.option_params.underlying,
+                    strike=str(signal.option_params.strike),
+                    right=signal.option_params.right,
+                )
+            except Exception as exc:
+                logger.error(
+                    "option_contract_build_error",
+                    strategy=signal.strategy_name,
+                    symbol=signal.symbol,
+                    error=str(exc),
+                )
+
         if self._on_signal is not None:
             try:
                 self._on_signal(signal)

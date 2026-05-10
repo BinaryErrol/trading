@@ -86,6 +86,31 @@ strategies:
 
   # --- Uncomment and configure additional strategies as needed ---
 
+  wheel:
+    enabled: false
+    frequency: "15min"
+    symbols:
+      - "AAPL"
+      - "MSFT"
+      - "GOOGL"
+    asset_classes:
+      - "option"
+    parameters:
+      # Target delta for strike selection (probability proxy)
+      target_delta: 0.30
+      # Minimum days to expiration for new positions
+      min_dte: 30
+      # Maximum days to expiration for new positions
+      max_dte: 45
+      # Days remaining to trigger roll evaluation
+      roll_dte_threshold: 7
+      # VIX level above which new put-selling is suppressed
+      vix_high_threshold: 30.0
+      # VIX level below which put-selling resumes (hysteresis)
+      vix_reentry_threshold: 25.0
+      # Maximum concurrent short option positions per symbol
+      max_positions_per_symbol: 1
+
   # pairs_trading:
   #   enabled: false
   #   frequency: "5min"

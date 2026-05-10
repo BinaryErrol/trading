@@ -19,6 +19,7 @@ from pydantic import BaseModel
 
 from src.dashboard.websocket import router as ws_router
 from src.portfolio.monitor import PortfolioMonitor
+from src.portfolio.pnl_tracker import PnLTracker
 
 logger = structlog.get_logger(__name__)
 
@@ -108,12 +109,79 @@ class ExportResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Strategy P&L and comparison response models
+# ---------------------------------------------------------------------------
+
+
+class StrategyPnLResponse(BaseModel):
+    """P&L response for a single strategy."""
+
+    strategy_name: str
+    realized_pnl: float
+    unrealized_pnl: float
+    total_pnl: float
+
+
+class StrategyComparisonItem(BaseModel):
+    """Single strategy entry in the comparison response."""
+
+    name: str
+    total_return: float
+    sharpe_ratio: float
+    sortino_ratio: float
+    max_drawdown: float
+    win_rate: float
+    profit_factor: float
+    total_trades: int
+    realized_pnl: float
+    unrealized_pnl: float
+
+
+class StrategyComparisonResponse(BaseModel):
+    """Comparison of all strategies."""
+
+    strategies: list[StrategyComparisonItem]
+
+
+class EquityPointResponse(BaseModel):
+    """Single equity curve data point."""
+
+    date: str
+    equity: float
+
+
+class TradeDetailResponse(BaseModel):
+    """Single trade record response."""
+
+    id: int
+    strategy_name: str
+    symbol: str
+    direction: str
+    entry_price: float
+    exit_price: float | None
+    quantity: float
+    realized_pnl: float
+    opened_at: str
+    closed_at: str | None
+
+
+class PaginatedTradesResponse(BaseModel):
+    """Paginated trade list response."""
+
+    items: list[TradeDetailResponse]
+    total: int
+    limit: int
+    offset: int
+
+
+# ---------------------------------------------------------------------------
 # Dependency injection
 # ---------------------------------------------------------------------------
 
 # Module-level references set by the application at startup
 _portfolio_monitor: PortfolioMonitor | None = None
 _db_session_factory: Any = None
+_pnl_tracker: PnLTracker | None = None
 
 
 def set_portfolio_monitor(monitor: PortfolioMonitor) -> None:
@@ -128,6 +196,12 @@ def set_db_session_factory(factory: Any) -> None:
     _db_session_factory = factory
 
 
+def set_pnl_tracker(tracker: PnLTracker) -> None:
+    """Set the PnL tracker instance for dependency injection."""
+    global _pnl_tracker
+    _pnl_tracker = tracker
+
+
 def get_portfolio_monitor() -> PortfolioMonitor:
     """FastAPI dependency that provides the PortfolioMonitor instance."""
     if _portfolio_monitor is None:
@@ -140,6 +214,13 @@ def get_db_session_factory() -> Any:
     if _db_session_factory is None:
         raise HTTPException(status_code=503, detail="Database not initialized")
     return _db_session_factory
+
+
+def get_pnl_tracker() -> PnLTracker:
+    """FastAPI dependency that provides the PnLTracker instance."""
+    if _pnl_tracker is None:
+        raise HTTPException(status_code=503, detail="PnL tracker not initialized")
+    return _pnl_tracker
 
 
 # ---------------------------------------------------------------------------
@@ -188,6 +269,7 @@ async def verify_auth(request: Request) -> None:
 def create_app(
     portfolio_monitor: PortfolioMonitor | None = None,
     db_session_factory: Any = None,
+    pnl_tracker: PnLTracker | None = None,
     cors_origins: list[str] | None = None,
 ) -> FastAPI:
     """Create and configure the FastAPI application.
@@ -195,6 +277,7 @@ def create_app(
     Args:
         portfolio_monitor: PortfolioMonitor instance for portfolio data.
         db_session_factory: Async session factory for database access.
+        pnl_tracker: PnLTracker instance for per-strategy P&L data.
         cors_origins: Allowed CORS origins for the frontend.
 
     Returns:
@@ -204,6 +287,8 @@ def create_app(
         set_portfolio_monitor(portfolio_monitor)
     if db_session_factory is not None:
         set_db_session_factory(db_session_factory)
+    if pnl_tracker is not None:
+        set_pnl_tracker(pnl_tracker)
 
     app = FastAPI(
         title="IBKR Trading Bot Dashboard",
@@ -427,5 +512,155 @@ def create_app(
         ])
 
         return ExportResponse(filepath=str(filepath), trade_count=trade_count)
+
+    # -----------------------------------------------------------------------
+    # Strategy P&L and comparison endpoints
+    # -----------------------------------------------------------------------
+
+    @app.get("/api/strategies/comparison", response_model=StrategyComparisonResponse)
+    async def get_strategy_comparison(
+        _: None = Depends(verify_auth),
+        monitor: PortfolioMonitor = Depends(get_portfolio_monitor),
+        tracker: PnLTracker = Depends(get_pnl_tracker),
+    ) -> StrategyComparisonResponse:
+        """Get all strategies with metrics and P&L side-by-side."""
+        all_pnl = await tracker.get_all_strategies_pnl()
+
+        items = []
+        for pnl in all_pnl:
+            metrics = monitor.calculate_strategy_metrics(pnl.strategy_name)
+            items.append(
+                StrategyComparisonItem(
+                    name=pnl.strategy_name,
+                    total_return=float(metrics.total_return),
+                    sharpe_ratio=metrics.sharpe_ratio,
+                    sortino_ratio=metrics.sortino_ratio,
+                    max_drawdown=float(metrics.max_drawdown),
+                    win_rate=metrics.win_rate,
+                    profit_factor=metrics.profit_factor,
+                    total_trades=metrics.total_trades,
+                    realized_pnl=float(pnl.realized_pnl),
+                    unrealized_pnl=float(pnl.unrealized_pnl),
+                )
+            )
+
+        return StrategyComparisonResponse(strategies=items)
+
+    @app.get("/api/strategies/{name}/pnl", response_model=StrategyPnLResponse)
+    async def get_strategy_pnl(
+        name: str,
+        _: None = Depends(verify_auth),
+        tracker: PnLTracker = Depends(get_pnl_tracker),
+    ) -> StrategyPnLResponse:
+        """Get realized, unrealized, and total P&L for one strategy."""
+        pnl = await tracker.get_strategy_pnl(name)
+        return StrategyPnLResponse(
+            strategy_name=pnl.strategy_name,
+            realized_pnl=float(pnl.realized_pnl),
+            unrealized_pnl=float(pnl.unrealized_pnl),
+            total_pnl=float(pnl.total_pnl),
+        )
+
+    # -----------------------------------------------------------------------
+    # History and trades endpoints
+    # -----------------------------------------------------------------------
+
+    @app.get("/api/strategies/{name}/history", response_model=list[EquityPointResponse])
+    async def get_strategy_history(
+        name: str,
+        start: str | None = None,
+        end: str | None = None,
+        _: None = Depends(verify_auth),
+        tracker: PnLTracker = Depends(get_pnl_tracker),
+    ) -> list[EquityPointResponse]:
+        """Get equity curve time-series for a strategy."""
+        start_date = date.fromisoformat(start) if start else None
+        end_date = date.fromisoformat(end) if end else None
+
+        points = await tracker.get_equity_history(name, start_date, end_date)
+        return [
+            EquityPointResponse(
+                date=p.date.isoformat(),
+                equity=float(p.equity),
+            )
+            for p in points
+        ]
+
+    @app.get("/api/strategies/{name}/trades", response_model=PaginatedTradesResponse)
+    async def get_strategy_trades(
+        name: str,
+        limit: int = 25,
+        offset: int = 0,
+        _: None = Depends(verify_auth),
+        tracker: PnLTracker = Depends(get_pnl_tracker),
+    ) -> PaginatedTradesResponse:
+        """Get paginated trade list for one strategy."""
+        items, total = await tracker.get_trades(
+            strategy_name=name, limit=limit, offset=offset
+        )
+        return PaginatedTradesResponse(
+            items=[
+                TradeDetailResponse(
+                    id=t.id,
+                    strategy_name=t.strategy_name,
+                    symbol=t.symbol,
+                    direction=t.direction,
+                    entry_price=float(t.entry_price),
+                    exit_price=float(t.exit_price) if t.exit_price else None,
+                    quantity=float(t.quantity),
+                    realized_pnl=float(t.realized_pnl),
+                    opened_at=t.opened_at.isoformat(),
+                    closed_at=t.closed_at.isoformat() if t.closed_at else None,
+                )
+                for t in items
+            ],
+            total=total,
+            limit=limit,
+            offset=offset,
+        )
+
+    @app.get("/api/trades", response_model=PaginatedTradesResponse)
+    async def get_all_trades(
+        strategy: str | None = None,
+        symbol: str | None = None,
+        start: str | None = None,
+        end: str | None = None,
+        limit: int = 25,
+        offset: int = 0,
+        _: None = Depends(verify_auth),
+        tracker: PnLTracker = Depends(get_pnl_tracker),
+    ) -> PaginatedTradesResponse:
+        """Get all trades with filters and pagination."""
+        start_date = date.fromisoformat(start) if start else None
+        end_date = date.fromisoformat(end) if end else None
+
+        items, total = await tracker.get_trades(
+            strategy_name=strategy,
+            symbol=symbol,
+            start=start_date,
+            end=end_date,
+            limit=limit,
+            offset=offset,
+        )
+        return PaginatedTradesResponse(
+            items=[
+                TradeDetailResponse(
+                    id=t.id,
+                    strategy_name=t.strategy_name,
+                    symbol=t.symbol,
+                    direction=t.direction,
+                    entry_price=float(t.entry_price),
+                    exit_price=float(t.exit_price) if t.exit_price else None,
+                    quantity=float(t.quantity),
+                    realized_pnl=float(t.realized_pnl),
+                    opened_at=t.opened_at.isoformat(),
+                    closed_at=t.closed_at.isoformat() if t.closed_at else None,
+                )
+                for t in items
+            ],
+            total=total,
+            limit=limit,
+            offset=offset,
+        )
 
     return app

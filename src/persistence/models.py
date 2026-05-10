@@ -223,3 +223,63 @@ class AlertLogRecord(Base):
             f"<AlertLogRecord(id={self.id}, event_type={self.event_type!r}, "
             f"priority={self.priority!r})>"
         )
+
+
+class OptionsTradeRecord(Base):
+    """Closed options trade record for the Wheel strategy.
+
+    Maps to the `options_trades` table. Tracks individual options trades
+    from open to close with premium and P&L tracking.
+    """
+
+    __tablename__ = "options_trades"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    strategy_name: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
+    underlying: Mapped[str] = mapped_column(String(20), nullable=False, index=True)
+    contract_symbol: Mapped[str] = mapped_column(String(40), nullable=False)
+    right: Mapped[str] = mapped_column(String(1), nullable=False)
+    strike: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    expiration: Mapped[date] = mapped_column(Date, nullable=False)
+    action: Mapped[str] = mapped_column(String(15), nullable=False)
+    quantity: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    entry_price: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    exit_price: Mapped[Decimal | None] = mapped_column(Numeric, nullable=True)
+    premium_collected: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    realized_pnl: Mapped[Decimal | None] = mapped_column(Numeric, nullable=True)
+    commission: Mapped[Decimal] = mapped_column(Numeric, nullable=False, default=0)
+    opened_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    closed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    status: Mapped[str] = mapped_column(String(15), nullable=False, default="open", index=True)
+
+    def __repr__(self) -> str:
+        return (
+            f"<OptionsTradeRecord(id={self.id}, underlying={self.underlying!r}, "
+            f"right={self.right!r}, strike={self.strike}, status={self.status!r})>"
+        )
+
+
+class StrategySnapshotRecord(Base):
+    """Per-strategy daily equity snapshot for historical performance tracking.
+
+    Maps to the `strategy_snapshots` table. One record per strategy per
+    trading day with aggregate P&L metrics.
+    """
+
+    __tablename__ = "strategy_snapshots"
+    __table_args__ = (UniqueConstraint("strategy_name", "date"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    strategy_name: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
+    date: Mapped[date] = mapped_column(Date, nullable=False, index=True)
+    equity: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    realized_pnl: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    unrealized_pnl: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    total_pnl: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
+    trade_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+
+    def __repr__(self) -> str:
+        return (
+            f"<StrategySnapshotRecord(id={self.id}, strategy={self.strategy_name!r}, "
+            f"date={self.date}, equity={self.equity})>"
+        )

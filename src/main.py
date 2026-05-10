@@ -30,6 +30,7 @@ from src.persistence.database import close_db, get_session, init_db
 from src.persistence.reconciliation import reconcile_positions
 from src.portfolio.capital_allocator import AllocationMode, CapitalAllocator
 from src.portfolio.monitor import PortfolioMonitor
+from src.portfolio.pnl_tracker import PnLTracker
 from src.risk.manager import RiskManager
 from src.strategies.engine import StrategyEngine
 from src.strategies.signals import Signal
@@ -64,6 +65,7 @@ class TradingBot:
         self._risk_manager: RiskManager | None = None
         self._capital_allocator: CapitalAllocator | None = None
         self._portfolio_monitor: PortfolioMonitor | None = None
+        self._pnl_tracker: PnLTracker | None = None
         self._alert_service: AlertService | None = None
         self._rate_limiter: RateLimiter | None = None
         self._stale_data_task: asyncio.Task | None = None
@@ -110,6 +112,9 @@ class TradingBot:
         # Step 8: Start stale data monitor
         self._start_stale_data_monitor()
 
+        # Step 9: Start PnL tracker
+        await self._start_pnl_tracker()
+
         log.info("trading_bot_running", mode=self._get_trading_mode())
 
     # ------------------------------------------------------------------
@@ -141,6 +146,14 @@ class TradingBot:
                 log.info("strategies_stopped")
             except Exception as exc:
                 log.error("strategy_stop_error", error=str(exc))
+
+        # Step 2.5: Stop PnL tracker
+        if self._pnl_tracker:
+            try:
+                await self._pnl_tracker.stop()
+                log.info("pnl_tracker_stopped")
+            except Exception as exc:
+                log.error("pnl_tracker_stop_error", error=str(exc))
 
         # Step 3: Cancel pending orders
         if self._order_manager:
@@ -470,6 +483,8 @@ class TradingBot:
         """Build strategy instances from config.
 
         Returns a list of BaseStrategy instances for enabled strategies.
+        The WheelStrategy requires extra dependencies (options_chain,
+        portfolio_monitor) which are detected and passed automatically.
         """
         from src.strategies.base import BaseStrategy
 
@@ -489,7 +504,30 @@ class TradingBot:
 
             try:
                 assert self._market_data_hub is not None
-                strategy = cls(config=config, data_hub=self._market_data_hub)
+
+                # WheelStrategy needs extra deps: options_chain, portfolio_monitor
+                if name == "wheel":
+                    from src.data.options_chain import OptionsChainProvider
+
+                    if self._connection_manager is None or self._portfolio_monitor is None:
+                        log.warning(
+                            "wheel_strategy_skipped",
+                            reason="missing connection or portfolio monitor",
+                        )
+                        continue
+
+                    options_chain = OptionsChainProvider(
+                        connection=self._connection_manager,
+                    )
+                    strategy = cls(
+                        config=config,
+                        data_hub=self._market_data_hub,
+                        options_chain=options_chain,
+                        portfolio_monitor=self._portfolio_monitor,
+                    )
+                else:
+                    strategy = cls(config=config, data_hub=self._market_data_hub)
+
                 strategies.append(strategy)
             except Exception as exc:
                 log.error(
@@ -571,6 +609,13 @@ class TradingBot:
             from src.strategies.implementations.market_making import MarketMakingStrategy
 
             registry["market_making"] = MarketMakingStrategy
+        except ImportError:
+            pass
+
+        try:
+            from src.strategies.wheel import WheelStrategy
+
+            registry["wheel"] = WheelStrategy
         except ImportError:
             pass
 
@@ -775,6 +820,32 @@ class TradingBot:
             self._stale_data_loop(),
             name="stale-data-monitor",
         )
+
+    async def _start_pnl_tracker(self) -> None:
+        """Initialize and start the PnL tracker.
+
+        Creates a PnLTracker with the PortfolioMonitor and DB session factory,
+        registers it with the dashboard API for dependency injection, and starts
+        the periodic update loop.
+        """
+        from src.dashboard.api import set_pnl_tracker
+        from src.persistence.database import _session_factory
+
+        if self._portfolio_monitor is None:
+            log.warning("pnl_tracker_skipped", reason="portfolio monitor not initialized")
+            return
+
+        if _session_factory is None:
+            log.warning("pnl_tracker_skipped", reason="database not initialized")
+            return
+
+        self._pnl_tracker = PnLTracker(
+            portfolio_monitor=self._portfolio_monitor,
+            db_session_factory=_session_factory,
+        )
+        set_pnl_tracker(self._pnl_tracker)
+        await self._pnl_tracker.start()
+        log.info("pnl_tracker_initialized")
 
     @staticmethod
     def _is_market_hours() -> bool:

@@ -9,7 +9,7 @@ All modules that need Signal or SignalDirection should import from here.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from decimal import Decimal
 from enum import Enum
 from typing import Any
@@ -32,6 +32,28 @@ class OrderType(Enum):
     STOP_LIMIT = "STP LMT"
     TRAILING_STOP = "TRAIL"
     BRACKET = "BRACKET"
+
+
+@dataclass
+class OptionSignalParams:
+    """Parameters specific to options signals.
+
+    Carries the information needed to build an ib_async Option contract
+    from a trading signal.
+
+    Attributes:
+        underlying: The underlying ticker symbol (e.g. "AAPL").
+        strike: The option strike price.
+        expiration: The option expiration date.
+        right: "P" for put, "C" for call.
+        action: The options action (e.g. "SELL_TO_OPEN", "BUY_TO_CLOSE").
+    """
+
+    underlying: str
+    strike: Decimal
+    expiration: date
+    right: str  # "P" or "C"
+    action: str  # "SELL_TO_OPEN", "BUY_TO_CLOSE"
 
 
 @dataclass
@@ -61,3 +83,4 @@ class Signal:
     stop_price: Decimal | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
     timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    option_params: OptionSignalParams | None = None

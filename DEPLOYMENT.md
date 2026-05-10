@@ -38,9 +38,9 @@ Edit `config.yaml` with your settings:
 
 ```yaml
 connection:
-  mode: gateway        # or "tws"
-  host: host.docker.internal  # Docker → host networking
-  port: 4002           # 4002=paper, 4001=live
+  mode: tws            # "tws" for Trader Workstation, "gateway" for IB Gateway
+  host: host.docker.internal  # Docker → host networking (use 127.0.0.1 outside Docker)
+  port: 7497           # TWS paper=7497, TWS live=7496, Gateway paper=4002, Gateway live=4001
   client_id: 1
   timeout: 30
 
