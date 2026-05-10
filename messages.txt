@@ -1,51 +1,89 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
-[+] Running 3/3
- ✔ Container ibkr-redis        Healthy                                                                                                                                                              1.2s
- ✔ Container ibkr-postgres     Healthy                                                                                                                                                              1.2s
- ✘ Container ibkr-trading-bot  Error                                                                                                                                                               92.5s
-dependency failed to start: container ibkr-trading-bot is unhealthy
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
-ibkr-trading-bot  | Waiting for database to be ready...
-ibkr-trading-bot  | Running database migrations...
-ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
-ibkr-trading-bot  | Starting IBKR Trading Bot...
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] trading_bot_starting           version=0.1.0
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] paper_trading_mode             port=7497
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] database_connected
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] redis_connected                url=redis://redis:6379/0
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] account_verified               account_id=DUP075366 account_type=paper total_accounts=1
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] connected_to_ibkr              host=host.docker.internal port=7497
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] ibkr_connected                 host=host.docker.internal mode=tws port=7497
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] components_initialized
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] positions_loaded               count=0
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] reconciliation_complete        has_discrepancies=False summary='matched=0'
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] reconciliation_clean           summary='matched=0'
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] signal_flow_wired
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] event_flow_wired
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=momentum total_allocated=33333.33333333333333333333333ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=ma_crossover total_allocated=66666.66666666666666666666666
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] capital_allocated              amount=33333.33333333333333333333333 mode=equal_weight strategy=mean_reversion total_allocated=99999.99999999999999999999999
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_engine_starting       strategy_count=3
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_enabled               strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_state_changed         new=running previous=idle strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_enabled               strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_state_changed         new=running previous=idle strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_enabled               strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_engine_started        active_strategies=['MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy']
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategies_started             count=3 names=['MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy']
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] trading_bot_running            mode=paper
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_loop_started          frequency=1hour interval_seconds=3600.0 strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [info     ] strategy_loop_started          frequency=5min interval_seconds=300.0 strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-10 14:42:26 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-10 14:43:26 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-10 14:43:26 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-10 14:43:26 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
+PS C:\Users\binar\PycharmProjects\trading> docker compose down
+[+] Running 6/6
+ ✔ Container ibkr-dashboard-ui  Removed                                                                                                                                                             0.0s
+ ✔ Container ibkr-trading-bot   Removed                                                                                                                                                             0.6s
+ ✔ Container ibkr-postgres      Removed                                                                                                                                                             0.3s
+ ✔ Container ibkr-redis         Removed                                                                                                                                                             0.4s
+ ! Network trading_frontend     Resource is still in use                                                                                                                                            0.0s
+ ! Network trading_backend      Resource is still in use                                                                                                                                            0.0s
+PS C:\Users\binar\PycharmProjects\trading> docker compose build --no-cache
+[+] Building 30.8s (18/31)
+ => [internal] load local bake definitions                                                                                                                                                          0.0s
+ => => reading from stdin 798B                                                                                                                                                                      0.0s
+ => [trading-bot internal] load build definition from Dockerfile                                                                                                                                    0.0s
+ => => transferring dockerfile: 857B                                                                                                                                                                0.0s
+ => [dashboard-ui internal] load build definition from Dockerfile                                                                                                                                   0.0s
+ => => transferring dockerfile: 458B                                                                                                                                                                0.0s
+ => [trading-bot internal] load metadata for docker.io/library/python:3.11-slim                                                                                                                     1.8s
+ => [dashboard-ui internal] load metadata for docker.io/library/nginx:alpine                                                                                                                        1.9s
+ => [dashboard-ui internal] load metadata for docker.io/library/node:20-alpine                                                                                                                      1.9s
+ => [trading-bot internal] load .dockerignore                                                                                                                                                       0.0s
+ => => transferring context: 661B                                                                                                                                                                   0.0s
+ => [trading-bot  1/12] FROM docker.io/library/python:3.11-slim@sha256:a5b427ace4900267d93db34138e512325c6fa6af84ad5e4ed5f3b36258cc4142                                                             0.0s
+ => [trading-bot internal] load build context                                                                                                                                                       0.0s
+ => => transferring context: 8.48kB                                                                                                                                                                 0.0s
+ => CACHED [trading-bot  2/12] WORKDIR /app                                                                                                                                                         0.0s
+ => ERROR [trading-bot  3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*                                            28.5s
+ => [dashboard-ui internal] load .dockerignore                                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                                                     0.0s
+ => [dashboard-ui build 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293                                                          0.0s
+ => [dashboard-ui internal] load build context                                                                                                                                                      0.2s
+ => => transferring context: 530.54kB                                                                                                                                                               0.2s
+ => CACHED [dashboard-ui stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de                                                   0.0s
+ => CACHED [dashboard-ui build 2/6] WORKDIR /app                                                                                                                                                    0.0s
+ => [dashboard-ui build 3/6] COPY package.json ./                                                                                                                                                   0.0s
+ => CANCELED [dashboard-ui build 4/6] RUN npm install                                                                                                                                              28.3s
+------
+ > [trading-bot  3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*:
+21.34 Ign:1 http://deb.debian.org/debian trixie InRelease
+21.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+21.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+22.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+22.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+22.34 Ign:1 http://deb.debian.org/debian trixie InRelease
+24.34 Ign:1 http://deb.debian.org/debian trixie InRelease
+24.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+24.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+28.34 Err:3 http://deb.debian.org/debian-security trixie-security InRelease
+28.34   Unable to connect to deb.debian.org:http:
+28.34 Err:2 http://deb.debian.org/debian trixie-updates InRelease
+28.34   Unable to connect to deb.debian.org:http:
+28.34 Err:1 http://deb.debian.org/debian trixie InRelease
+28.34   Could not connect to debian.map.fastlydns.net:80 (151.101.174.132). - connect (111: Connection refused) Unable to connect to deb.debian.org:http:
+28.34   Unable to connect to deb.debian.org:http:
+28.34 Reading package lists...
+28.35 W: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Unable to connect to deb.debian.org:http:
+28.35 W: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  Unable to connect to deb.debian.org:http:
+28.35 W: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  Unable to connect to deb.debian.org:http:
+28.35 W: Some index files failed to download. They have been ignored, or old ones used instead.
+28.36 Reading package lists...
+28.36 Building dependency tree...
+28.36 Reading state information...
+28.36 E: Unable to locate package curl
+28.36 E: Unable to locate package dos2unix
+------
+Dockerfile:6
+
+--------------------
+
+   5 |     # Install system dependencies
+
+   6 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+
+   7 | >>>     curl \
+
+   8 | >>>     dos2unix \
+
+   9 | >>>     && rm -rf /var/lib/apt/lists/*
+
+  10 |
+
+--------------------
+
+target trading-bot: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+
+
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/dfl8xa47vua1stm99bgnmcsmt
+
 PS C:\Users\binar\PycharmProjects\trading>
