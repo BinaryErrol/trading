@@ -370,13 +370,14 @@ async def run_compare_all(
     slippage_bps: float = 5.0,
     save_data: bool = True,
 ) -> None:
-    """Run ALL strategies on the same data and print a comparison table."""
+    """Run ALL strategies on ALL symbols and print a comparison matrix."""
     print(f"\n{'='*70}")
-    print(f"  STRATEGY COMPARISON: {', '.join(symbols)}")
+    print(f"  STRATEGY x SYMBOL COMPARISON")
+    print(f"  Symbols: {', '.join(symbols)}")
     print(f"  Period: {start} to {end} ({(end - start).days} days)")
     print(f"{'='*70}\n")
 
-    # Download data once
+    # Download data for all symbols
     print("Downloading historical data...")
     all_data = {}
     for symbol in symbols:
@@ -393,56 +394,95 @@ async def run_compare_all(
                 save_csv(df, symbol)
         all_data[symbol] = df
 
-    # Run each strategy
+    # Run each strategy on each symbol
     engine = BacktestEngine(BacktestConfig(
         slippage_bps=slippage_bps,
         commission_per_share=Decimal("0.005"),
         market_impact_bps=2.0,
     ))
 
-    results = {}
+    # results[strategy_name][symbol] = BacktestResult
+    results: dict[str, dict[str, object]] = {}
     for strategy_name in STRATEGIES:
-        print(f"\n  Running {strategy_name}...", end=" ")
-        try:
-            strategy = load_strategy(strategy_name, symbols, {})
-            data = all_data[symbols[0]]
-            result = await engine.run(strategy, data, start_date=start, end_date=end)
-            results[strategy_name] = result
-            print(f"Return: {result.total_return:.2%}, Sharpe: {result.sharpe_ratio:.2f}")
-        except Exception as exc:
-            print(f"ERROR: {exc}")
-            results[strategy_name] = None
+        results[strategy_name] = {}
+        for symbol in symbols:
+            try:
+                strategy = load_strategy(strategy_name, [symbol], {})
+                data = all_data[symbol]
+                result = await engine.run(strategy, data, start_date=start, end_date=end)
+                results[strategy_name][symbol] = result
+            except Exception:
+                results[strategy_name][symbol] = None
 
-    # Print comparison table
+        # Progress indicator
+        done_count = sum(1 for r in results[strategy_name].values() if r is not None)
+        print(f"  {strategy_name:<16} — {done_count}/{len(symbols)} symbols completed")
+
+    # Print per-symbol summary
     print(f"\n\n{'='*70}")
-    print(f"  COMPARISON SUMMARY")
+    print(f"  RESULTS BY SYMBOL")
     print(f"{'='*70}")
-    print(f"\n  {'Strategy':<16} {'Return':>8} {'Annual':>8} {'Sharpe':>7} {'Sortino':>8} {'MaxDD':>7} {'Trades':>7}")
-    print(f"  {'─'*16} {'─'*8} {'─'*8} {'─'*7} {'─'*8} {'─'*7} {'─'*7}")
 
-    ranked = []
-    for name, result in results.items():
-        if result is None:
-            print(f"  {name:<16} {'ERROR':>8}")
-            continue
-        print(
-            f"  {name:<16} "
-            f"{result.total_return:>7.2%} "
-            f"{result.annualized_return:>7.2%} "
-            f"{result.sharpe_ratio:>7.2f} "
-            f"{result.sortino_ratio:>8.2f} "
-            f"{result.max_drawdown:>6.2%} "
-            f"{result.total_trades:>7d}"
-        )
-        ranked.append((name, float(result.sharpe_ratio)))
+    for symbol in symbols:
+        print(f"\n  ┌─ {symbol} {'─'*(60-len(symbol))}")
+        print(f"  │ {'Strategy':<16} {'Return':>8} {'Sharpe':>7} {'MaxDD':>7} {'Trades':>7}")
+        print(f"  │ {'─'*16} {'─'*8} {'─'*7} {'─'*7} {'─'*7}")
 
-    # Rank by Sharpe
-    ranked.sort(key=lambda x: x[1], reverse=True)
+        for strategy_name in STRATEGIES:
+            result = results[strategy_name][symbol]
+            if result is None:
+                print(f"  │ {strategy_name:<16} {'ERROR':>8}")
+            else:
+                print(
+                    f"  │ {strategy_name:<16} "
+                    f"{result.total_return:>7.2%} "
+                    f"{result.sharpe_ratio:>7.2f} "
+                    f"{result.max_drawdown:>6.2%} "
+                    f"{result.total_trades:>7d}"
+                )
+        print(f"  └{'─'*65}")
+
+    # Print overall ranking (average Sharpe across all symbols)
+    print(f"\n\n{'='*70}")
+    print(f"  OVERALL RANKING (avg Sharpe across {len(symbols)} symbols)")
+    print(f"{'='*70}\n")
+
+    strategy_scores = []
+    for strategy_name in STRATEGIES:
+        sharpes = []
+        returns = []
+        for symbol in symbols:
+            result = results[strategy_name][symbol]
+            if result is not None:
+                sharpes.append(float(result.sharpe_ratio))
+                returns.append(float(result.total_return))
+        if sharpes:
+            avg_sharpe = sum(sharpes) / len(sharpes)
+            avg_return = sum(returns) / len(returns)
+            strategy_scores.append((strategy_name, avg_sharpe, avg_return))
+
+    strategy_scores.sort(key=lambda x: x[1], reverse=True)
+
+    print(f"  {'#':<4} {'Strategy':<16} {'Avg Sharpe':>11} {'Avg Return':>11}")
+    print(f"  {'─'*4} {'─'*16} {'─'*11} {'─'*11}")
+    for i, (name, sharpe, ret) in enumerate(strategy_scores, 1):
+        marker = " ★ BEST" if i == 1 else ""
+        print(f"  {i:<4} {name:<16} {sharpe:>11.2f} {ret:>10.2%}{marker}")
+
+    # Best strategy per symbol
     print(f"\n  {'─'*70}")
-    print(f"  RANKING (by Sharpe Ratio):")
-    for i, (name, sharpe) in enumerate(ranked, 1):
-        marker = " ★" if i == 1 else ""
-        print(f"    {i}. {name} (Sharpe: {sharpe:.2f}){marker}")
+    print(f"  BEST STRATEGY PER SYMBOL:")
+    for symbol in symbols:
+        best_name = None
+        best_sharpe = -999
+        for strategy_name in STRATEGIES:
+            result = results[strategy_name][symbol]
+            if result is not None and float(result.sharpe_ratio) > best_sharpe:
+                best_sharpe = float(result.sharpe_ratio)
+                best_name = strategy_name
+        if best_name:
+            result = results[best_name][symbol]
+            print(f"    {symbol:<6} → {best_name} (Sharpe: {best_sharpe:.2f}, Return: {result.total_return:.2%})")
 
     print(f"\n{'='*70}\n")
 
