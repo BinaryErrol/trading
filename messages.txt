@@ -1,4 +1,4 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose build --no-cache trading-bot
+:\Users\binar\PycharmProjects\trading> docker compose build --no-cache trading-bot
 [+] Building 91.1s (19/19) FINISHED
  => [internal] load local bake definitions                                                                                                                  0.0s
  => => reading from stdin 427B                                                                                                                              0.0s
@@ -32,6 +32,27 @@ PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
 [+] Running 2/3
  ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
  ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
- - Container ibkr-trading-bot  Waiting                                                                                                                     88.0s
-
+ - Container ibkr-trading-bot  Waiting                                                                                                                     89.9s
+[+] Running 2/3
+ ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
+ ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
+ - Container ibkr-trading-bot  Waiting                                                                                                                     90.0s
+[+] Running 2/3
+ ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
+ ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
+ - Container ibkr-trading-bot  Waiting                                                                                                                     90.1s
+[+] Running 2/3
+ ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
+ ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
+ - Container ibkr-trading-bot  Waiting                                                                                                                     90.2s
+[+] Running 2/3
+ ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
+ ✔ trading-bot  Built                                                                                                                                       0.0s
+PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
+[+] Running 3/3
+ ✔ Container ibkr-postgres     Healthy                                                                                                                      0.6s
+ ✔ Container ibkr-redis        Healthy                                                                                                                      0.6s
+ ✘ Container ibkr-trading-bot  Error                                                                                                                       91.9s
+dependency failed to start: container ibkr-trading-bot is unhealthy
+PS C:\Users\binar\PycharmProjects\trading>
 
