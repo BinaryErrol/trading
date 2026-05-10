@@ -244,9 +244,9 @@ def test_p6_backtest_data_hub_respects_look_ahead_guard(
 
     # Property: returned history never contains data beyond current position
     current_time = data.index[current_position]
-    for ts in history.index:
-        assert ts <= current_time, (
-            f"History contains future data at {ts} > current {current_time}"
+    for bar in history:
+        assert bar.timestamp <= current_time, (
+            f"History contains future data at {bar.timestamp} > current {current_time}"
         )
 
     # Property: returned history length is at most min(history_periods, current_position + 1)

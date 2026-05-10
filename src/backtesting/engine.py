@@ -178,8 +178,30 @@ class _BacktestDataHub:
         except (IndexError, KeyError):
             return None
 
-    def get_history(self, symbol: str, timeframe: Timeframe, periods: int) -> pd.DataFrame:
-        """Return historical data up to current time only (no look-ahead)."""
+    def get_history(self, symbol: str, timeframe: Timeframe, periods: int) -> list[Bar]:
+        """Return historical bars up to current time only (no look-ahead).
+
+        Returns a list of Bar objects matching the MarketDataHub interface.
+        """
+        visible = self._guard.get_visible_data()
+        tail = visible.tail(periods)
+
+        bars = []
+        for idx, row in tail.iterrows():
+            bars.append(Bar(
+                symbol=symbol,
+                timeframe=timeframe if timeframe else Timeframe.DAILY,
+                open=float(row["open"]),
+                high=float(row["high"]),
+                low=float(row["low"]),
+                close=float(row["close"]),
+                volume=float(row["volume"]),
+                timestamp=idx if isinstance(idx, datetime) else datetime.now(timezone.utc),
+            ))
+        return bars
+
+    def get_history_df(self, symbol: str, timeframe: Timeframe, periods: int) -> pd.DataFrame:
+        """Return historical data as DataFrame (used internally by engine)."""
         visible = self._guard.get_visible_data()
         return visible.tail(periods)
 
@@ -192,7 +214,7 @@ class _BacktestDataHub:
 
     async def get_history_async(
         self, symbol: str, timeframe: Timeframe, periods: int
-    ) -> pd.DataFrame:
+    ) -> list[Bar]:
         """Async version of get_history."""
         return self.get_history(symbol, timeframe, periods)
 

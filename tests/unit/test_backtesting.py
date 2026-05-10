@@ -395,7 +395,7 @@ class TestBacktestDataHub:
 
         # Should return last 5 bars of the 21 visible bars
         assert len(history) == 5
-        assert history.iloc[-1]["close"] == data.iloc[20]["close"]
+        assert history[-1].close == data.iloc[20]["close"]
 
 
 # ===========================================================================
