@@ -1,8 +1,9 @@
 """Strategy implementations for the IBKR trading bot.
 
-Includes trend-based, mean-reversion, statistical, market making, and options strategy families.
+Includes trend-based, mean-reversion, statistical, market making, adaptive meta, and options strategy families.
 """
 
+from src.strategies.implementations.adaptive import AdaptiveStrategy
 from src.strategies.implementations.bollinger import BollingerStrategy
 from src.strategies.implementations.breakout import BreakoutStrategy
 from src.strategies.implementations.ma_crossover import MACrossoverStrategy
@@ -16,6 +17,7 @@ from src.strategies.implementations.vwap import VWAPStrategy
 from src.strategies.wheel import WheelStrategy
 
 __all__ = [
+    "AdaptiveStrategy",
     "BollingerStrategy",
     "BreakoutStrategy",
     "MACrossoverStrategy",

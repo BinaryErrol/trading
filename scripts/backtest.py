@@ -67,6 +67,10 @@ STRATEGIES = {
         "class": "src.strategies.implementations.vwap.VWAPStrategy",
         "defaults": {"deviation_threshold": 0.02, "session_type": "regular"},
     },
+    "adaptive": {
+        "class": "src.strategies.implementations.adaptive.AdaptiveStrategy",
+        "defaults": {"lookback_window": 60, "rebalance_period": 20, "min_sharpe_threshold": 0.0},
+    },
 }
 
 

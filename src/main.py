@@ -613,6 +613,13 @@ class TradingBot:
             pass
 
         try:
+            from src.strategies.implementations.adaptive import AdaptiveStrategy
+
+            registry["adaptive"] = AdaptiveStrategy
+        except ImportError:
+            pass
+
+        try:
             from src.strategies.wheel import WheelStrategy
 
             registry["wheel"] = WheelStrategy
