@@ -37,9 +37,9 @@ class BanditStrategy(BaseStrategy):
     with exploration, and penalizes switching to prevent flip-flopping.
 
     Parameters (from config.parameters):
-        gamma: float = 0.1 — exploration rate (higher = more exploration).
+        gamma: float = 0.02 — exploration rate (higher = more exploration).
         switching_cost: float = 0.02 — penalty for changing strategy.
-        min_rounds: int = 10 — minimum bars before switching is allowed.
+        min_rounds: int = 30 — minimum bars before switching is allowed.
     """
 
     # Same 8 child strategies as adaptive
@@ -58,9 +58,9 @@ class BanditStrategy(BaseStrategy):
         super().__init__(config, data_hub)
 
         # Parameters
-        self._gamma: float = float(config.parameters.get("gamma", 0.1))
+        self._gamma: float = float(config.parameters.get("gamma", 0.02))
         self._switching_cost: float = float(config.parameters.get("switching_cost", 0.02))
-        self._min_rounds: int = int(config.parameters.get("min_rounds", 10))
+        self._min_rounds: int = int(config.parameters.get("min_rounds", 30))
 
         # EXP3 weights per symbol: symbol -> {strategy_name: weight}
         self._weights: dict[str, dict[str, float]] = defaultdict(

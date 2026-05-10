@@ -60,8 +60,8 @@ class RegimeHMMStrategy(BaseStrategy):
     """
 
     # Child strategies for each regime
-    TRENDING_STRATEGIES = ["momentum", "trend_following"]
-    MEAN_REVERTING_STRATEGIES = ["mean_reversion", "bollinger"]
+    TRENDING_STRATEGIES = ["momentum"]
+    MEAN_REVERTING_STRATEGIES = ["mean_reversion"]
 
     def __init__(self, config: StrategyConfig, data_hub: MarketDataHub) -> None:
         super().__init__(config, data_hub)
@@ -82,16 +82,12 @@ class RegimeHMMStrategy(BaseStrategy):
     def _instantiate_children(self, config: StrategyConfig, data_hub: MarketDataHub) -> None:
         """Instantiate child strategies for trending and mean-reverting regimes."""
         from src.config.settings import StrategyConfig as SC
-        from src.strategies.implementations.bollinger import BollingerStrategy
         from src.strategies.implementations.mean_reversion import MeanReversionStrategy
         from src.strategies.implementations.momentum import MomentumStrategy
-        from src.strategies.implementations.trend_following import TrendFollowingStrategy
 
         child_classes: dict[str, type[BaseStrategy]] = {
             "momentum": MomentumStrategy,
-            "trend_following": TrendFollowingStrategy,
             "mean_reversion": MeanReversionStrategy,
-            "bollinger": BollingerStrategy,
         }
 
         for name, cls in child_classes.items():

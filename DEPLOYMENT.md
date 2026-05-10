@@ -234,6 +234,23 @@ Available strategies: `momentum`, `ma_crossover`, `mean_reversion`, `bollinger`,
 
 ---
 
+## Monthly Rebalance
+
+Run monthly to check if any symbol's best strategy has changed:
+
+```bash
+# Check for regime changes (report only)
+python scripts/rebalance.py
+
+# Auto-update the best_per_symbol mapping if changes detected
+python scripts/rebalance.py --auto-update
+
+# Use 6-month lookback instead of default 3 months
+python scripts/rebalance.py --months 6
+```
+
+---
+
 ## Running Without Docker (Development)
 
 If you prefer running directly on your machine:
