@@ -70,7 +70,7 @@ strategies:
     asset_classes:
       - "equity"
     parameters:
-      gamma: 0.1
+      gamma: 0.02
       switching_cost: 0.02
       min_rounds: 10
 
