@@ -1,213 +1,6 @@
-Windows PowerShell
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
-
-PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol AAPL --strategy momentum --years 2
-Traceback (most recent call last):
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
-    from src.backtesting.engine import BacktestEngine
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
-    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
-    import structlog
-ModuleNotFoundError: No module named 'structlog'
-PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol SPY,QQQ,IWM --strategy ma_crossover --years 5
-Traceback (most recent call last):
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
-    from src.backtesting.engine import BacktestEngine
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
-    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
-    import structlog
-ModuleNotFoundError: No module named 'structlog'
-PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol MSFT --strategy mean_reversion --start 2020-01-01 --end 2024-12-31
-Traceback (most recent call last):
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
-    from src.backtesting.engine import BacktestEngine
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
-    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
-    import structlog
-ModuleNotFoundError: No module named 'structlog'
-PS C:\Users\binar\PycharmProjects\trading>
-PS C:\Users\binar\PycharmProjects\trading> pip install -e ".[dev]"
-Defaulting to user installation because normal site-packages is not writeable
-Obtaining file:///C:/Users/binar/PycharmProjects/trading
-  Installing build dependencies ... done
-  Checking if build backend supports build_editable ... done
-  Getting requirements to build editable ... done
-  Preparing editable metadata (pyproject.toml) ... done
-Requirement already satisfied: ib-async>=1.0.3 in c:\users\binar\appdata\roaming\python\python312\site-packages (from ibkr-trading-bot==0.1.0) (1.0.3)
-Collecting sqlalchemy>=2.0.36 (from sqlalchemy[asyncio]>=2.0.36->ibkr-trading-bot==0.1.0)
-  Downloading sqlalchemy-2.0.49-cp312-cp312-win_amd64.whl.metadata (9.8 kB)
-Collecting asyncpg>=0.30.0 (from ibkr-trading-bot==0.1.0)
-  Downloading asyncpg-0.31.0-cp312-cp312-win_amd64.whl.metadata (4.5 kB)
-Collecting redis>=5.2.1 (from ibkr-trading-bot==0.1.0)
-  Downloading redis-7.4.0-py3-none-any.whl.metadata (12 kB)
-Collecting fastapi>=0.115.6 (from ibkr-trading-bot==0.1.0)
-  Downloading fastapi-0.136.1-py3-none-any.whl.metadata (28 kB)
-Collecting uvicorn>=0.34.0 (from uvicorn[standard]>=0.34.0->ibkr-trading-bot==0.1.0)
-  Downloading uvicorn-0.46.0-py3-none-any.whl.metadata (6.7 kB)
-Requirement already satisfied: pydantic>=2.10.3 in c:\users\binar\appdata\roaming\python\python312\site-packages (from ibkr-trading-bot==0.1.0) (2.11.5)
-Requirement already satisfied: pydantic-settings>=2.7.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from ibkr-trading-bot==0.1.0) (2.9.1)
-Collecting pyyaml>=6.0.2 (from ibkr-trading-bot==0.1.0)
-  Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl.metadata (2.4 kB)
-Collecting structlog>=24.4.0 (from ibkr-trading-bot==0.1.0)
-  Downloading structlog-25.5.0-py3-none-any.whl.metadata (9.5 kB)
-Collecting pandas>=2.2.3 (from ibkr-trading-bot==0.1.0)
-  Downloading pandas-3.0.2-cp312-cp312-win_amd64.whl.metadata (19 kB)
-Requirement already satisfied: numpy>=2.1.3 in c:\users\binar\appdata\roaming\python\python312\site-packages (from ibkr-trading-bot==0.1.0) (2.3.2)
-Collecting scipy>=1.14.1 (from ibkr-trading-bot==0.1.0)
-  Downloading scipy-1.17.1-cp312-cp312-win_amd64.whl.metadata (60 kB)
-Requirement already satisfied: httpx>=0.28.1 in c:\users\binar\appdata\roaming\python\python312\site-packages (from ibkr-trading-bot==0.1.0) (0.28.1)
-Collecting aiosmtplib>=3.0.2 (from ibkr-trading-bot==0.1.0)
-  Downloading aiosmtplib-5.1.0-py3-none-any.whl.metadata (3.6 kB)
-Collecting watchfiles>=1.0.3 (from ibkr-trading-bot==0.1.0)
-  Downloading watchfiles-1.1.1-cp312-cp312-win_amd64.whl.metadata (5.0 kB)
-Collecting alembic>=1.14.0 (from ibkr-trading-bot==0.1.0)
-  Downloading alembic-1.18.4-py3-none-any.whl.metadata (7.2 kB)
-Collecting ruff>=0.8.4 (from ibkr-trading-bot==0.1.0)
-  Downloading ruff-0.15.12-py3-none-win_amd64.whl.metadata (27 kB)
-Collecting hypothesis>=6.119.3 (from ibkr-trading-bot==0.1.0)
-  Downloading hypothesis-6.152.4-py3-none-any.whl.metadata (5.6 kB)
-Collecting pytest>=8.3.4 (from ibkr-trading-bot==0.1.0)
-  Downloading pytest-9.0.3-py3-none-any.whl.metadata (7.6 kB)
-Collecting pytest-asyncio>=0.24.0 (from ibkr-trading-bot==0.1.0)
-  Downloading pytest_asyncio-1.3.0-py3-none-any.whl.metadata (4.1 kB)
-Collecting pytest-cov>=6.0.0 (from ibkr-trading-bot==0.1.0)
-  Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
-Collecting aiosqlite>=0.20.0 (from ibkr-trading-bot==0.1.0)
-  Downloading aiosqlite-0.22.1-py3-none-any.whl.metadata (4.3 kB)
-Collecting Mako (from alembic>=1.14.0->ibkr-trading-bot==0.1.0)
-  Downloading mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
-Requirement already satisfied: typing-extensions>=4.12 in c:\users\binar\appdata\roaming\python\python312\site-packages (from alembic>=1.14.0->ibkr-trading-bot==0.1.0) (4.13.2)
-Collecting starlette>=0.46.0 (from fastapi>=0.115.6->ibkr-trading-bot==0.1.0)
-  Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
-Collecting typing-inspection>=0.4.2 (from fastapi>=0.115.6->ibkr-trading-bot==0.1.0)
-  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
-Collecting annotated-doc>=0.0.2 (from fastapi>=0.115.6->ibkr-trading-bot==0.1.0)
-  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
-Requirement already satisfied: anyio in c:\users\binar\appdata\roaming\python\python312\site-packages (from httpx>=0.28.1->ibkr-trading-bot==0.1.0) (4.9.0)
-Requirement already satisfied: certifi in c:\program files\python312\lib\site-packages (from httpx>=0.28.1->ibkr-trading-bot==0.1.0) (2024.2.2)
-Requirement already satisfied: httpcore==1.* in c:\users\binar\appdata\roaming\python\python312\site-packages (from httpx>=0.28.1->ibkr-trading-bot==0.1.0) (1.0.9)
-Requirement already satisfied: idna in c:\program files\python312\lib\site-packages (from httpx>=0.28.1->ibkr-trading-bot==0.1.0) (3.7)
-Requirement already satisfied: h11>=0.16 in c:\users\binar\appdata\roaming\python\python312\site-packages (from httpcore==1.*->httpx>=0.28.1->ibkr-trading-bot==0.1.0) (0.16.0)
-Collecting sortedcontainers<3.0.0,>=2.1.0 (from hypothesis>=6.119.3->ibkr-trading-bot==0.1.0)
-  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
-Requirement already satisfied: eventkit in c:\users\binar\appdata\roaming\python\python312\site-packages (from ib-async>=1.0.3->ibkr-trading-bot==0.1.0) (1.0.3)
-Requirement already satisfied: nest_asyncio in c:\users\binar\appdata\roaming\python\python312\site-packages (from ib-async>=1.0.3->ibkr-trading-bot==0.1.0) (1.6.0)
-Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pandas>=2.2.3->ibkr-trading-bot==0.1.0) (2.9.0.post0)
-Requirement already satisfied: tzdata in c:\users\binar\appdata\roaming\python\python312\site-packages (from pandas>=2.2.3->ibkr-trading-bot==0.1.0) (2025.2)
-Requirement already satisfied: annotated-types>=0.6.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pydantic>=2.10.3->ibkr-trading-bot==0.1.0) (0.7.0)
-Requirement already satisfied: pydantic-core==2.33.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pydantic>=2.10.3->ibkr-trading-bot==0.1.0) (2.33.2)
-Requirement already satisfied: python-dotenv>=0.21.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pydantic-settings>=2.7.0->ibkr-trading-bot==0.1.0) (1.1.0)
-Requirement already satisfied: colorama>=0.4 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pytest>=8.3.4->ibkr-trading-bot==0.1.0) (0.4.6)
-Collecting iniconfig>=1.0.1 (from pytest>=8.3.4->ibkr-trading-bot==0.1.0)
-  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
-Requirement already satisfied: packaging>=22 in c:\program files\python312\lib\site-packages (from pytest>=8.3.4->ibkr-trading-bot==0.1.0) (24.0)
-Collecting pluggy<2,>=1.5 (from pytest>=8.3.4->ibkr-trading-bot==0.1.0)
-  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
-Requirement already satisfied: pygments>=2.7.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pytest>=8.3.4->ibkr-trading-bot==0.1.0) (2.18.0)
-Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov>=6.0.0->ibkr-trading-bot==0.1.0)
-  Downloading coverage-7.13.5-cp312-cp312-win_amd64.whl.metadata (8.7 kB)
-Requirement already satisfied: six>=1.5 in c:\users\binar\appdata\roaming\python\python312\site-packages (from python-dateutil>=2.8.2->pandas>=2.2.3->ibkr-trading-bot==0.1.0) (1.16.0)
-Collecting greenlet>=1 (from sqlalchemy>=2.0.36->sqlalchemy[asyncio]>=2.0.36->ibkr-trading-bot==0.1.0)
-  Downloading greenlet-3.5.0-cp312-cp312-win_amd64.whl.metadata (3.8 kB)
-Requirement already satisfied: sniffio>=1.1 in c:\users\binar\appdata\roaming\python\python312\site-packages (from anyio->httpx>=0.28.1->ibkr-trading-bot==0.1.0) (1.3.1)
-Requirement already satisfied: click>=7.0 in c:\program files\python312\lib\site-packages (from uvicorn>=0.34.0->uvicorn[standard]>=0.34.0->ibkr-trading-bot==0.1.0) (8.1.7)
-Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.34.0->ibkr-trading-bot==0.1.0)
-  Downloading httptools-0.7.1-cp312-cp312-win_amd64.whl.metadata (3.6 kB)
-Requirement already satisfied: websockets>=10.4 in c:\users\binar\appdata\roaming\python\python312\site-packages (from uvicorn[standard]>=0.34.0->ibkr-trading-bot==0.1.0) (15.0.1)
-Requirement already satisfied: MarkupSafe>=0.9.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from Mako->alembic>=1.14.0->ibkr-trading-bot==0.1.0) (2.1.5)
-Downloading aiosmtplib-5.1.0-py3-none-any.whl (27 kB)
-Downloading aiosqlite-0.22.1-py3-none-any.whl (17 kB)
-Downloading alembic-1.18.4-py3-none-any.whl (263 kB)
-Downloading asyncpg-0.31.0-cp312-cp312-win_amd64.whl (597 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 597.2/597.2 kB 3.0 MB/s eta 0:00:00
-Downloading fastapi-0.136.1-py3-none-any.whl (117 kB)
-Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
-Downloading hypothesis-6.152.4-py3-none-any.whl (532 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 532.1/532.1 kB 4.4 MB/s eta 0:00:00
-Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
-Downloading pandas-3.0.2-cp312-cp312-win_amd64.whl (9.7 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 4.8 MB/s eta 0:00:00
-Downloading pytest-9.0.3-py3-none-any.whl (375 kB)
-Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
-Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
-Downloading pytest_asyncio-1.3.0-py3-none-any.whl (15 kB)
-Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
-Downloading coverage-7.13.5-cp312-cp312-win_amd64.whl (222 kB)
-Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl (154 kB)
-Downloading redis-7.4.0-py3-none-any.whl (409 kB)
-Downloading ruff-0.15.12-py3-none-win_amd64.whl (11.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.8/11.8 MB 4.9 MB/s eta 0:00:00
-Downloading scipy-1.17.1-cp312-cp312-win_amd64.whl (36.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.5/36.5 MB 3.7 MB/s eta 0:00:00
-Downloading sqlalchemy-2.0.49-cp312-cp312-win_amd64.whl (2.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 3.5 MB/s eta 0:00:00
-Downloading greenlet-3.5.0-cp312-cp312-win_amd64.whl (238 kB)
-Downloading starlette-1.0.0-py3-none-any.whl (72 kB)
-Downloading structlog-25.5.0-py3-none-any.whl (72 kB)
-Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
-Downloading uvicorn-0.46.0-py3-none-any.whl (70 kB)
-Downloading httptools-0.7.1-cp312-cp312-win_amd64.whl (86 kB)
-Downloading watchfiles-1.1.1-cp312-cp312-win_amd64.whl (288 kB)
-Downloading mako-1.3.12-py3-none-any.whl (78 kB)
-Building wheels for collected packages: ibkr-trading-bot
-  Building editable for ibkr-trading-bot (pyproject.toml) ... done
-  Created wheel for ibkr-trading-bot: filename=ibkr_trading_bot-0.1.0-0.editable-py3-none-any.whl size=3469 sha256=f30c900e13a07f8944c8b5abcbd5476dce1d1f65737b929ca9636ad30a1eb37f
-  Stored in directory: C:\Users\binar\AppData\Local\Temp\pip-ephem-wheel-cache-f25euy7w\wheels\83\5c\bb\7feae3a8f9793637c8d5190c5a4e159a7ebbf9ea81a3da8217
-Successfully built ibkr-trading-bot
-Installing collected packages: sortedcontainers, typing-inspection, structlog, scipy, ruff, redis, pyyaml, pluggy, Mako, iniconfig, hypothesis, httptools, greenlet, coverage, asyncpg, annotated-doc, aiosqlite, aiosmtplib, watchfiles, uvicorn, starlette, sqlalchemy, pytest, pandas, pytest-cov, pytest-asyncio, fastapi, alembic, ibkr-trading-bot
-  Attempting uninstall: typing-inspection
-    Found existing installation: typing-inspection 0.4.1
-    Uninstalling typing-inspection-0.4.1:
-      Successfully uninstalled typing-inspection-0.4.1
-  Attempting uninstall: pyyaml
-    Found existing installation: PyYAML 6.0.1
-    Uninstalling PyYAML-6.0.1:
-      Successfully uninstalled PyYAML-6.0.1
-  Attempting uninstall: pandas
-    Found existing installation: pandas 2.2.2
-    Uninstalling pandas-2.2.2:
-      Successfully uninstalled pandas-2.2.2
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-mlpr 0.1.19 requires numpy<2.0.0,>=1.25.0, but you have numpy 2.3.2 which is incompatible.
-mlpr 0.1.19 requires pandas<3.0.0,>=2.2.2, but you have pandas 3.0.2 which is incompatible.
-Successfully installed Mako-1.3.12 aiosmtplib-5.1.0 aiosqlite-0.22.1 alembic-1.18.4 annotated-doc-0.0.4 asyncpg-0.31.0 coverage-7.13.5 fastapi-0.136.1 greenlet-3.5.0 httptools-0.7.1 hypothesis-6.152.4
-ibkr-trading-bot-0.1.0 iniconfig-2.3.0 pandas-3.0.2 pluggy-1.6.0 pytest-9.0.3 pytest-asyncio-1.3.0 pytest-cov-7.1.0 pyyaml-6.0.3 redis-7.4.0 ruff-0.15.12 scipy-1.17.1 sortedcontainers-2.4.0 sqlalchemy-2.0.49 starlette-1.0.0 structlog-25.5.0 typing-inspection-0.4.2 uvicorn-0.46.0 watchfiles-1.1.1
-
-[notice] A new release of pip is available: 25.1.1 -> 26.1.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
-PS C:\Users\binar\PycharmProjects\trading> pip install yfinance
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: yfinance in c:\users\binar\appdata\roaming\python\python312\site-packages (0.2.65)
-Requirement already satisfied: pandas>=1.3.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (3.0.2)
-Requirement already satisfied: numpy>=1.16.5 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (2.3.2)
-Requirement already satisfied: requests>=2.31 in c:\program files\python312\lib\site-packages (from yfinance) (2.31.0)
-Requirement already satisfied: multitasking>=0.0.7 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (0.0.11)
-Requirement already satisfied: platformdirs>=2.0.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (4.2.2)
-Requirement already satisfied: pytz>=2022.5 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (2024.1)
-Requirement already satisfied: frozendict>=2.3.4 in c:\program files\python312\lib\site-packages (from yfinance) (2.4.2)
-Requirement already satisfied: peewee>=3.16.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (3.18.1)
-Requirement already satisfied: beautifulsoup4>=4.11.1 in c:\program files\python312\lib\site-packages (from yfinance) (4.12.3)
-Requirement already satisfied: curl_cffi>=0.7 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (0.12.0)
-Requirement already satisfied: protobuf>=3.19.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (4.25.3)
-Requirement already satisfied: websockets>=13.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from yfinance) (15.0.1)
-Requirement already satisfied: soupsieve>1.2 in c:\program files\python312\lib\site-packages (from beautifulsoup4>=4.11.1->yfinance) (2.5)
-Requirement already satisfied: cffi>=1.12.0 in c:\users\binar\appdata\roaming\python\python312\site-packages (from curl_cffi>=0.7->yfinance) (2.0.0)
-Requirement already satisfied: certifi>=2024.2.2 in c:\program files\python312\lib\site-packages (from curl_cffi>=0.7->yfinance) (2024.2.2)
-Requirement already satisfied: pycparser in c:\users\binar\appdata\roaming\python\python312\site-packages (from cffi>=1.12.0->curl_cffi>=0.7->yfinance) (3.0)
-Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\binar\appdata\roaming\python\python312\site-packages (from pandas>=1.3.0->yfinance) (2.9.0.post0)
-Requirement already satisfied: tzdata in c:\users\binar\appdata\roaming\python\python312\site-packages (from pandas>=1.3.0->yfinance) (2025.2)
-Requirement already satisfied: six>=1.5 in c:\users\binar\appdata\roaming\python\python312\site-packages (from python-dateutil>=2.8.2->pandas>=1.3.0->yfinance) (1.16.0)
-Requirement already satisfied: charset-normalizer<4,>=2 in c:\program files\python312\lib\site-packages (from requests>=2.31->yfinance) (3.3.2)
-Requirement already satisfied: idna<4,>=2.5 in c:\program files\python312\lib\site-packages (from requests>=2.31->yfinance) (3.7)
-Requirement already satisfied: urllib3<3,>=1.21.1 in c:\program files\python312\lib\site-packages (from requests>=2.31->yfinance) (2.2.1)
-
-[notice] A new release of pip is available: 25.1.1 -> 26.1.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
+PS C:\Users\binar\PycharmProjects\trading> git reset --hard origin/main
+HEAD is now at df63d1c fix: strip timezone from Yahoo Finance data to avoid tz comparison error
+PS C:\Users\binar\PycharmProjects\trading> del data\historical\AAPL.csv
 PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol AAPL --strategy momentum --years 2
 
 ============================================================
@@ -225,72 +18,524 @@ C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\yfinance\scrapers\
 
 Loading strategy: momentum
   Parameters: {'lookback_period': 14, 'momentum_threshold': 0.02}
-Traceback (most recent call last):
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimelike.py", line 555, in _validate_comparison_value
-    self._check_compatible_with(other)
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimes.py", line 557, in _check_compatible_with
-    self._assert_tzawareness_compat(other)
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimes.py", line 800, in _assert_tzawareness_compat
-    raise TypeError(
-TypeError: Cannot compare tz-naive and tz-aware datetime-like objects
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=2 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=3 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=4 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=5 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=6 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=7 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=8 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=9 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=10 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=11 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=12 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=13 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] insufficient_bars_for_momentum available=14 required=15 symbol=AAPL
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=14
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=15
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=16
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=17
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=18
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=19
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=20
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=21
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=22
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=23
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=24
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=25
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=26
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=27
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=28
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=29
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=30
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=31
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=32
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=33
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=34
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=35
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=36
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=37
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=38
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=39
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=40
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=41
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=42
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=43
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=44
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=45
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=46
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=47
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=48
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=49
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=50
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=51
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=52
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=53
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=54
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=55
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=56
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=57
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=58
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=59
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=60
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=61
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=62
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=63
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=64
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=65
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=66
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=67
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=68
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=69
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=70
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=71
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=72
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=73
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=74
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=75
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=76
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=77
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=78
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=79
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=80
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=81
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=82
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=83
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=84
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=85
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=86
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=87
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=88
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=89
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=90
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=91
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=92
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=93
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=94
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=95
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=96
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=97
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=98
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=99
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=100
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=101
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=102
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=103
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=104
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=105
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=106
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=107
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=108
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=109
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=110
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=111
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=112
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=113
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=114
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=115
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=116
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=117
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=118
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=119
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=120
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=121
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=122
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=123
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=124
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=125
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=126
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=127
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=128
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=129
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=130
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=131
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=132
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=133
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=134
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=135
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=136
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=137
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=138
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=139
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=140
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=141
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=142
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=143
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=144
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=145
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=146
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=147
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=148
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=149
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=150
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=151
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=152
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=153
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=154
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=155
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=156
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=157
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=158
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=159
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=160
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=161
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=162
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=163
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=164
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=165
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=166
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=167
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=168
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=169
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=170
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=171
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=172
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=173
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=174
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=175
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=176
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=177
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=178
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=179
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=180
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=181
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=182
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=183
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=184
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=185
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=186
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=187
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=188
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=189
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=190
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=191
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=192
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=193
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=194
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=195
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=196
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=197
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=198
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=199
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=200
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=201
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=202
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=203
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=204
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=205
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=206
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=207
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=208
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=209
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=210
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=211
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=212
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=213
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=214
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=215
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=216
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=217
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=218
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=219
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=220
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=221
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=222
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=223
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=224
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=225
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=226
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=227
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=228
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=229
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=230
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=231
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=232
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=233
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=234
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=235
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=236
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=237
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=238
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=239
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=240
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=241
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=242
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=243
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=244
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=245
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=246
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=247
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=248
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=249
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=250
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=251
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=252
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=253
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=254
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=255
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=256
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=257
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=258
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=259
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=260
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=261
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=262
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=263
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=264
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=265
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=266
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=267
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=268
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=269
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=270
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=271
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=272
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=273
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=274
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=275
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=276
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=277
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=278
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=279
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=280
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=281
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=282
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=283
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=284
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=285
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=286
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=287
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=288
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=289
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=290
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=291
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=292
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=293
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=294
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=295
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=296
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=297
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=298
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=299
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=300
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=301
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=302
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=303
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=304
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=305
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=306
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=307
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=308
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=309
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=310
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=311
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=312
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=313
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=314
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=315
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=316
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=317
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=318
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=319
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=320
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=321
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=322
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=323
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=324
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=325
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=326
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=327
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=328
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=329
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=330
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=331
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=332
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=333
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=334
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=335
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=336
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=337
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=338
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=339
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=340
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=341
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=342
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=343
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=344
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=345
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=346
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=347
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=348
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=349
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=350
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=351
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=352
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=353
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=354
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=355
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=356
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=357
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=358
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=359
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=360
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=361
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=362
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=363
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=364
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=365
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=366
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=367
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=368
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=369
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=370
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=371
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=372
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=373
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=374
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=375
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=376
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=377
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=378
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=379
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=380
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=381
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=382
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=383
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=384
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=385
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=386
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=387
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=388
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=389
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=390
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=391
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=392
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=393
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=394
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=395
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=396
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=397
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=398
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=399
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=400
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=401
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=402
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=403
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=404
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=405
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=406
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=407
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=408
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=409
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=410
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=411
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=412
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=413
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=414
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=415
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=416
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=417
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=418
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=419
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=420
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=421
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=422
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=423
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=424
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=425
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=426
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=427
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=428
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=429
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=430
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=431
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=432
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=433
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=434
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=435
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=436
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=437
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=438
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=439
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=440
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=441
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=442
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=443
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=444
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=445
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=446
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=447
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=448
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=449
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=450
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=451
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=452
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=453
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=454
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=455
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=456
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=457
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=458
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=459
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=460
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=461
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=462
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=463
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=464
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=465
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=466
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=467
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=468
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=469
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=470
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=471
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=472
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=473
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=474
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=475
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=476
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=477
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=478
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=479
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=480
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=481
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=482
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=483
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=484
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=485
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=486
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=487
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=488
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=489
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=490
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=491
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=492
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=493
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=494
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=495
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=496
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=497
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=498
+2026-05-10 20:06:32 [debug    ] strategy_evaluate_error        error=-1 idx=499
+2026-05-10 20:06:32 [info     ] backtest_complete              max_drawdown=0.0 sharpe=0.0 strategy=MomentumStrategy total_return=0.0 total_trades=0
 
-The above exception was the direct cause of the following exception:
+────────────────────────────────────────────────────────────
+  RESULTS
+────────────────────────────────────────────────────────────
+  Total Return:           0.00%
+  Annualized Return:      0.00%
+  Sharpe Ratio:            0.00
+  Sortino Ratio:           0.00
+  Max Drawdown:           0.00%
+  Win Rate:                0.0%
+  Profit Factor:           0.00
+  Total Trades:               0
+────────────────────────────────────────────────────────────
+2026-05-10 20:06:32 [info     ] backtest_result_stored         filepath=data\backtest_results\MomentumStrategy_20260510_180632.json
 
-Traceback (most recent call last):
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimelike.py", line 991, in _cmp_method
-    other = self._validate_comparison_value(other)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimelike.py", line 558, in _validate_comparison_value
-    raise InvalidComparison(other) from err
-pandas.errors.InvalidComparison: 2024-05-10 00:00:00
+  Result saved to: data\backtest_results\MomentumStrategy_20260510_180632.json
 
-During handling of the above exception, another exception occurred:
+Done.
 
-Traceback (most recent call last):
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 348, in <module>
-    main()
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 336, in main
-    asyncio.run(run_backtest(
-  File "C:\Program Files\Python312\Lib\asyncio\runners.py", line 194, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python312\Lib\asyncio\runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 231, in run_backtest
-    result = await engine.run(strategy, data, start_date=start, end_date=end)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 252, in run
-    filtered_data = self._filter_data(data, start_date, end_date)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 599, in _filter_data
-    filtered = filtered[filtered.index >= start_dt]
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\ops\common.py", line 85, in new_method
-    return method(self, other)
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arraylike.py", line 62, in __ge__
-    return self._cmp_method(other, operator.ge)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\indexes\base.py", line 7406, in _cmp_method
-    result = ops.comparison_op(self._values, other, op)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\ops\array_ops.py", line 341, in comparison_op
-    res_values = op(lvalues, rvalues)
-                 ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\ops\common.py", line 85, in new_method
-    return method(self, other)
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arraylike.py", line 62, in __ge__
-    return self._cmp_method(other, operator.ge)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\arrays\datetimelike.py", line 995, in _cmp_method
-    return invalid_comparison(self, other, op)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\binar\AppData\Roaming\Python\Python312\site-packages\pandas\core\ops\invalid.py", line 55, in invalid_comparison
-    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
-TypeError: Invalid comparison between dtype=datetime64[s, America/New_York] and Timestamp
 PS C:\Users\binar\PycharmProjects\trading>
