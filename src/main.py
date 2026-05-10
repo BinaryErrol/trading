@@ -620,6 +620,27 @@ class TradingBot:
             pass
 
         try:
+            from src.strategies.implementations.regime_hmm import RegimeHMMStrategy
+
+            registry["regime_hmm"] = RegimeHMMStrategy
+        except ImportError:
+            pass
+
+        try:
+            from src.strategies.implementations.bandit import BanditStrategy
+
+            registry["bandit"] = BanditStrategy
+        except ImportError:
+            pass
+
+        try:
+            from src.strategies.implementations.best_per_symbol import BestPerSymbolStrategy
+
+            registry["best_per_symbol"] = BestPerSymbolStrategy
+        except ImportError:
+            pass
+
+        try:
             from src.strategies.wheel import WheelStrategy
 
             registry["wheel"] = WheelStrategy

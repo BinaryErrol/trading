@@ -71,6 +71,18 @@ STRATEGIES = {
         "class": "src.strategies.implementations.adaptive.AdaptiveStrategy",
         "defaults": {"lookback_window": 60, "rebalance_period": 20, "min_sharpe_threshold": 0.0},
     },
+    "regime_hmm": {
+        "class": "src.strategies.implementations.regime_hmm.RegimeHMMStrategy",
+        "defaults": {"hmm_lookback": 120, "volatility_window": 14, "trend_window": 14, "vol_threshold": 0.03},
+    },
+    "bandit": {
+        "class": "src.strategies.implementations.bandit.BanditStrategy",
+        "defaults": {"gamma": 0.1, "switching_cost": 0.02, "min_rounds": 10},
+    },
+    "best_per_symbol": {
+        "class": "src.strategies.implementations.best_per_symbol.BestPerSymbolStrategy",
+        "defaults": {},
+    },
 }
 
 
@@ -325,7 +337,8 @@ Available strategies:
     parser.add_argument("--strategy", "-t", choices=list(STRATEGIES.keys()), help="Strategy to test")
     parser.add_argument("--compare-all", "-c", action="store_true", help="Run ALL strategies and show comparison")
     parser.add_argument("--years", "-y", type=float, default=None, help="How many years back (e.g. 2)")
-    parser.add_argument("--start", type=str, default=None, help="Start date YYYY-MM-DD (overrides --years)")
+    parser.add_argument("--months", "-m", type=float, default=None, help="How many months back (e.g. 1)")
+    parser.add_argument("--start", type=str, default=None, help="Start date YYYY-MM-DD (overrides --years/--months)")
     parser.add_argument("--end", type=str, default=None, help="End date YYYY-MM-DD (default: today)")
     parser.add_argument("--params", "-p", type=str, default=None, help="Params as key=value,key=value")
     parser.add_argument("--slippage", type=float, default=5.0, help="Slippage in bps (default: 5)")
@@ -343,6 +356,8 @@ Available strategies:
         start_date = date.fromisoformat(args.start)
     elif args.years:
         start_date = end_date - timedelta(days=int(args.years * 365.25))
+    elif args.months:
+        start_date = end_date - timedelta(days=int(args.months * 30.44))
     else:
         start_date = end_date - timedelta(days=365)
 
