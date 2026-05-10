@@ -89,6 +89,9 @@ def download_yahoo_data(symbol: str, start: date, end: date) -> pd.DataFrame:
             raise ValueError(f"No data returned for {symbol}")
         df.columns = [c.lower() for c in df.columns]
         df = df[["open", "high", "low", "close", "volume"]]
+        # Strip timezone info to avoid tz-naive vs tz-aware comparison issues
+        if df.index.tz is not None:
+            df.index = df.index.tz_localize(None)
         print(f"  Downloaded {len(df)} bars for {symbol} via yfinance")
         return df
 
@@ -206,6 +209,9 @@ async def run_backtest(
         if csv_path.exists():
             df = pd.read_csv(csv_path, parse_dates=True, index_col=0)
             df.columns = [c.lower() for c in df.columns]
+            # Strip timezone if present
+            if hasattr(df.index, 'tz') and df.index.tz is not None:
+                df.index = df.index.tz_localize(None)
             print(f"  Loaded {len(df)} bars for {symbol} from cache")
         else:
             df = download_yahoo_data(symbol, start, end)
