@@ -1,15 +1,32 @@
-PS C:\Users\binar\PycharmProjects\trading> Test-NetConnection -ComputerName localhost -Port 7497
-
-ComputerName     : localhost
-RemoteAddress    : ::1
-RemotePort       : 7497
-InterfaceAlias   : Loopback Pseudo-Interface 1
-SourceAddress    : ::1
-TcpTestSucceeded : True
-
-
-
-PS C:\Users\binar\PycharmProjects\trading> docker compose restart trading-bot
-[+] Restarting 1/1
- ✔ Container ibkr-trading-bot  Started                                                                                                                      0.2s
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 30
+ibkr-trading-bot  |     await self._start_strategies()
+ibkr-trading-bot  |   File "/app/src/main.py", line 427, in _start_strategies
+ibkr-trading-bot  |     await self._strategy_engine.start()
+ibkr-trading-bot  |   File "/app/src/strategies/engine.py", line 115, in start
+ibkr-trading-bot  |     await self.enable_strategy(name)
+ibkr-trading-bot  |   File "/app/src/strategies/engine.py", line 157, in enable_strategy
+ibkr-trading-bot  |     allocated = self._get_allocated_capital(name)
+ibkr-trading-bot  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot  |   File "/app/src/strategies/engine.py", line 310, in _get_allocated_capital
+ibkr-trading-bot  |     return self._capital_allocator.get_available(strategy_name)
+ibkr-trading-bot  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot  |   File "/app/src/portfolio/capital_allocator.py", line 144, in get_available
+ibkr-trading-bot  |     allocation = self._get_allocation(strategy_name)
+ibkr-trading-bot  |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot  |   File "/app/src/portfolio/capital_allocator.py", line 272, in _get_allocation
+ibkr-trading-bot  |     raise KeyError(f"No allocation found for strategy '{strategy_name}'")
+ibkr-trading-bot  | KeyError: "No allocation found for strategy 'MomentumStrategy'"
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] trading_bot_shutting_down
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] strategy_engine_stopping
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] strategy_engine_stopped
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] strategies_stopped
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] disconnected_from_ibkr
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] ibkr_disconnected
+ibkr-trading-bot  | 2026-05-10 14:29:33 [warning  ] ibkr_connection_lost           attempts_so_far=0
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] reconnection_attempt           attempt=1 delay_seconds=2 max_retries=5
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] redis_closed
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] database_engine_closed
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] database_closed
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] trading_bot_stopped
+ibkr-trading-bot  | 2026-05-10 14:29:33 [info     ] trading_bot_exited
 PS C:\Users\binar\PycharmProjects\trading>
