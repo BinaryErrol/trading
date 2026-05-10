@@ -558,8 +558,10 @@ class BacktestEngine:
                     pos_key = signal.symbol
                     if pos_key not in open_positions:
                         # Calculate quantity from suggested size
+                        # If suggested_size is 0, use 10% of available cash
+                        size = signal.suggested_size if signal.suggested_size > 0 else cash * Decimal("0.1")
                         if current_price > 0:
-                            quantity = signal.suggested_size / current_price
+                            quantity = size / current_price
                         else:
                             continue
 
