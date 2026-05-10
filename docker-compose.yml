@@ -17,12 +17,6 @@ services:
       - TRADING_BOT_DASHBOARD__PORT=8080
     ports:
       - "${DASHBOARD_PORT:-8080}:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 30s
     restart: unless-stopped
     networks:
       - backend
@@ -67,13 +61,10 @@ services:
   dashboard-ui:
     build: ./dashboard-ui
     container_name: ibkr-dashboard-ui
-    depends_on:
-      trading-bot:
-        condition: service_healthy
     ports:
-      - "${UI_PORT:-3000}:3000"
+      - "${UI_PORT:-3000}:80"
     healthcheck:
-      test: ["CMD-SHELL", "wget --spider -q http://localhost:3000/ || exit 1"]
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:80/ || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
