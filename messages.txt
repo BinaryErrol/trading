@@ -1,89 +1,236 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose down
-[+] Running 6/6
- ✔ Container ibkr-dashboard-ui  Removed                                                                                                                                                             0.0s
- ✔ Container ibkr-trading-bot   Removed                                                                                                                                                             0.6s
- ✔ Container ibkr-postgres      Removed                                                                                                                                                             0.3s
- ✔ Container ibkr-redis         Removed                                                                                                                                                             0.4s
- ! Network trading_frontend     Resource is still in use                                                                                                                                            0.0s
- ! Network trading_backend      Resource is still in use                                                                                                                                            0.0s
-PS C:\Users\binar\PycharmProjects\trading> docker compose build --no-cache
-[+] Building 30.8s (18/31)
- => [internal] load local bake definitions                                                                                                                                                          0.0s
- => => reading from stdin 798B                                                                                                                                                                      0.0s
- => [trading-bot internal] load build definition from Dockerfile                                                                                                                                    0.0s
- => => transferring dockerfile: 857B                                                                                                                                                                0.0s
- => [dashboard-ui internal] load build definition from Dockerfile                                                                                                                                   0.0s
- => => transferring dockerfile: 458B                                                                                                                                                                0.0s
- => [trading-bot internal] load metadata for docker.io/library/python:3.11-slim                                                                                                                     1.8s
- => [dashboard-ui internal] load metadata for docker.io/library/nginx:alpine                                                                                                                        1.9s
- => [dashboard-ui internal] load metadata for docker.io/library/node:20-alpine                                                                                                                      1.9s
- => [trading-bot internal] load .dockerignore                                                                                                                                                       0.0s
- => => transferring context: 661B                                                                                                                                                                   0.0s
- => [trading-bot  1/12] FROM docker.io/library/python:3.11-slim@sha256:a5b427ace4900267d93db34138e512325c6fa6af84ad5e4ed5f3b36258cc4142                                                             0.0s
- => [trading-bot internal] load build context                                                                                                                                                       0.0s
- => => transferring context: 8.48kB                                                                                                                                                                 0.0s
- => CACHED [trading-bot  2/12] WORKDIR /app                                                                                                                                                         0.0s
- => ERROR [trading-bot  3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*                                            28.5s
- => [dashboard-ui internal] load .dockerignore                                                                                                                                                      0.0s
- => => transferring context: 2B                                                                                                                                                                     0.0s
- => [dashboard-ui build 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293                                                          0.0s
- => [dashboard-ui internal] load build context                                                                                                                                                      0.2s
- => => transferring context: 530.54kB                                                                                                                                                               0.2s
- => CACHED [dashboard-ui stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de                                                   0.0s
- => CACHED [dashboard-ui build 2/6] WORKDIR /app                                                                                                                                                    0.0s
- => [dashboard-ui build 3/6] COPY package.json ./                                                                                                                                                   0.0s
- => CANCELED [dashboard-ui build 4/6] RUN npm install                                                                                                                                              28.3s
-------
- > [trading-bot  3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*:
-21.34 Ign:1 http://deb.debian.org/debian trixie InRelease
-21.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
-21.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
-22.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
-22.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
-22.34 Ign:1 http://deb.debian.org/debian trixie InRelease
-24.34 Ign:1 http://deb.debian.org/debian trixie InRelease
-24.34 Ign:2 http://deb.debian.org/debian trixie-updates InRelease
-24.34 Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
-28.34 Err:3 http://deb.debian.org/debian-security trixie-security InRelease
-28.34   Unable to connect to deb.debian.org:http:
-28.34 Err:2 http://deb.debian.org/debian trixie-updates InRelease
-28.34   Unable to connect to deb.debian.org:http:
-28.34 Err:1 http://deb.debian.org/debian trixie InRelease
-28.34   Could not connect to debian.map.fastlydns.net:80 (151.101.174.132). - connect (111: Connection refused) Unable to connect to deb.debian.org:http:
-28.34   Unable to connect to deb.debian.org:http:
-28.34 Reading package lists...
-28.35 W: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Unable to connect to deb.debian.org:http:
-28.35 W: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  Unable to connect to deb.debian.org:http:
-28.35 W: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  Unable to connect to deb.debian.org:http:
-28.35 W: Some index files failed to download. They have been ignored, or old ones used instead.
-28.36 Reading package lists...
-28.36 Building dependency tree...
-28.36 Reading state information...
-28.36 E: Unable to locate package curl
-28.36 E: Unable to locate package dos2unix
-------
-Dockerfile:6
+IBKR Trading Bot
+Dashboard
+Disconnected
+Total Value
 
---------------------
+$1,045,231
 
-   5 |     # Install system dependencies
+Peak: $1,052,000
 
-   6 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+Unrealized P&L
 
-   7 | >>>     curl \
++$12,451
 
-   8 | >>>     dos2unix \
++1.19%
 
-   9 | >>>     && rm -rf /var/lib/apt/lists/*
+Drawdown
 
-  10 |
+-0.64%
 
---------------------
+From peak equity
 
-target trading-bot: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+Positions
+Symbol	Qty	Entry	Current	P&L	Strategy
+AAPL	150	$178.50	$185.20	+$1005	momentum
+MSFT	80	$410.00	$422.50	+$1000	trend_following
+GOOGL	-50	$155.00	$152.30	+$135	mean_reversion
+TSLA	60	$245.00	$238.70	$-378	breakout
+NVDA	40	$875.00	$920.50	+$1820	momentum
+SPY	200	$520.00	$525.80	+$1160	ma_crossover
+Risk Utilization
+Position Count
+6.0 / 20
+Drawdown
+0.6% / 10%
+Daily Loss
+0.3% / 2%
+Sector Concentration
+18.5% / 25%
+Strategy Status
+running
+momentum
+Allocation
 
+$200,000
 
+Return
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/dfl8xa47vua1stm99bgnmcsmt
++12.5%
 
-PS C:\Users\binar\PycharmProjects\trading>
+Sharpe
+
+1.85
+
+Win Rate
+
+62%
+
+running
+trend_following
+Allocation
+
+$180,000
+
+Return
+
++8.3%
+
+Sharpe
+
+1.42
+
+Win Rate
+
+55%
+
+running
+mean_reversion
+Allocation
+
+$150,000
+
+Return
+
++6.1%
+
+Sharpe
+
+1.20
+
+Win Rate
+
+68%
+
+paused
+breakout
+Allocation
+
+$120,000
+
+Return
+
+-1.2%
+
+Sharpe
+
+0.30
+
+Win Rate
+
+42%
+
+running
+ma_crossover
+Allocation
+
+$160,000
+
+Return
+
++4.8%
+
+Sharpe
+
+1.10
+
+Win Rate
+
+58%
+
+halted
+pairs_trading
+Allocation
+
+$100,000
+
+Return
+
+-3.5%
+
+Sharpe
+
+-0.20
+
+Win Rate
+
+38%
+
+Equity Curve
+01-01
+01-03
+01-05
+01-09
+01-11
+01-15
+01-17
+01-19
+01-23
+01-25
+01-29
+01-31
+02-02
+02-06
+02-08
+02-12
+02-14
+02-16
+02-20
+02-22
+02-26
+02-28
+03-01
+03-05
+03-07
+03-11
+03-13
+03-15
+03-19
+03-21
+03-25
+03-27
+03-29
+$0k
+$300k
+$600k
+$900k
+$1200k
+
+Strategy Comparison (% Return)
+01-01
+01-03
+01-05
+01-09
+01-11
+01-15
+01-17
+01-19
+01-23
+01-25
+01-29
+01-31
+02-02
+02-06
+02-08
+02-12
+02-14
+02-16
+02-20
+02-22
+02-26
+02-28
+03-01
+03-05
+03-07
+03-11
+03-13
+03-15
+03-19
+03-21
+03-25
+03-27
+03-29
+-2%
+0%
+2%
+4%
+6%
+momentumtrend_followingmean_reversionma_crossover
+Order History
+Time	Symbol	Side	Type	Qty	Fill Price	Status	Strategy
+Jan 15, 09:31 AM	AAPL	BUY	LMT	150/150	$178.50	Filled	momentum
+Jan 15, 10:15 AM	MSFT	BUY	MKT	80/80	$410.00	Filled	trend_following
+Jan 15, 11:00 AM	GOOGL	SELL	LMT	50/50	$155.00	Filled	mean_reversion
+Jan 16, 09:45 AM	TSLA	BUY	STP	60/60	$245.00	Filled	breakout
+Jan 16, 10:30 AM	NVDA	BUY	LMT	40/40	$875.00	Filled	momentum
+Jan 17, 09:30 AM	SPY	BUY	MKT	200/200	$520.00	Filled	ma_crossover
+Jan 17, 02:00 PM	AMD	BUY	LMT	0/100	—	Cancelled	momentum
