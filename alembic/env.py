@@ -55,13 +55,22 @@ async def run_async_migrations() -> None:
     """Run migrations in 'online' mode with async engine.
 
     Creates an async engine and runs migrations within a connection context.
+    Uses TRADING_BOT_DATABASE__URL env var if set, otherwise falls back to alembic.ini.
     """
-    configuration = config.get_section(config.config_ini_section, {})
-    connectable = async_engine_from_config(
-        configuration,
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    import os
+
+    # Prefer environment variable (set by docker-compose)
+    db_url = os.environ.get("TRADING_BOT_DATABASE__URL")
+
+    if db_url:
+        connectable = create_async_engine(db_url, poolclass=pool.NullPool)
+    else:
+        configuration = config.get_section(config.config_ini_section, {})
+        connectable = async_engine_from_config(
+            configuration,
+            prefix="sqlalchemy.",
+            poolclass=pool.NullPool,
+        )
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)
