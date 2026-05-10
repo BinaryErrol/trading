@@ -38,9 +38,9 @@ Edit `config.yaml` with your settings:
 
 ```yaml
 connection:
-  mode: tws            # "tws" for Trader Workstation, "gateway" for IB Gateway
-  host: host.docker.internal  # Docker → host networking (use 127.0.0.1 outside Docker)
-  port: 7497           # TWS paper=7497, TWS live=7496, Gateway paper=4002, Gateway live=4001
+  mode: tws              # or "gateway"
+  host: host.docker.internal  # Docker → host networking (use 127.0.0.1 if running without Docker)
+  port: 7497             # TWS paper=7497, TWS live=7496, Gateway paper=4002, Gateway live=4001
   client_id: 1
   timeout: 30
 
@@ -258,6 +258,7 @@ python -m src.main
 | `vwap` | Mean-Reversion | deviation_threshold, session_type |
 | `pairs_trading` | Statistical | pair_symbols, entry_z, exit_z |
 | `market_making` | Market Making | spread_bps, inventory_limit, skew_factor |
+| `wheel` | Options (Wheel) | target_delta, min_dte, max_dte, roll_dte_threshold, vix_high_threshold, vix_reentry_threshold |
 
 ---
 
@@ -275,7 +276,23 @@ All endpoints (except `/health`) require `Authorization: Bearer <token>` when `D
 | GET | `/api/risk` | Risk utilization |
 | GET | `/api/orders` | Order history |
 | GET | `/api/export/csv` | Export trades to CSV |
+| GET | `/api/strategies/{name}/pnl` | Per-strategy P&L (realized + unrealized) |
+| GET | `/api/strategies/comparison` | All strategies side-by-side with metrics |
+| GET | `/api/strategies/{name}/history` | Equity curve time-series |
+| GET | `/api/strategies/{name}/trades` | Paginated trades for one strategy |
+| GET | `/api/trades` | All trades with filters (strategy, symbol, dates) |
 | WS | `/ws/live` | Real-time streaming |
+
+---
+
+## Dashboard Pages
+
+| Route | Page | Description |
+|-------|------|-------------|
+| `/` | Overview | Portfolio summary, positions, risk, strategy status |
+| `/strategies` | Strategy Comparison | Side-by-side metrics, equity curve overlay |
+| `/strategies/:name` | Strategy Detail | In-depth view: equity curve, trades, params |
+| `/trades` | Trade History | Filterable, paginated trade history |
 
 ---
 
