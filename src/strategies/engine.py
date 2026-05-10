@@ -296,9 +296,8 @@ class StrategyEngine:
     def _get_allocated_capital(self, strategy_name: str) -> Decimal:
         """Get allocated capital for a strategy from the capital allocator.
 
-        Tries the strategy name as-is first, then falls back to lowercase
-        variants to handle class name vs config key mismatches
-        (e.g. 'MomentumStrategy' vs 'momentum').
+        Tries the strategy name as-is first, then falls back to config-style
+        names to handle class name vs config key mismatches.
 
         Args:
             strategy_name: Name of the strategy.
@@ -316,21 +315,31 @@ class StrategyEngine:
             except KeyError:
                 pass
 
-            # Try lowercase config-style name (MomentumStrategy -> momentum)
-            # Strip "Strategy" suffix and lowercase
+            # Try lowercase with "Strategy" stripped (MomentumStrategy -> momentum)
             config_name = strategy_name.replace("Strategy", "").lower()
             try:
                 return self._capital_allocator.get_available(config_name)
             except KeyError:
                 pass
 
-            # Try snake_case conversion (MACrossoverStrategy -> ma_crossover)
+            # Try proper snake_case (MACrossoverStrategy -> ma_crossover)
             import re
-            snake_name = re.sub(r'(?<!^)(?=[A-Z])', '_', strategy_name.replace("Strategy", "")).lower()
+            base = strategy_name.replace("Strategy", "")
+            # Insert underscore before uppercase letters that follow lowercase
+            snake_name = re.sub(r'([a-z])([A-Z])', r'\1_\2', base).lower()
             try:
                 return self._capital_allocator.get_available(snake_name)
             except KeyError:
                 pass
+
+            # Try all registered allocations for a case-insensitive match
+            if hasattr(self._capital_allocator, 'allocations'):
+                for key in self._capital_allocator.allocations:
+                    if key.lower().replace("_", "") == config_name.replace("_", ""):
+                        try:
+                            return self._capital_allocator.get_available(key)
+                        except KeyError:
+                            pass
 
             logger.warning(
                 "capital_allocation_not_found",
