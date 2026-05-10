@@ -38,6 +38,23 @@ connection:
 #   parameters: strategy-specific tuning parameters
 # -----------------------------------------------------------------------------
 strategies:
+  adaptive:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "AAPL"
+      - "MSFT"
+      - "GOOGL"
+      - "AMZN"
+      - "NVDA"
+      - "SPY"
+    asset_classes:
+      - "equity"
+    parameters:
+      lookback_window: 60
+      lookback_period: 20
+      momentum_threshold: 0.0
+
   momentum:
     enabled: true
     frequency: "15min"
