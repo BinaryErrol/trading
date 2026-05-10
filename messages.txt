@@ -1,945 +1,335 @@
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:28 [info     ] trading_bot_exited
 ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:32 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:32 [info     ] trading_bot_exited
 ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:37 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:37 [info     ] trading_bot_exited
 ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:41 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:41 [info     ] trading_bot_exited
+ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:46 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:46 [info     ] trading_bot_exited
+ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:52 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:52 [info     ] trading_bot_exited
+ibkr-trading-bot exited with code 0
+ibkr-trading-bot   | Running database migrations...
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot   | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot   | Starting IBKR Trading Bot...
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] paper_trading_mode             port=4002
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] database_connected
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] connecting_to_ibkr             client_id=1 host=127.0.0.1 mode=tws port=4002
+ibkr-trading-bot   | API connection failed: ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 4002)")
+ibkr-trading-bot   | Make sure API port on TWS/IBG is open
+ibkr-trading-bot   | 2026-05-10 14:19:59 [error    ] startup_failed                 error="[Errno 111] Connect call failed ('127.0.0.1', 4002)"
 ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
+ibkr-trading-bot   |   File "/app/src/main.py", line 888, in async_main
+ibkr-trading-bot   |     await bot.start()
+ibkr-trading-bot   |   File "/app/src/main.py", line 95, in start
+ibkr-trading-bot   |     await self._connect_ibkr()
+ibkr-trading-bot   |   File "/app/src/main.py", line 272, in _connect_ibkr
+ibkr-trading-bot   |     await self._connection_manager.connect()
+ibkr-trading-bot   |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot   |     await self.ib.connectAsync(
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot   |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot   |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot   |     return fut.result()
+ibkr-trading-bot   |            ^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot   |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1086, in create_connection
+ibkr-trading-bot   |     raise exceptions[0]
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1070, in create_connection
+ibkr-trading-bot   |     sock = await self._connect_sock(
 ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
-ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
-ibkr-trading-bot   | Traceback (most recent call last):
-ibkr-trading-bot   |   File "/usr/local/bin/alembic", line 8, in <module>
-ibkr-trading-bot   |     sys.exit(main())
-ibkr-trading-bot   |              ^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1047, in main
-ibkr-trading-bot   |     CommandLine(prog=prog).main(argv=argv)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 1037, in main
-ibkr-trading-bot   |     self.run_cmd(cfg, options)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/config.py", line 971, in run_cmd
-ibkr-trading-bot   |     fn(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/command.py", line 483, in upgrade
-ibkr-trading-bot   |     script.run_env()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/script/base.py", line 545, in run_env
-ibkr-trading-bot   |     util.load_python_file(self.dir, "env.py")
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
-ibkr-trading-bot   |     module = load_module_py(module_id, path)
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
-ibkr-trading-bot   |     spec.loader.exec_module(module)  # type: ignore
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-ibkr-trading-bot   |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 83, in <module>
-ibkr-trading-bot   |     run_migrations_online()
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 77, in run_migrations_online
-ibkr-trading-bot   |     asyncio.run(run_async_migrations())
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-ibkr-trading-bot   |     return runner.run(main)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-ibkr-trading-bot   |     return self._loop.run_until_complete(task)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-ibkr-trading-bot   |     return future.result()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/app/alembic/env.py", line 66, in run_async_migrations
-ibkr-trading-bot   |     async with connectable.connect() as connection:
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
-ibkr-trading-bot   |     return await self.start(is_ctxmanager=True)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
-ibkr-trading-bot   |     await greenlet_spawn(self.sync_engine.connect)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
-ibkr-trading-bot   |     result = context.throw(*sys.exc_info())
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
-ibkr-trading-bot   |     return self._connection_cls(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
-ibkr-trading-bot   |     self._dbapi_connection = engine.raw_connection()
-ibkr-trading-bot   |                              ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
-ibkr-trading-bot   |     return self.pool.connect()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
-ibkr-trading-bot   |     return _ConnectionFairy._checkout(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
-ibkr-trading-bot   |     fairy = _ConnectionRecord.checkout(pool)
-ibkr-trading-bot   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
-ibkr-trading-bot   |     rec = pool._do_get()
-ibkr-trading-bot   |           ^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 306, in _do_get
-ibkr-trading-bot   |     return self._create_connection()
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
-ibkr-trading-bot   |     return _ConnectionRecord(self)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
-ibkr-trading-bot   |     self.__connect()
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
-ibkr-trading-bot   |     with util.safe_reraise():
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
-ibkr-trading-bot   |     raise exc_value.with_traceback(exc_tb)
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
-ibkr-trading-bot   |     self.dbapi_connection = connection = pool._invoke_creator(self)
-ibkr-trading-bot   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
-ibkr-trading-bot   |     return dialect.connect(*cargs_tup, **cparams)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
-ibkr-trading-bot   |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
-ibkr-trading-bot   |     await_only(creator_fn(*arg, **kw)),
-ibkr-trading-bot   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
-ibkr-trading-bot   |     return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
-ibkr-trading-bot   |     value = await result
-ibkr-trading-bot   |             ^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
-ibkr-trading-bot   |     return await connect_utils._connect(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-ibkr-trading-bot   |     raise last_error or exceptions.TargetServerAttributeNotMatched(
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-ibkr-trading-bot   |     conn = await _connect_addr(
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-ibkr-trading-bot   |     return await __connect_addr(params, True, *args)
-ibkr-trading-bot   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-ibkr-trading-bot   |     tr, pr = await connector
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-ibkr-trading-bot   |     tr, pr = await loop.create_connection(
-ibkr-trading-bot   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot   |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot   | OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-ibkr-trading-bot exited with code 1
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 974, in _connect_sock
+ibkr-trading-bot   |     await self.sock_connect(sock, address)
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+ibkr-trading-bot   |     return await fut
+ibkr-trading-bot   |            ^^^^^^^^^
+ibkr-trading-bot   |   File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+ibkr-trading-bot   |     raise OSError(err, f'Connect call failed {address}')
+ibkr-trading-bot   | ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4002)
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] trading_bot_shutting_down
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] disconnected_from_ibkr
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] ibkr_disconnected
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] redis_closed
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] database_engine_closed
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] database_closed
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] trading_bot_stopped
+ibkr-trading-bot   | 2026-05-10 14:19:59 [info     ] trading_bot_exited
+ibkr-trading-bot exited with code 0
 
 
-v View in Docker Desktop   o View Config   w Enable Watch
+v View in Docker Desktop   o
