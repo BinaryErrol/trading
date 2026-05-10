@@ -223,6 +223,9 @@ python scripts/backtest.py --symbol AAPL --compare-all --years 2
 
 # Compare ALL strategies across multiple symbols (full matrix)
 python scripts/backtest.py --symbol AAPL,MSFT,GOOGL,NVDA,TSLA,SPY,QQQ,META,AMZN,AMD,NFLX,JPM,V,MA,DIS --compare-all --years 2
+
+# Short-term backtest (1 month) to see current trend
+python scripts/backtest.py --symbol AAPL,MSFT,GOOGL --compare-all --months 1
 ```
 
 Data is cached in `data/historical/` so subsequent runs are instant.
@@ -267,6 +270,9 @@ python -m src.main
 | `market_making` | Market Making | spread_bps, inventory_limit, skew_factor |
 | `wheel` | Options (Wheel) | target_delta, min_dte, max_dte, roll_dte_threshold, vix_high_threshold, vix_reentry_threshold |
 | `adaptive` | Meta (Adaptive) | lookback_window, rebalance_period, min_sharpe_threshold |
+| `regime_hmm` | Meta (Regime Detection) | hmm_lookback, volatility_window, trend_window, vol_threshold |
+| `bandit` | Meta (Multi-Armed Bandit) | gamma, switching_cost, min_rounds |
+| `best_per_symbol` | Meta (Static Assignment) | symbol_map |
 
 ---
 
