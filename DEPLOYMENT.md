@@ -220,6 +220,9 @@ python scripts/backtest.py --symbol TSLA --strategy breakout --years 1 --slippag
 
 # Compare ALL strategies on one symbol (prints ranked summary table)
 python scripts/backtest.py --symbol AAPL --compare-all --years 2
+
+# Compare ALL strategies across multiple symbols (full matrix)
+python scripts/backtest.py --symbol AAPL,MSFT,GOOGL,NVDA,TSLA,SPY,QQQ,META,AMZN,AMD,NFLX,JPM,V,MA,DIS --compare-all --years 2
 ```
 
 Data is cached in `data/historical/` so subsequent runs are instant.
