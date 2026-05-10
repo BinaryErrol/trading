@@ -266,6 +266,7 @@ python -m src.main
 | `pairs_trading` | Statistical | pair_symbols, entry_z, exit_z |
 | `market_making` | Market Making | spread_bps, inventory_limit, skew_factor |
 | `wheel` | Options (Wheel) | target_delta, min_dte, max_dte, roll_dte_threshold, vix_high_threshold, vix_reentry_threshold |
+| `adaptive` | Meta (Adaptive) | lookback_window, rebalance_period, min_sharpe_threshold |
 
 ---
 

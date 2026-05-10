@@ -3,3 +3,6 @@ config.yaml
 
 # Environment file (contains secrets)
 .env
+
+# Temporary message log (used for debugging between machines)
+messages.txt
