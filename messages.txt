@@ -1,290 +1,47 @@
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=momentum error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=ma_crossover error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=momentum error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=ma_crossover error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=momentum error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=ma_crossover error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=momentum error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=ma_crossover error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=mean_reversion error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=bollinger error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=rsi_divergence error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=trend_following error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=breakout error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [warning  ] adaptive_child_evaluate_failed child=vwap error="'NoneType' object has no attribute 'get_history'"
-2026-05-10 20:59:02 [info     ] adaptive_rebalance             bar_count=500 best_strategy=momentum score=0.0 symbol=DIS
-2026-05-10 20:59:02 [info     ] backtest_complete              max_drawdown=0.0 sharpe=0.0 strategy=AdaptiveStrategy total_return=0.0 total_trades=0
-  adaptive         — 15/15 symbols completed
-
-
-======================================================================
-  RESULTS BY SYMBOL
-======================================================================
-
-  ┌─ AAPL ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           1.72%    0.32  2.93%      25
-  │ ma_crossover      -2.14%   -0.43  5.15%      11
-  │ mean_reversion     0.91%    0.18  3.03%      15
-  │ bollinger          0.91%    0.18  3.03%      15
-  │ rsi_divergence     3.12%    0.55  4.46%      15
-  │ trend_following   -2.93%   -0.56  5.36%      19
-  │ breakout          -3.34%   -0.75  4.14%       3
-  │ vwap              -2.83%   -0.49  5.65%      11
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ MSFT ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           2.36%    0.50  3.19%      21
-  │ ma_crossover      -2.99%   -0.65  5.59%      10
-  │ mean_reversion     0.47%    0.11  4.48%      11
-  │ bollinger          0.47%    0.11  4.48%      11
-  │ rsi_divergence    -2.91%   -0.62  5.34%       9
-  │ trend_following   -1.74%   -0.37  4.25%      25
-  │ breakout          -0.17%   -0.04  4.22%       1
-  │ vwap               1.45%    0.32  4.48%      13
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ GOOGL ───────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           8.33%    1.33  3.36%      23
-  │ ma_crossover       3.25%    0.54  5.81%       6
-  │ mean_reversion    -7.41%   -1.23  7.86%       9
-  │ bollinger         -7.41%   -1.23  7.86%       9
-  │ rsi_divergence    -4.47%   -0.72  6.82%      11
-  │ trend_following   10.01%    1.48  3.11%      11
-  │ breakout          10.60%    1.62  3.34%       1
-  │ vwap             -10.56%   -1.53 11.42%       7
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ NVDA ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -4.57%   -0.46  9.43%      33
-  │ ma_crossover      -0.28%   -0.01  7.68%      14
-  │ mean_reversion     0.61%    0.09  6.26%      10
-  │ bollinger          0.61%    0.09  6.26%      10
-  │ rsi_divergence     6.86%    0.69  5.99%      13
-  │ trend_following   -6.20%   -0.68 10.54%      19
-  │ breakout           6.56%    1.03  3.04%       1
-  │ vwap               2.30%    0.24  7.45%      19
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ TSLA ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -9.10%   -0.73 14.53%      45
-  │ ma_crossover       0.66%    0.08  9.08%       5
-  │ mean_reversion     8.02%    0.64  6.63%      13
-  │ bollinger          8.02%    0.64  6.63%      13
-  │ rsi_divergence     7.38%    0.59  6.75%      13
-  │ trend_following    2.77%    0.25  8.31%      19
-  │ breakout           8.52%    0.57 10.07%       1
-  │ vwap              -4.94%   -0.34 10.96%      15
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ SPY ─────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -2.57%   -0.78  3.89%      21
-  │ ma_crossover       0.38%    0.12  2.05%       5
-  │ mean_reversion     2.48%    0.78  1.63%      13
-  │ bollinger          2.48%    0.78  1.63%      13
-  │ rsi_divergence    -0.99%   -0.30  3.55%       9
-  │ trend_following    2.19%    0.70  1.31%      11
-  │ breakout          -4.77%   -1.63  4.93%       1
-  │ vwap              -1.06%   -0.31  2.64%       7
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ QQQ ─────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           0.20%    0.06  3.11%      23
-  │ ma_crossover       2.32%    0.56  3.18%       8
-  │ mean_reversion    -1.03%   -0.24  2.48%       7
-  │ bollinger         -1.03%   -0.24  2.48%       7
-  │ rsi_divergence    -1.28%   -0.29  4.66%       9
-  │ trend_following    1.75%    0.44  1.86%      15
-  │ breakout          -6.92%   -1.79  7.05%       1
-  │ vwap              -1.53%   -0.35  3.24%       9
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ META ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -1.33%   -0.18  4.47%      28
-  │ ma_crossover      -0.80%   -0.10  4.20%      10
-  │ mean_reversion     8.33%    1.16  5.28%      17
-  │ bollinger          8.33%    1.16  5.28%      17
-  │ rsi_divergence     5.51%    0.78  5.94%      16
-  │ trend_following   -7.91%   -1.22  8.04%      25
-  │ breakout          -4.03%   -0.97  5.62%       2
-  │ vwap               1.07%    0.17  4.66%      12
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ AMZN ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           0.98%    0.17  2.99%      30
-  │ ma_crossover      -0.40%   -0.06  4.20%      10
-  │ mean_reversion     0.24%    0.05  4.72%      11
-  │ bollinger          0.24%    0.05  4.72%      11
-  │ rsi_divergence    -1.02%   -0.14  6.11%      12
-  │ trend_following    2.61%    0.43  4.54%      19
-  │ breakout           3.06%    0.69  2.59%       1
-  │ vwap               0.64%    0.12  3.81%      14
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ AMD ─────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          12.99%    0.95  7.01%      35
-  │ ma_crossover     -11.93%   -0.65 23.77%       9
-  │ mean_reversion    -7.80%   -0.57 14.68%      12
-  │ bollinger         -7.80%   -0.57 14.68%      12
-  │ rsi_divergence   -10.92%   -0.86 15.90%      11
-  │ trend_following   13.36%    0.99  6.95%      17
-  │ breakout          -3.12%   -0.18 15.05%       2
-  │ vwap             -12.26%   -0.77 16.93%      17
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ NFLX ────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           1.14%    0.19  3.61%      24
-  │ ma_crossover       5.51%    0.83  2.82%       5
-  │ mean_reversion     2.02%    0.33  4.10%      13
-  │ bollinger          2.02%    0.33  4.10%      13
-  │ rsi_divergence     5.26%    0.80  4.01%      14
-  │ trend_following    1.51%    0.25  3.70%      16
-  │ breakout          -0.92%   -0.43  2.08%       1
-  │ vwap              -2.97%   -0.41  6.02%      12
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ JPM ─────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -3.93%   -0.78  5.12%      27
-  │ ma_crossover       0.83%    0.18  2.85%       7
-  │ mean_reversion     3.17%    0.65  2.18%      13
-  │ bollinger          3.17%    0.65  2.18%      13
-  │ rsi_divergence    -2.22%   -0.41  6.42%       9
-  │ trend_following   -0.73%   -0.14  3.04%      19
-  │ breakout          -3.20%   -0.58  5.76%       2
-  │ vwap              -1.08%   -0.19  5.29%      10
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ V ───────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -3.24%   -0.73  5.60%      22
-  │ ma_crossover      -1.93%   -0.46  4.99%      11
-  │ mean_reversion     0.87%    0.21  2.14%      10
-  │ bollinger          0.87%    0.21  2.14%      10
-  │ rsi_divergence    -0.06%   -0.00  3.29%      12
-  │ trend_following   -3.12%   -0.73  4.83%      18
-  │ breakout           0.48%    0.12  2.43%       1
-  │ vwap               2.31%    0.51  3.43%      10
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ MA ──────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum          -3.68%   -0.85  4.31%      25
-  │ ma_crossover       2.31%    0.55  1.99%       8
-  │ mean_reversion     1.32%    0.32  2.15%      11
-  │ bollinger          1.32%    0.32  2.15%      11
-  │ rsi_divergence     3.90%    0.89  3.23%      11
-  │ trend_following   -1.84%   -0.44  3.11%      13
-  │ breakout          -1.56%   -0.38  3.78%       2
-  │ vwap               2.60%    0.61  2.92%      11
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-  ┌─ DIS ─────────────────────────────────────────────────────────
-  │ Strategy           Return  Sharpe   MaxDD  Trades
-  │ ──────────────── ──────── ─────── ─────── ───────
-  │ momentum           5.94%    1.12  2.17%      20
-  │ ma_crossover      -3.83%   -0.77  6.08%       7
-  │ mean_reversion    -4.68%   -0.93  5.71%      10
-  │ bollinger         -4.68%   -0.93  5.71%      10
-  │ rsi_divergence    -3.93%   -0.73  5.88%      12
-  │ trend_following    4.80%    0.92  3.22%      20
-  │ breakout          -5.28%   -0.99  6.00%       5
-  │ vwap              -2.69%   -0.50  4.70%       8
-  │ adaptive           0.00%    0.00  0.00%       0
-  └─────────────────────────────────────────────────────────────────
-
-
-======================================================================
-  OVERALL RANKING (avg Sharpe across 15 symbols)
-======================================================================
-
-  #    Strategy          Avg Sharpe  Avg Return
-  ──── ──────────────── ─────────── ───────────
-  1    mean_reversion          0.10      0.50% ★ BEST
-  2    bollinger               0.10      0.50%
-  3    trend_following         0.09      0.97%
-  4    rsi_divergence          0.01      0.28%
-  5    momentum                0.01      0.35%
-  6    adaptive                0.00      0.00%
-  7    ma_crossover           -0.02     -0.60%
-  8    vwap                   -0.20     -1.97%
-  9    breakout               -0.25     -0.27%
-
-  ──────────────────────────────────────────────────────────────────────
-  BEST STRATEGY PER SYMBOL:
-    AAPL   → rsi_divergence (Sharpe: 0.55, Return: 3.12%)
-    MSFT   → momentum (Sharpe: 0.50, Return: 2.36%)
-    GOOGL  → breakout (Sharpe: 1.62, Return: 10.60%)
-    NVDA   → breakout (Sharpe: 1.03, Return: 6.56%)
-    TSLA   → mean_reversion (Sharpe: 0.64, Return: 8.02%)
-    SPY    → mean_reversion (Sharpe: 0.78, Return: 2.48%)
-    QQQ    → ma_crossover (Sharpe: 0.56, Return: 2.32%)
-    META   → mean_reversion (Sharpe: 1.16, Return: 8.33%)
-    AMZN   → breakout (Sharpe: 0.69, Return: 3.06%)
-    AMD    → trend_following (Sharpe: 0.99, Return: 13.36%)
-    NFLX   → ma_crossover (Sharpe: 0.83, Return: 5.51%)
-    JPM    → mean_reversion (Sharpe: 0.65, Return: 3.17%)
-    V      → vwap (Sharpe: 0.51, Return: 2.31%)
-    MA     → rsi_divergence (Sharpe: 0.89, Return: 3.90%)
-    DIS    → momentum (Sharpe: 1.12, Return: 5.94%)
-
-======================================================================
-
+PS C:\Users\binar\PycharmProjects\trading> docker compose restart trading-bot
+[+] Restarting 1/1
+ ✔ Container ibkr-trading-bot  Started                                                                                                                                                              0.8s
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategy_disabled              strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategy_loop_cancelled        strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategy_state_changed         new=idle previous=running strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategy_disabled              strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategy_engine_stopped
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] strategies_stopped
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] disconnected_from_ibkr
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] ibkr_disconnected
+ibkr-trading-bot  | 2026-05-10 19:04:42 [warning  ] ibkr_connection_lost           attempts_so_far=0
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] reconnection_attempt           attempt=1 delay_seconds=2 max_retries=5
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] redis_closed
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] database_engine_closed
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] database_closed
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] trading_bot_stopped
+ibkr-trading-bot  | 2026-05-10 19:04:42 [info     ] trading_bot_exited
+ibkr-trading-bot  | Waiting for database to be ready...
+ibkr-trading-bot  | Running database migrations...
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot  | Starting IBKR Trading Bot...
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] capital_allocated              amount=25000.0 mode=equal_weight strategy=ma_crossover total_allocated=75000.0
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] capital_allocated              amount=25000.0 mode=equal_weight strategy=mean_reversion total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-10 19:04:47 [warning  ] strategy_class_not_found       strategy=adaptive
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_engine_starting       strategy_count=3
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_state_changed         new=running previous=idle strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_enabled               strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_state_changed         new=running previous=idle strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_enabled               strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_engine_started        active_strategies=['MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy']
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategies_started             count=3 names=['MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy']
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_loop_started          frequency=1hour interval_seconds=3600.0 strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [info     ] strategy_loop_started          frequency=5min interval_seconds=300.0 strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-10 19:04:47 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
 PS C:\Users\binar\PycharmProjects\trading>
+
