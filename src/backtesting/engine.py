@@ -556,6 +556,42 @@ class BacktestEngine:
 
                 elif signal.direction in (SignalDirection.LONG, SignalDirection.SHORT):
                     pos_key = signal.symbol
+
+                    # If we have an opposite position, close it first (direction reversal)
+                    if pos_key in open_positions:
+                        pos = open_positions[pos_key]
+                        if pos["direction"] != signal.direction:
+                            # Close the existing position
+                            fill = self._simulator.simulate_fill(
+                                price=current_price,
+                                quantity=pos["quantity"],
+                                direction=SignalDirection.CLOSE,
+                            )
+                            if pos["direction"] == SignalDirection.LONG:
+                                pnl = (fill.fill_price - pos["entry_price"]) * pos["quantity"]
+                            else:
+                                pnl = (pos["entry_price"] - fill.fill_price) * pos["quantity"]
+                            pnl -= fill.total_cost
+
+                            cash += pos["entry_price"] * pos["quantity"] + pnl
+                            trade = BacktestTrade(
+                                symbol=signal.symbol,
+                                direction=pos["direction"],
+                                entry_price=pos["entry_price"],
+                                exit_price=fill.fill_price,
+                                quantity=pos["quantity"],
+                                entry_time=pos["entry_time"],
+                                exit_time=current_time,
+                                pnl=pnl,
+                                commission=fill.commission + pos["entry_commission"],
+                                strategy_name=strategy.name,
+                            )
+                            trades.append(trade)
+                            del open_positions[pos_key]
+                        else:
+                            # Same direction signal while already in position — skip
+                            continue
+
                     if pos_key not in open_positions:
                         # Calculate quantity from suggested size
                         # If suggested_size is 0, use 10% of available cash
@@ -600,6 +636,36 @@ class BacktestEngine:
                     )
 
             equity_points.append((current_time, equity))
+
+        # Close any remaining open positions at the end of the backtest
+        if open_positions and len(data) > 0:
+            final_price = Decimal(str(data.iloc[-1]["close"]))
+            final_time = data.index[-1] if isinstance(data.index[-1], datetime) else datetime.now(timezone.utc)
+            for pos_key, pos in list(open_positions.items()):
+                fill = self._simulator.simulate_fill(
+                    price=final_price,
+                    quantity=pos["quantity"],
+                    direction=SignalDirection.CLOSE,
+                )
+                if pos["direction"] == SignalDirection.LONG:
+                    pnl = (fill.fill_price - pos["entry_price"]) * pos["quantity"]
+                else:
+                    pnl = (pos["entry_price"] - fill.fill_price) * pos["quantity"]
+                pnl -= fill.total_cost
+
+                trade = BacktestTrade(
+                    symbol=pos_key,
+                    direction=pos["direction"],
+                    entry_price=pos["entry_price"],
+                    exit_price=fill.fill_price,
+                    quantity=pos["quantity"],
+                    entry_time=pos["entry_time"],
+                    exit_time=final_time,
+                    pnl=pnl,
+                    commission=fill.commission + pos["entry_commission"],
+                    strategy_name=strategy.name,
+                )
+                trades.append(trade)
 
         # Build equity curve
         if equity_points:
