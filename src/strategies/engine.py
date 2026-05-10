@@ -296,6 +296,10 @@ class StrategyEngine:
     def _get_allocated_capital(self, strategy_name: str) -> Decimal:
         """Get allocated capital for a strategy from the capital allocator.
 
+        Tries the strategy name as-is first, then falls back to lowercase
+        variants to handle class name vs config key mismatches
+        (e.g. 'MomentumStrategy' vs 'momentum').
+
         Args:
             strategy_name: Name of the strategy.
 
@@ -305,8 +309,33 @@ class StrategyEngine:
         if self._capital_allocator is None:
             return Decimal("0")
 
-        # Duck-type: expect get_available(strategy_name) method
         if hasattr(self._capital_allocator, "get_available"):
-            return self._capital_allocator.get_available(strategy_name)
+            # Try exact name first
+            try:
+                return self._capital_allocator.get_available(strategy_name)
+            except KeyError:
+                pass
+
+            # Try lowercase config-style name (MomentumStrategy -> momentum)
+            # Strip "Strategy" suffix and lowercase
+            config_name = strategy_name.replace("Strategy", "").lower()
+            try:
+                return self._capital_allocator.get_available(config_name)
+            except KeyError:
+                pass
+
+            # Try snake_case conversion (MACrossoverStrategy -> ma_crossover)
+            import re
+            snake_name = re.sub(r'(?<!^)(?=[A-Z])', '_', strategy_name.replace("Strategy", "")).lower()
+            try:
+                return self._capital_allocator.get_available(snake_name)
+            except KeyError:
+                pass
+
+            logger.warning(
+                "capital_allocation_not_found",
+                strategy=strategy_name,
+                tried=[strategy_name, config_name, snake_name],
+            )
 
         return Decimal("0")
