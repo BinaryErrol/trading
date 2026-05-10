@@ -1,302 +1,33 @@
-IBKR Trading Bot
-Dashboard
-Disconnected
-Total Value
-
-$1,045,231
-
-Peak: $1,052,000
-
-Unrealized P&L
-
-+$12,451
-
-+1.19%
-
-Drawdown
-
--0.64%
-
-From peak equity
-
-Positions
-Symbol	Qty	Entry	Current	P&L	Strategy
-AAPL	150	$178.50	$185.20	+$1005	momentum
-MSFT	80	$410.00	$422.50	+$1000	trend_following
-GOOGL	-50	$155.00	$152.30	+$135	mean_reversion
-TSLA	60	$245.00	$238.70	$-378	breakout
-NVDA	40	$875.00	$920.50	+$1820	momentum
-SPY	200	$520.00	$525.80	+$1160	ma_crossover
-Risk Utilization
-Position Count
-6.0 / 20
-Drawdown
-0.6% / 10%
-Daily Loss
-0.3% / 2%
-Sector Concentration
-18.5% / 25%
-Strategy Status
-running
-momentum
-Allocation
-
-$200,000
-
-Return
-
-+12.5%
-
-Sharpe
-
-1.85
-
-Win Rate
-
-62%
-
-running
-trend_following
-Allocation
-
-$180,000
-
-Return
-
-+8.3%
-
-Sharpe
-
-1.42
-
-Win Rate
-
-55%
-
-running
-mean_reversion
-Allocation
-
-$150,000
-
-Return
-
-+6.1%
-
-Sharpe
-
-1.20
-
-Win Rate
-
-68%
-
-paused
-breakout
-Allocation
-
-$120,000
-
-Return
-
--1.2%
-
-Sharpe
-
-0.30
-
-Win Rate
-
-42%
-
-running
-ma_crossover
-Allocation
-
-$160,000
-
-Return
-
-+4.8%
-
-Sharpe
-
-1.10
-
-Win Rate
-
-58%
-
-halted
-pairs_trading
-Allocation
-
-$100,000
-
-Return
-
--3.5%
-
-Sharpe
-
--0.20
-
-Win Rate
-
-38%
-
-Equity Curve
-01-01
-01-03
-01-05
-01-09
-01-11
-01-15
-01-17
-01-19
-01-23
-01-25
-01-29
-01-31
-02-02
-02-06
-02-08
-02-12
-02-14
-02-16
-02-20
-02-22
-02-26
-02-28
-03-01
-03-05
-03-07
-03-11
-03-13
-03-15
-03-19
-03-21
-03-25
-03-27
-03-29
-$0k
-$300k
-$600k
-$900k
-$1200k
-
-Strategy Comparison (% Return)
-01-01
-01-03
-01-05
-01-09
-01-11
-01-15
-01-17
-01-19
-01-23
-01-25
-01-29
-01-31
-02-02
-02-06
-02-08
-02-12
-02-14
-02-16
-02-20
-02-22
-02-26
-02-28
-03-01
-03-05
-03-07
-03-11
-03-13
-03-15
-03-19
-03-21
-03-25
-03-27
-03-29
--2%
-0%
-2%
-4%
-6%
-momentumtrend_followingmean_reversionma_crossover
-Order History
-Time	Symbol	Side	Type	Qty	Fill Price	Status	Strategy
-Jan 15, 09:31 AM	AAPL	BUY	LMT	150/150	$178.50	Filled	momentum
-Jan 15, 10:15 AM	MSFT	BUY	MKT	80/80	$410.00	Filled	trend_following
-Jan 15, 11:00 AM	GOOGL	SELL	LMT	50/50	$155.00	Filled	mean_reversion
-Jan 16, 09:45 AM	TSLA	BUY	STP	60/60	$245.00	Filled	breakout
-Jan 16, 10:30 AM	NVDA	BUY	LMT	40/40	$875.00	Filled	momentum
-Jan 17, 09:30 AM	SPY	BUY	MKT	200/200	$520.00	Filled	ma_crossover
-Jan 17, 02:00 PM	AMD	BUY	LMT	0/100	—	Cancelled	momentum
-
-
-Docker publish Python Publish Docker Pulls PyPI download month
-
-💬 Join the Matrix chat, we can get money together.
-
-Θ ThetaGang Θ
-Beat the capitalists at their own game with ThetaGang 📈
-
-Decay my sweet babies
-
-ThetaGang is an IBKR trading bot that started as a basic implementation of "The Wheel" strategy and has grown into a broader, configurable portfolio automation tool. The Wheel is a strategy that surfaced on Reddit, but has been used by many in the past. ThetaGang still supports a modified version of The Wheel, and now also includes features like direct share rebalancing, cash management, VIX call hedging, regime-aware rebalancing, and exchange-hours gating.
-
-Risk Disclaimer
-⚠️ WARNING: Options trading involves substantial risk and is not suitable for all investors. Selling options can result in significant losses, potentially exceeding your initial investment. Selling naked puts has theoretically unlimited downside risk if the underlying asset goes to zero. This is not a "free money" strategy—you are being compensated for taking on real financial risk.
-
-Before using ThetaGang:
-
-Understand that you can lose money, especially in trending or volatile markets
-Ensure you have sufficient capital to handle worst-case scenarios
-Be prepared to own the underlying securities at potentially unfavorable prices
-Consider paper trading first to understand the mechanics and risks
-Consult with a financial advisor if you're unsure about the risks
-How it works
-Start by reading the Reddit post to get some background.
-
-The strategy, as implemented here, does a few things differently from the one described in the post above. For one, it's intended to be used to augment a typical index-fund based portfolio with specific asset allocations. The default configuration includes a diversified portfolio with SPY (40%), QQQ (30%), TLT (20%), and smaller positions in individual stocks. This strategy reduces risk, but may also limit gains from big market swings. By reducing risk, one can increase leverage.
-
-ThetaGang is quite configurable, and you can adjust the parameters to suit your preferences and needs, but the default configuration is designed to be a good starting point. ThetaGang makes some assumptions about how to run this strategy, but you can tweak it to your liking by modifying the thetagang.toml file.
-
-The main difference between ThetaGang and simply buying and holding index funds is that this script will attempt to harvest volatility by selling options, rather than buying shares directly. This works because implied volatility is typically higher than realized volatility on average. Instead of buying shares, you write puts. This has pros and cons, which are outside the scope of this README.
-
-ThetaGang can also be used in combination with other strategies such as PMCCs, Zebra, stock replacement, and so forth. For these strategies, however, ThetaGang will not manage long positions for you. You will need to manage these positions yourself. ThetaGang will, however, continue to execute the short legs of these strategies as long as you have the buying power available and set the appropriate configuration (in particular, by setting write_when.calculate_net_contracts = true).
-
-Running multiple strategies safely
-If you want to run materially different strategies, it is strongly recommended to use separate IBKR accounts (for example, separate linked sub-accounts) and fund each one independently.
-
-Mixing multiple strategy styles in one account can produce confusing or harmful interactions because ThetaGang decisions are account-level. Buying power usage, position targeting, rebalancing logic, option rolls, cash management, and hedge logic all see the same combined portfolio and can interfere with each other in ways that are hard to reason about.
-
-In practice, one strategy per account is usually the cleanest setup:
-
-Cleaner risk boundaries and capital budgets
-Cleaner performance attribution
-Fewer unexpected cross-strategy side effects
-Easier debugging when behavior is not what you expected
-Over time, additional features were added to support different portfolio workflows and risk controls. You can enable or disable them independently via config:
-
-Direct share rebalancing (buy-only and sell-only modes)
-Cash management via a cash-equivalent fund
-VIX call hedging
-Regime-aware rebalancing gates
-Exchange-hours enforcement
-ThetaGang will try to acquire your desired allocation of each stock or ETF according to the weights you specify in the config. To acquire the positions, the script will write puts when conditions are met (config parameters, adequate buying power, acceptable contracts are available, enough shares needed, etc).
-
-ThetaGang will continue to roll any open option positions indefinitely, with the only exception being ITM puts (although this is configurable). Once puts are in the money, they will be ignored until they expire and are exercised (after which you will own the underlying). When rolling puts, the strike of the new contracts are capped at the old strike plus the premium received (to prevent your account from blowing due to over-ratcheting up the buying power usage).
-
-If puts are exercised due to being ITM at expiration, you will own the stock, and ThetaGang switches from writing puts to writing calls at a strike at least as high as the average cost of the stock held. To avoid missing out on upward moves, you can limit the number of calls that are written with write_when.calls.cap_factor, such as setting this to 0.5 to limit the number of calls to 50% of the shares held.
-
-Please note: this strategy is based on the assumption that implied volatility is, on average, always higher than realized volatility. In cases where this is not true, this strategy will cause you to lose money.
-
-In the case of deep ITM calls, the bot will prefer to roll the calls to next strike or expiration rather than allowing the underlying to get called away. If you don't have adequate buying power available in your account, it's possible that the options may get exercised instead of rolling forward and the process starts back at the beginning. Please keep in mind this may have tax implications, but that is outside the scope of this README.
-
-In normal usage, you would run the script as a cronjob on a daily, weekly, or monthly basis according to your preferences. Running more frequently than daily is not recommended, but the choice is yours. Some features (like regime-aware rebalancing) assume a daily cadence.
-
-
-
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol AAPL --strategy momentum --years 2
+Traceback (most recent call last):
+  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
+    from src.backtesting.engine import BacktestEngine
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
+    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
+    import structlog
+ModuleNotFoundError: No module named 'structlog'
+PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol SPY,QQQ,IWM --strategy ma_crossover --years 5
+Traceback (most recent call last):
+  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
+    from src.backtesting.engine import BacktestEngine
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
+    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
+    import structlog
+ModuleNotFoundError: No module named 'structlog'
+PS C:\Users\binar\PycharmProjects\trading> python scripts/backtest.py --symbol MSFT --strategy mean_reversion --start 2020-01-01 --end 2024-12-31
+Traceback (most recent call last):
+  File "C:\Users\binar\PycharmProjects\trading\scripts\backtest.py", line 29, in <module>
+    from src.backtesting.engine import BacktestEngine
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\__init__.py", line 7, in <module>
+    from src.backtesting.engine import BacktestEngine, BacktestResult, BacktestTrade
+  File "C:\Users\binar\PycharmProjects\trading\src\backtesting\engine.py", line 21, in <module>
+    import structlog
+ModuleNotFoundError: No module named 'structlog'
+PS C:\Users\binar\PycharmProjects\trading>
