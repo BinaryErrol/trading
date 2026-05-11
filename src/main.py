@@ -106,6 +106,9 @@ class TradingBot:
         self._wire_signal_flow()
         self._wire_event_flow()
 
+        # Step 6.5: Subscribe to market data for all strategy symbols
+        await self._subscribe_market_data()
+
         # Step 7: Start strategies with isolation
         await self._start_strategies()
 
@@ -404,6 +407,31 @@ class TradingBot:
 
         except Exception as exc:
             log.error("reconciliation_error", error=str(exc))
+
+    # ------------------------------------------------------------------
+    # Market Data Subscription
+    # ------------------------------------------------------------------
+
+    async def _subscribe_market_data(self) -> None:
+        """Subscribe to market data for all symbols across all configured strategies."""
+        if not self._market_data_hub:
+            log.warning("market_data_subscription_skipped", reason="no market data hub")
+            return
+
+        # Collect all unique symbols from all enabled strategies
+        all_symbols: set[str] = set()
+        for name, config in self.settings.strategies.items():
+            if config.enabled:
+                all_symbols.update(config.symbols)
+
+        # Subscribe to each symbol
+        for symbol in sorted(all_symbols):
+            try:
+                self._market_data_hub.subscribe(symbol)
+            except Exception as exc:
+                log.warning("market_data_subscribe_failed", symbol=symbol, error=str(exc))
+
+        log.info("market_data_subscribed", symbols=sorted(all_symbols), count=len(all_symbols))
 
     # ------------------------------------------------------------------
     # Strategy Startup with Isolation
