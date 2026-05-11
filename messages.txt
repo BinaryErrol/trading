@@ -1,26 +1,53 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose up
-[+] Running 4/4
- ✔ Container ibkr-dashboard-ui  Running                                                                                                                                                             0.0s
- ✔ Container ibkr-postgres      Running                                                                                                                                                             0.0s
- ✔ Container ibkr-redis         Running                                                                                                                                                             0.0s
- ✔ Container ibkr-trading-bot   Running                                                                                                                                                             0.0s
-Attaching to ibkr-dashboard-ui, ibkr-postgres, ibkr-redis, ibkr-trading-bot
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:04 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:04 [error] 29#29: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:04 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:07 [error] 32#32: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:07 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:10 [error] 35#35: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:10 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:13 [error] 34#34: *9 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:13 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:16 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:16 [error] 33#33: *11 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:19 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:19 [error] 37#37: *13 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 2026/05/11 16:54:22 [error] 38#38: *15 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:22 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:25 [error] 39#39: *17 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:25 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
-ibkr-dashboard-ui  | 2026/05/11 16:54:28 [error] 40#40: *19 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: _, request: "GET /ws/live HTTP/1.1", upstream: "http://172.18.0.3:8080/ws/live", host: "localhost:3000"
-ibkr-dashboard-ui  | 172.18.0.1 - - [11/May/2026:16:54:28 +0000] "GET /ws/live HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AAPL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MSFT
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NVDA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=TSLA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=SPY
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=QQQ
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=META
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMZN
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMD
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NFLX
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=JPM
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=V
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=DIS
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-11 16:54:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-11 16:55:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-11 16:56:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+PS C:\Users\binar\PycharmProjects\trading>
