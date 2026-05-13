@@ -812,6 +812,46 @@ class TradingBot:
 
             # Step 3: Submit order (with rate limit backpressure)
             if self._order_manager:
+                # Calculate position size if strategy didn't provide one
+                if signal.suggested_size == Decimal("0") and self._capital_allocator:
+                    config_name = self._strategy_name_to_config.get(
+                        signal.strategy_name, signal.strategy_name
+                    )
+                    try:
+                        available = self._capital_allocator.get_available(config_name)
+                    except KeyError:
+                        available = Decimal("0")
+
+                    # Get current price from market data hub
+                    price = Decimal("0")
+                    if self._market_data_hub and signal.symbol in self._market_data_hub._subscriptions:
+                        ticker = self._market_data_hub._subscriptions[signal.symbol]
+                        mp = ticker.marketPrice() if hasattr(ticker, "marketPrice") else None
+                        if mp and mp == mp and mp > 0:
+                            price = Decimal(str(mp))
+                        elif hasattr(ticker, "last") and ticker.last == ticker.last and ticker.last > 0:
+                            price = Decimal(str(ticker.last))
+                        elif hasattr(ticker, "close") and ticker.close == ticker.close and ticker.close > 0:
+                            price = Decimal(str(ticker.close))
+
+                    if price > 0:
+                        # Use up to 1/num_symbols of available capital per position
+                        num_symbols = len(self._market_data_hub.subscribed_symbols) if self._market_data_hub else 15
+                        per_symbol_capital = available / Decimal(str(max(num_symbols, 1)))
+                        # Apply max_position_pct limit
+                        max_position = Decimal(str(self.settings.risk.max_position_pct)) * Decimal(str(self.settings.capital.total_capital))
+                        position_capital = min(per_symbol_capital, max_position)
+                        shares = int(position_capital / price)
+                        signal.suggested_size = Decimal(str(max(shares, 0)))
+
+                    if signal.suggested_size == Decimal("0"):
+                        log.debug(
+                            "signal_skipped_zero_size",
+                            strategy=signal.strategy_name,
+                            symbol=signal.symbol,
+                        )
+                        return
+
                 contract = self._make_contract(signal.symbol)
                 await self._order_manager.submit_order(signal, contract)
                 log.info(
