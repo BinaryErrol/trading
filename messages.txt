@@ -1,148 +1,55 @@
-strategies:
+ibkr-trading-bot exited with code 0
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50 -f
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='GOOGL', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=JPM
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='JPM', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=JPM
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=MA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='MA', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=MA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=META
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='META', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=META
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='MSFT', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='NFLX', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='NVDA', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='QQQ', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=SPY
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='SPY', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=SPY
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='TSLA', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] subscribing_market_data        symbol=V
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] market_data_subscribe_failed   error="Contract Contract(secType='STK', symbol='V', exchange='SMART', currency='USD') can't be hashed because no 'conId' value exists. Qualify contract to populate 'conId'." symbol=V
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] market_data_subscribed         count=17 symbols=['AAPL', 'AMD', 'AMZN', 'BTC', 'DIS', 'ETH', 'GOOGL', 'JPM', 'MA', 'META', 'MSFT', 'NFLX', 'NVDA', 'QQQ', 'SPY', 'TSLA', 'V']
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol_crypto total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 12:20:39 [warning  ] strategy_class_not_found       strategy=best_per_symbol_crypto
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] best_per_symbol_initialized    children=['mean_reversion', 'ma_crossover', 'rsi_divergence', 'momentum', 'vwap', 'trend_following'] mappings={'AAPL': 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategy_engine_starting       strategy_count=1
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategies_started             count=1 names=['BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 12:20:39 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:20:39 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:21:39 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:21:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:22:39 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:22:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:23:39 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:23:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:24:39 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:24:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
 
-#  regime_hmm:
-#    enabled: true
-#    frequency: "15min"
-#    symbols:
-#      - "AAPL"
-#      - "MSFT"
-#      - "GOOGL"
-#      - "AMZN"
-#      - "NVDA"
-#      - "SPY"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      hmm_lookback: 120
-#      volatility_window: 14
-#      trend_window: 14
-#      vol_threshold: 0.03
-#
-#  bandit:
-#    enabled: true
-#    frequency: "15min"
-#    symbols:
-#      - "AAPL"
-#      - "MSFT"
-#      - "GOOGL"
-#      - "AMZN"
-#      - "NVDA"
-#      - "SPY"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      gamma: 0.02
-#      switching_cost: 0.02
-#      min_rounds: 10
-#
-#  adaptive:
-#    enabled: true
-#    frequency: "15min"
-#    symbols:
-#      - "AAPL"
-#      - "MSFT"
-#      - "GOOGL"
-#      - "AMZN"
-#      - "NVDA"
-#      - "SPY"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      lookback_window: 30
-#      lookback_period: 10
-#      momentum_threshold: 0.0
-#
-#  momentum:
-#    enabled: true
-#    frequency: "15min"
-#    symbols:
-#      - "AAPL"
-#      - "MSFT"
-#      - "GOOGL"
-#      - "AMZN"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      # Number of bars to measure momentum over
-#      lookback_period: 20
-#      # Minimum momentum score to trigger a signal (0.0 to 1.0)
-#      momentum_threshold: 0.02
-#
-#  ma_crossover:
-#    enabled: true
-#    frequency: "1hour"
-#    symbols:
-#      - "SPY"
-#      - "QQQ"
-#      - "IWM"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      # Fast moving average period (bars)
-#      fast_period: 10
-#      # Slow moving average period (bars)
-#      slow_period: 30
-#      # Moving average type: "sma" or "ema"
-#      ma_type: "ema"
-#
-#  mean_reversion:
-#    enabled: true
-#    frequency: "5min"
-#    symbols:
-#      - "SPY"
-#      - "QQQ"
-#    asset_classes:
-#      - "equity"
-#    parameters:
-#      # Lookback window for mean calculation (bars)
-#      lookback_period: 20
-#      # Z-score threshold to trigger entry (standard deviations from mean)
-#      z_score_threshold: 2.0
-
-  best_per_symbol_crypto:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "BTC"
-      - "ETH"
-    asset_classes:
-      - "crypto"
-    parameters:
-      symbol_map:
-        BTC: "momentum"
-        ETH: "mean_reversion"
-        
-  crypto_momentum:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "BTC"
-      - "ETH"
-    asset_classes:
-      - "crypto"
-    parameters:
-      lookback_period: 14
-      momentum_threshold: 0.02
-
-  best_per_symbol:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "AAPL"
-      - "MSFT"
-      - "GOOGL"
-      - "NVDA"
-      - "TSLA"
-      - "SPY"
-      - "QQQ"
-      - "META"
-      - "AMZN"
-      - "AMD"
-      - "NFLX"
-      - "JPM"
-      - "V"
-      - "MA"
-      - "DIS"
-    asset_classes:
-      - "equity"
-    parameters: {}
