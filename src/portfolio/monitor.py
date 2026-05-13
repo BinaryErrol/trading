@@ -186,6 +186,25 @@ class PortfolioMonitor:
         """Get historical peak equity for drawdown calculation."""
         return self._peak_equity
 
+    def update_position_price(self, symbol: str, price: float) -> None:
+        """Update a position's current price and recalculate unrealized P&L.
+
+        Called by the tick processing loop whenever a new price arrives
+        for a symbol that has an open position.
+
+        Args:
+            symbol: The ticker symbol.
+            price: The latest market price.
+        """
+        if symbol not in self._positions:
+            return
+
+        pos = self._positions[symbol]
+        pos.current_price = Decimal(str(price))
+        pos.unrealized_pnl = (
+            (pos.current_price - pos.avg_entry_price) * pos.quantity
+        )
+
     def update_equity(self, current_equity: Decimal) -> None:
         """Update current equity and track peak for drawdown calculation."""
         self._total_equity = current_equity

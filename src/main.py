@@ -1079,6 +1079,12 @@ class TradingBot:
                         tick_time=time.time(),
                     )
 
+                    # Update position unrealized P&L with live price
+                    if self._portfolio_monitor:
+                        self._portfolio_monitor.update_position_price(
+                            symbol, price
+                        )
+
         except asyncio.CancelledError:
             pass
 
