@@ -4,600 +4,296 @@ ibkr-trading-bot  | Running database migrations...
 ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
 ibkr-trading-bot  | Starting IBKR Trading Bot...
-ibkr-trading-bot  | 2026-05-13 14:26:25 [info     ] trading_bot_starting           version=0.1.0
-ibkr-trading-bot  | 2026-05-13 14:26:25 [info     ] paper_trading_mode             port=7497
-ibkr-trading-bot  | 2026-05-13 14:26:25 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
-ibkr-trading-bot  | 2026-05-13 14:26:25 [info     ] database_connected
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] redis_connected                url=redis://redis:6379/0
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] market_data_type_set           market_data_type=3
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] account_verified               account_id=DUP075366 account_type=paper total_accounts=1
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] connected_to_ibkr              host=host.docker.internal port=7497
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] ibkr_connected                 host=host.docker.internal mode=tws port=7497
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] components_initialized
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] positions_loaded               count=0
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] reconciliation_complete        has_discrepancies=False summary='matched=0'
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] reconciliation_clean           summary='matched=0'
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] signal_flow_wired
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] event_flow_wired
-ibkr-trading-bot  | 2026-05-13 14:26:26 [info     ] market_data_subscribed_symbol  conId=265598 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:27 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:27 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:27 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:26:28 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:28 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:26:29 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:29 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:29 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:30 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:30 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:30 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:31 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:31 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] market_data_subscribed         count=17 total=17
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=momentum
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=trend_following
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=vwap
-ibkr-trading-bot  | 2026-05-13 14:26:32 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] best_per_symbol_initialized    children=['momentum', 'mean_reversion', 'ma_crossover', 'trend_following', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] paper_trading_mode             port=7497
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] database_connected
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] market_data_type_set           market_data_type=4
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] account_verified               account_id=DUP075366 account_type=paper total_accounts=1
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] connected_to_ibkr              host=host.docker.internal port=7497
+ibkr-trading-bot  | 2026-05-13 14:40:31 [info     ] ibkr_connected                 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] components_initialized
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] positions_loaded               count=0
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] reconciliation_complete        has_discrepancies=False summary='matched=0'
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] reconciliation_clean           summary='matched=0'
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] signal_flow_wired
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] event_flow_wired
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] market_data_subscribed_symbol  conId=265598 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:32 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:33 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:33 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 14:40:33 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:34 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 14:40:34 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:34 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:35 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:35 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:35 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:36 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:36 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:37 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:37 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:37 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] tick_processing_started
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] best_per_symbol_initialized    children=['momentum', 'trend_following', 'ma_crossover', 'rsi_divergence', 'mean_reversion', 'vwap'] mappings={'AAPL':
  'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
 following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_engine_starting       strategy_count=2
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_enabled               strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
-ibkr-trading-bot  | 2026-05-13 14:26:32 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] pnl_tracker_started            interval=60
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] pnl_tracker_initialized
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] trading_bot_running            mode=paper
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:26:33 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:26:33 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:03 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:27:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:27:33 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:27:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:03 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:28:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:28:33 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:28:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:03 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:29:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:29:33 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:29:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:03 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:30:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:30:33 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:30:33 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 14:31:03 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 14:31:03 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_trend_following available=0 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_ma_crossover available=0 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 14:40:38 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 14:40:38 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+ibkr-trading-bot  |   self._redis.set(
+ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ibkr-trading-bot  | 2026-05-13 14:41:38 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 14:42:38 [info     ] positions_synced               added=0 removed=0 total_positions=0
 
