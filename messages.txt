@@ -1,20 +1,257 @@
- 1 file changed, 3 insertions(+), 89 deletions(-)
-PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM strategy_snapshots;"
- count
--------
-     0
-(1 row)
+ibkr-trading-bot  | 2026-05-13 21:17:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:18:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:18:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:18:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:18:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:18:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:18:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:19:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:19:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:19:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:19:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:19:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:19:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:20:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:20:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:20:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:20:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:20:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:20:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:21:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:21:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:21:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:21:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:21:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:21:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:22:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:22:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:22:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:22:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:22:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:22:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:23:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:23:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:23:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:23:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:23:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:23:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:24:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:24:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:24:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:24:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:24:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:24:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:25:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:25:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:25:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:25:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:25:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:25:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:26:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:26:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:26:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:26:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:26:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:26:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:27:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:27:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:27:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:27:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:27:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:27:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:28:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:28:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:28:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:28:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:28:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:28:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:29:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:29:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:29:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:29:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:29:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:29:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:30:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:30:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:30:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:30:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:30:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:30:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:31:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:31:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:31:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:31:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:31:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:31:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:32:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:32:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:32:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:32:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:32:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:32:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:33:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:33:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:33:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:33:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:33:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:33:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:34:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:34:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:34:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:34:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:34:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:34:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:35:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:35:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:35:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:35:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:35:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:35:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:36:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:36:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:36:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:36:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:36:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:36:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:37:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:37:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:37:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:37:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:37:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:37:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:38:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:38:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:38:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:38:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:38:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:38:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:39:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:39:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:39:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:39:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:39:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:39:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:40:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:40:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:40:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:40:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:40:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:40:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:41:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:41:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:41:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:41:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:41:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:41:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:42:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:42:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:42:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:42:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:42:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:42:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:43:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:43:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:43:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:43:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:43:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:43:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 21:44:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:44:31 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 21:44:31 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 21:44:31 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 21:44:31 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 21:44:31 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | Peer closed connection.
+ibkr-trading-bot  | 2026-05-13 21:45:00 [warning  ] ibkr_connection_lost           attempts_so_far=0
+ibkr-trading-bot  | 2026-05-13 21:45:00 [info     ] reconnection_attempt           attempt=1 delay_seconds=2 max_retries=5
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 21:45:02 [error    ] reconnection_failed            attempt=1 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | 2026-05-13 21:45:02 [info     ] reconnection_attempt           attempt=2 delay_seconds=4 max_retries=5
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 21:45:06 [error    ] reconnection_failed            attempt=2 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | 2026-05-13 21:45:06 [info     ] reconnection_attempt           attempt=3 delay_seconds=8 max_retries=5
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 21:45:14 [error    ] reconnection_failed            attempt=3 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | 2026-05-13 21:45:14 [info     ] reconnection_attempt           attempt=4 delay_seconds=16 max_retries=5
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 21:45:30 [error    ] reconnection_failed            attempt=4 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | 2026-05-13 21:45:30 [info     ] reconnection_attempt           attempt=5 delay_seconds=32 max_retries=5
+ibkr-trading-bot  | 2026-05-13 21:45:31 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:45:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 21:46:02 [error    ] reconnection_failed            attempt=5 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | 2026-05-13 21:46:02 [error    ] all_reconnection_attempts_exhausted max_retries=5 msg='Connection halted. Strategies should be stopped.'
+ibkr-trading-bot  | 2026-05-13 21:46:02 [critical ] ibkr_connection_lost_permanently
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_engine_stopping
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_loop_cancelled        strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_state_changed         new=idle previous=running strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_disabled              strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_loop_cancelled        strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_state_changed         new=idle previous=running strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_disabled              strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 21:46:02 [info     ] strategy_engine_stopped
+ibkr-trading-bot  | 2026-05-13 21:46:02 [warning  ] critical_alert_sent            delivered_to=[] event_type=connection_lost title='IBKR Connection Lost'
+ibkr-trading-bot  | 2026-05-13 21:46:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:47:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:48:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:49:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:50:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:51:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:52:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:53:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:54:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:55:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:56:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:57:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:58:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 21:59:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:00:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:01:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:02:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:03:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:04:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:05:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:06:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:07:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:08:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:09:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:10:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:11:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:12:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:13:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:14:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:15:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:16:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:17:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:17:56 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 22:17:58 [info     ] websocket_disconnected         total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:17:58 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 22:17:58 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:17:58 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 22:18:00 [info     ] websocket_disconnected         total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:18:00 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 22:18:02 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:18:03 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 22:18:06 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:18:06 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 22:18:06 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 22:18:08 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 22:18:31 [warning  ] sync_positions_skipped         reason='not connected'
+ibkr-trading-bot  | 2026-05-13 22:19:31 [warning  ] sync_positions_skipped         reason='not connected'
 
-PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM orders;"
- count
--------
-     0
-(1 row)
 
-PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM trades;"
- count
--------
-     0
-(1 row)
 
-PS C:\Users\binar\PycharmProjects\trading>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
