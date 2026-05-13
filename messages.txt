@@ -197,3 +197,33 @@ ibkr-trading-bot  | Canceled order: Trade(contract=Contract(secType='STK', symbo
 
 
 
+IBKR Trading Bot
+Dashboard
+Overview
+Strategies
+Trades
+Disconnected
+Trade History
+Strategy
+
+All Strategies
+Symbol
+e.g. AAPL
+From
+
+yyyy/mm/dd
+To
+
+yyyy/mm/dd
+Strategy	Symbol	Direction	Entry	Exit	Qty	Realized P&L	Date
+wheel	MSFT	SELL_PUT	$3.10	—	1	+$0	2024-02-01
+trend_following	AMZN	BUY	$155.00	$162.30	100	+$730	2024-01-25
+momentum	META	BUY	$390.00	$415.50	30	+$765	2024-01-22
+wheel	AAPL	SELL_PUT	$2.45	$0.15	1	+$230	2024-01-18
+ma_crossover	SPY	BUY	$520.00	$525.80	200	+$1160	2024-01-17
+momentum	NVDA	BUY	$875.00	$920.50	40	+$1820	2024-01-16
+breakout	TSLA	BUY	$245.00	$238.70	60	$-378	2024-01-16
+mean_reversion	GOOGL	SELL	$155.00	$152.30	50	+$135	2024-01-15
+trend_following	MSFT	BUY	$410.00	$422.50	80	+$1000	2024-01-15
+momentum	AAPL	BUY	$178.50	$185.20	150	+$1005	2024-01-15
+$30k
