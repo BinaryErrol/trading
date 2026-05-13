@@ -222,10 +222,13 @@ class StrategyEngine:
         consecutive_failures = 0
         MAX_CONSECUTIVE_FAILURES = 5
 
+        # Determine if this strategy trades 24/7 assets (crypto)
+        is_always_on = "crypto" in (strategy.config.asset_classes or [])
+
         try:
             while True:
-                # Suppress intraday strategies outside market hours
-                if is_intraday and not _is_market_open():
+                # Suppress intraday strategies outside market hours (except crypto)
+                if is_intraday and not is_always_on and not _is_market_open():
                     logger.debug(
                         "strategy_suppressed_market_closed",
                         strategy=strategy.name,

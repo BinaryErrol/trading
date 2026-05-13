@@ -972,9 +972,19 @@ class TradingBot:
 
     @staticmethod
     def _make_contract(symbol: str) -> Any:
-        """Create a basic IBKR contract for a symbol."""
+        """Create a basic IBKR contract for a symbol.
+
+        Detects crypto symbols and creates the appropriate contract type.
+        IBKR crypto symbols: BTC, ETH, LTC, BCH, etc.
+        """
+        # Known crypto symbols on IBKR
+        crypto_symbols = {"BTC", "ETH", "LTC", "BCH", "DOT", "LINK", "UNI", "ADA", "SOL", "AVAX"}
+
         try:
-            from ib_async import Contract
+            from ib_async import Contract, Crypto
+
+            if symbol.upper() in crypto_symbols:
+                return Crypto(symbol, "PAXOS", "USD")
 
             contract = Contract()
             contract.symbol = symbol
@@ -987,8 +997,8 @@ class TradingBot:
             class _SimpleContract:
                 def __init__(self, sym: str):
                     self.symbol = sym
-                    self.secType = "STK"
-                    self.exchange = "SMART"
+                    self.secType = "CRYPTO" if sym.upper() in crypto_symbols else "STK"
+                    self.exchange = "PAXOS" if sym.upper() in crypto_symbols else "SMART"
                     self.currency = "USD"
 
             return _SimpleContract(symbol)

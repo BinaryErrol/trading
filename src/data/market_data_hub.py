@@ -213,10 +213,12 @@ def _make_contract(symbol: str, asset_class: str) -> Any:
     Here we use a simple namespace for testability.
     """
     try:
-        from ib_async import Contract, Forex
+        from ib_async import Contract, Crypto, Forex
 
         if asset_class.upper() == "FOREX":
             return Forex(symbol)
+        if asset_class.upper() == "CRYPTO":
+            return Crypto(symbol, "PAXOS", "USD")
         contract = Contract()
         contract.symbol = symbol
         contract.secType = asset_class.upper()
@@ -229,7 +231,7 @@ def _make_contract(symbol: str, asset_class: str) -> Any:
             def __init__(self, sym: str, sec_type: str):
                 self.symbol = sym
                 self.secType = sec_type
-                self.exchange = "SMART"
+                self.exchange = "PAXOS" if sec_type == "CRYPTO" else "SMART"
                 self.currency = "USD"
 
         return _SimpleContract(symbol, asset_class.upper())
