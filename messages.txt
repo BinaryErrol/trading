@@ -1,229 +1,204 @@
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_ma_crossover available=15 required=31 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_ma_crossover available=15 required=31 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [debug    ] insufficient_bars_for_mean_reversion available=15 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=80.14 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=90.94 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=89.13 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=89.42 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=88.67 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=87.59 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.05 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=77.42 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.14 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] rsi_overbought_signal          overbought=70 rsi=77.52 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] order_approved                 size=0 strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] order_submitted                direction=SHORT exchange=SMART order_id=37 order_type=MKT quantity=12 strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:32:26 [info     ] signal_processed_to_order      direction=SHORT strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | IBKR API validation warning: Trade(contract=Contract(secType='STK', symbol='NVDA', exchange='SMART', currency='USD'), order=MarketOrder(orderId=37, clientId=1, action='SELL', totalQ
-uantity=12.0), orderStatus=OrderStatus(orderId=37, status='ValidationError', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.
-0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 5, 13, 18, 32, 26, 914256, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.dat
-etime(2026, 5, 13, 18, 32, 26, 963044, tzinfo=datetime.timezone.utc), status='ValidationError', message='Warning 2139, reqId 37: Real paper-trading has not been acknowledged yet.', errorCode=2139)], advancedError='')
-ibkr-trading-bot  | Error 10349, reqId 37: Order TIF was set to DAY based on order preset.
-ibkr-trading-bot  | Canceled order: Trade(contract=Contract(secType='STK', symbol='NVDA', exchange='SMART', currency='USD'), order=MarketOrder(orderId=37, clientId=1, action='SELL', totalQuantity=12.0)
-, orderStatus=OrderStatus(orderId=37, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[
-TradeLogEntry(time=datetime.datetime(2026, 5, 13, 18, 32, 26, 914256, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 5, 13,
-18, 32, 26, 963044, tzinfo=datetime.timezone.utc), status='ValidationError', message='Warning 2139, reqId 37: Real paper-trading has not been acknowledged yet.', errorCode=2139), TradeLogEntry(time=dat
-etime.datetime(2026, 5, 13, 18, 32, 58, 306800, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 37: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=71.97 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=77.33 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.51 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.91 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=79.7 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=84.19 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.93 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_oversold_signal            oversold=30 rsi=26.09 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.92 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=71.97 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=77.33 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.51 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.91 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=79.7 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=84.19 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.93 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_oversold_signal            oversold=30 rsi=26.09 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.92 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_trend_following available=16 required=44 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_ma_crossover available=16 required=31 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=V
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [debug    ] insufficient_bars_for_mean_reversion available=16 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=71.97 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=77.33 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.51 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=75.91 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=79.7 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=84.19 symbol=META
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.93 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_oversold_signal            oversold=30 rsi=26.09 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.92 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] position_added_from_ibkr       quantity=Decimal('-12.0') symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] positions_synced               added=0 removed=0 total_positions=1
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] order_approved                 size=0 strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] order_submitted                direction=SHORT exchange=SMART order_id=38 order_type=MKT quantity=12 strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 18:33:26 [info     ] signal_processed_to_order      direction=SHORT strategy=BestPerSymbolStrategy symbol=NVDA
-ibkr-trading-bot  | Error 10349, reqId 38: Order TIF was set to DAY based on order preset.
-ibkr-trading-bot  | Canceled order: Trade(contract=Contract(secType='STK', symbol='NVDA', exchange='SMART', currency='USD'), order=MarketOrder(orderId=38, clientId=1, action='SELL', totalQuantity=12.0), orderStatus=OrderStatus(orderId=38, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 5, 13, 18, 33, 26, 929221, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 5, 13, 18, 33, 27, 195742, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 38: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
-
-
-
-
-IBKR Trading Bot
-Dashboard
-Overview
-Strategies
-Trades
-Disconnected
-Trade History
-Strategy
-
-All Strategies
-Symbol
-e.g. AAPL
-From
-
-yyyy/mm/dd
-To
-
-yyyy/mm/dd
-Strategy	Symbol	Direction	Entry	Exit	Qty	Realized P&L	Date
-wheel	MSFT	SELL_PUT	$3.10	—	1	+$0	2024-02-01
-trend_following	AMZN	BUY	$155.00	$162.30	100	+$730	2024-01-25
-momentum	META	BUY	$390.00	$415.50	30	+$765	2024-01-22
-wheel	AAPL	SELL_PUT	$2.45	$0.15	1	+$230	2024-01-18
-ma_crossover	SPY	BUY	$520.00	$525.80	200	+$1160	2024-01-17
-momentum	NVDA	BUY	$875.00	$920.50	40	+$1820	2024-01-16
-breakout	TSLA	BUY	$245.00	$238.70	60	$-378	2024-01-16
-mean_reversion	GOOGL	SELL	$155.00	$152.30	50	+$135	2024-01-15
-trend_following	MSFT	BUY	$410.00	$422.50	80	+$1000	2024-01-15
-momentum	AAPL	BUY	$178.50	$185.20	150	+$1005	2024-01-15
-$30k
+t_bars_for_trend_following available=23 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_trend_following available=23 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] insufficient_bars_for_ma_crossover available=23 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] mean_reversion_short_signal    symbol=GOOGL threshold=2.0 z_score=2.1265
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] rsi_overbought_signal          overbought=70 rsi=71.05 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.24 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.76 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] rsi_oversold_signal            oversold=30 rsi=21.05 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:40:26 [debug    ] position_updated               quantity=Decimal('-48.0') symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:40:26 [info     ] positions_synced               added=0 removed=0 total_positions=1
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.59 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=78.37 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.49 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_oversold_signal            oversold=30 rsi=21.71 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.59 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=78.37 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.49 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_oversold_signal            oversold=30 rsi=21.71 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_short_signal    symbol=GOOGL threshold=2.0 z_score=2.0622
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.0187
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_short_signal    symbol=GOOGL threshold=2.0 z_score=2.0622
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.0187
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_short_signal    symbol=GOOGL threshold=2.0 z_score=2.0622
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.0187
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_trend_following available=24 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] insufficient_bars_for_ma_crossover available=24 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_short_signal    symbol=GOOGL threshold=2.0 z_score=2.0622
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.0187
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.59 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=78.37 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_overbought_signal          overbought=70 rsi=74.49 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] rsi_oversold_signal            oversold=30 rsi=21.71 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:41:26 [debug    ] position_updated               quantity=Decimal('-48.0') symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] positions_synced               added=0 removed=0 total_positions=1
+ibkr-trading-bot  | 2026-05-13 18:41:26 [warning  ] order_rejected_halted          reason='Portfolio drawdown 10.9% exceeds max 10.0%' symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:41:26 [info     ] signal_rejected_risk           reason='Trading halted: Portfolio drawdown 10.9% exceeds max 10.0%' strategy=BestPerSymbolStrategy symbol=TSLA        
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_oversold_signal            oversold=30 rsi=27.48 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=73.1 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.54 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.26 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_oversold_signal            oversold=30 rsi=27.48 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=73.1 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.54 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.26 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.1583
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.1583
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.1583
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_trend_following available=25 required=44 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] insufficient_bars_for_ma_crossover available=25 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] mean_reversion_long_signal     symbol=TSLA threshold=2.0 z_score=-2.1583
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_oversold_signal            oversold=30 rsi=27.48 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=73.1 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=76.54 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] rsi_overbought_signal          overbought=70 rsi=72.26 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:42:26 [debug    ] position_updated               quantity=Decimal('-48.0') symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] positions_synced               added=0 removed=0 total_positions=1
+ibkr-trading-bot  | 2026-05-13 18:42:26 [warning  ] order_rejected_halted          reason='Portfolio drawdown 10.9% exceeds max 10.0%' symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 18:42:26 [info     ] signal_rejected_risk           reason='Trading halted: Portfolio drawdown 10.9% exceeds max 10.0%' strategy=BestPerSymbolStrategy symbol=TSLA     
