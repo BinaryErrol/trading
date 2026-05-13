@@ -11,11 +11,10 @@ Models correspond to the database schema defined in the design document:
 
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 
 from sqlalchemy import (
-    ARRAY,
     JSON,
     Date,
     DateTime,
@@ -57,8 +56,8 @@ class PositionRecord(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=lambda: datetime.now(timezone.utc),
-        onupdate=lambda: datetime.now(timezone.utc),
+        default=lambda: datetime.now(UTC),
+        onupdate=lambda: datetime.now(UTC),
     )
 
     def __repr__(self) -> str:
@@ -95,7 +94,7 @@ class OrderRecord(Base):
     rejection_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     # Relationship to trades
-    trades: Mapped[list["TradeRecord"]] = relationship(
+    trades: Mapped[list[TradeRecord]] = relationship(
         "TradeRecord", back_populates="order", lazy="selectin"
     )
 
@@ -128,7 +127,7 @@ class TradeRecord(Base):
     executed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
     # Relationship to order
-    order: Mapped["OrderRecord | None"] = relationship(
+    order: Mapped[OrderRecord | None] = relationship(
         "OrderRecord", back_populates="trades", lazy="selectin"
     )
 
@@ -186,7 +185,7 @@ class BacktestResultRecord(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=lambda: datetime.now(timezone.utc),
+        default=lambda: datetime.now(UTC),
     )
 
     def __repr__(self) -> str:
@@ -214,7 +213,7 @@ class AlertLogRecord(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=lambda: datetime.now(timezone.utc),
+        default=lambda: datetime.now(UTC),
         index=True,
     )
 

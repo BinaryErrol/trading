@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import time
 from collections import deque
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
-from typing import Callable
 
 import structlog
 
@@ -71,7 +71,9 @@ class BarBuilder:
     _close: float | None = field(default=None, init=False, repr=False)
     _volume: float = field(default=0.0, init=False, repr=False)
     _bar_start: float | None = field(default=None, init=False, repr=False)
-    _completed_bars: deque[Bar] = field(default_factory=lambda: deque(maxlen=1000), init=False, repr=False)
+    _completed_bars: deque[Bar] = field(
+        default_factory=lambda: deque(maxlen=1000), init=False, repr=False
+    )
 
     def _get_bar_boundary(self, tick_time: float) -> float:
         """Calculate the start of the current bar period for a given timestamp."""
@@ -104,7 +106,7 @@ class BarBuilder:
                 low=price,
                 close=price,
                 volume=volume,
-                timestamp=datetime.fromtimestamp(tick_time, tz=timezone.utc),
+                timestamp=datetime.fromtimestamp(tick_time, tz=UTC),
             )
             self._completed_bars.append(bar)
             if self.on_bar_complete:
@@ -134,7 +136,7 @@ class BarBuilder:
                 low=self._low,  # type: ignore[arg-type]
                 close=self._close,  # type: ignore[arg-type]
                 volume=self._volume,
-                timestamp=datetime.fromtimestamp(self._bar_start, tz=timezone.utc),
+                timestamp=datetime.fromtimestamp(self._bar_start, tz=UTC),
             )
             self._completed_bars.append(completed_bar)
             if self.on_bar_complete:
@@ -173,14 +175,13 @@ class BarBuilder:
             low=self._low,  # type: ignore[arg-type]
             close=self._close,  # type: ignore[arg-type]
             volume=self._volume,
-            timestamp=datetime.fromtimestamp(self._bar_start, tz=timezone.utc),
+            timestamp=datetime.fromtimestamp(self._bar_start, tz=UTC),
         )
 
     @property
     def completed_bars(self) -> list[Bar]:
         """Return all completed bars accumulated by this builder."""
         return list(self._completed_bars)
-
 
     def get_latest_completed_bar(self) -> Bar | None:
         """Return the most recently completed bar, or None."""

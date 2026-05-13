@@ -5,8 +5,8 @@ on change. Invalid configs are logged but don't interrupt the running bot.
 """
 
 import asyncio
+from collections.abc import Awaitable, Callable
 from pathlib import Path
-from typing import Awaitable, Callable
 
 import structlog
 from pydantic import ValidationError

@@ -9,7 +9,7 @@ from __future__ import annotations
 import csv
 import math
 from collections import deque
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -126,6 +126,8 @@ class PortfolioMonitor:
 
         # Build a set of symbols from IBKR
         ibkr_symbols: set[str] = set()
+        existing_symbols = set(self._positions.keys())
+        added_count = 0
 
         for pos in ibkr_positions:
             symbol = pos.contract.symbol
@@ -153,10 +155,11 @@ class PortfolioMonitor:
                     realized_pnl=Decimal("0"),
                     opened_at=datetime.now(),
                 )
+                added_count += 1
                 logger.info("position_added_from_ibkr", symbol=symbol, quantity=quantity)
 
         # Remove positions no longer in IBKR
-        stale_symbols = set(self._positions.keys()) - ibkr_symbols
+        stale_symbols = existing_symbols - ibkr_symbols
         for symbol in stale_symbols:
             del self._positions[symbol]
             logger.info("position_removed", symbol=symbol, reason="not in IBKR")
@@ -164,7 +167,7 @@ class PortfolioMonitor:
         logger.info(
             "positions_synced",
             total_positions=len(self._positions),
-            added=len(ibkr_symbols - set(self._positions.keys())),
+            added=added_count,
             removed=len(stale_symbols),
         )
 

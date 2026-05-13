@@ -9,8 +9,8 @@ Trailing stop: stop_price = highest_price - N * ATR, only moves up
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass
+from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Literal
 
@@ -129,7 +129,9 @@ class StopMonitor:
         )
         return stop_level
 
-    def update_price(self, symbol: str, current_price: Decimal, atr: Decimal | None = None) -> StopLevel | None:
+    def update_price(
+        self, symbol: str, current_price: Decimal, atr: Decimal | None = None
+    ) -> StopLevel | None:
         """Update the highest price and trailing stop for a position.
 
         For trailing stops, the stop_price only moves up (never down).
@@ -218,7 +220,7 @@ class StopMonitor:
                         "entry_price": str(stop.entry_price),
                         "direction": stop.direction.value,
                     },
-                    timestamp=datetime.now(timezone.utc),
+                    timestamp=datetime.now(UTC),
                 )
                 close_signals.append(signal)
                 triggered_symbols.append(symbol)

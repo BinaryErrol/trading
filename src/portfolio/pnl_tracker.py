@@ -88,9 +88,7 @@ class PnLTracker:
         if self._running:
             return
         self._running = True
-        self._update_task = asyncio.create_task(
-            self._update_loop(), name="pnl-tracker-update"
-        )
+        self._update_task = asyncio.create_task(self._update_loop(), name="pnl-tracker-update")
         logger.info("pnl_tracker_started", interval=self._update_interval)
 
     async def stop(self) -> None:
@@ -130,8 +128,11 @@ class PnLTracker:
         # Unrealized from open positions
         positions = self._portfolio_monitor.positions
         unrealized = sum(
-            (pos.unrealized_pnl for pos in positions.values()
-             if pos.strategy_name == strategy_name),
+            (
+                pos.unrealized_pnl
+                for pos in positions.values()
+                if pos.strategy_name == strategy_name
+            ),
             Decimal("0"),
         )
 
@@ -140,8 +141,9 @@ class PnLTracker:
         try:
             async with self._db_session_factory() as session:
                 result = await session.execute(
-                    select(func.coalesce(func.sum(TradeRecord.price * TradeRecord.quantity), 0))
-                    .where(TradeRecord.strategy_name == strategy_name)
+                    select(
+                        func.coalesce(func.sum(TradeRecord.price * TradeRecord.quantity), 0)
+                    ).where(TradeRecord.strategy_name == strategy_name)
                 )
                 row = result.scalar_one_or_none()
                 if row is not None:
@@ -151,8 +153,7 @@ class PnLTracker:
 
         # Also include realized P&L from positions
         realized += sum(
-            (pos.realized_pnl for pos in positions.values()
-             if pos.strategy_name == strategy_name),
+            (pos.realized_pnl for pos in positions.values() if pos.strategy_name == strategy_name),
             Decimal("0"),
         )
 
@@ -173,9 +174,7 @@ class PnLTracker:
         # Also gather from trades in DB
         try:
             async with self._db_session_factory() as session:
-                result = await session.execute(
-                    select(TradeRecord.strategy_name).distinct()
-                )
+                result = await session.execute(select(TradeRecord.strategy_name).distinct())
                 for row in result.scalars().all():
                     strategy_names.add(row)
         except Exception as exc:
@@ -269,8 +268,7 @@ class PnLTracker:
 
                     # Count trades for this strategy today
                     trade_count_result = await session.execute(
-                        select(func.count(TradeRecord.id))
-                        .where(TradeRecord.strategy_name == name)
+                        select(func.count(TradeRecord.id)).where(TradeRecord.strategy_name == name)
                     )
                     trade_count = trade_count_result.scalar_one() or 0
 
@@ -340,10 +338,7 @@ class PnLTracker:
                 result = await session.execute(query)
                 records = result.scalars().all()
 
-            return [
-                EquityPoint(date=r.date, equity=r.equity)
-                for r in records
-            ]
+            return [EquityPoint(date=r.date, equity=r.equity) for r in records]
         except Exception as exc:
             logger.error(
                 "equity_history_query_error",
@@ -388,11 +383,19 @@ class PnLTracker:
                     query = query.where(TradeRecord.symbol == symbol)
                     count_query = count_query.where(TradeRecord.symbol == symbol)
                 if start is not None:
-                    query = query.where(TradeRecord.executed_at >= datetime.combine(start, datetime.min.time()))
-                    count_query = count_query.where(TradeRecord.executed_at >= datetime.combine(start, datetime.min.time()))
+                    query = query.where(
+                        TradeRecord.executed_at >= datetime.combine(start, datetime.min.time())
+                    )
+                    count_query = count_query.where(
+                        TradeRecord.executed_at >= datetime.combine(start, datetime.min.time())
+                    )
                 if end is not None:
-                    query = query.where(TradeRecord.executed_at <= datetime.combine(end, datetime.max.time()))
-                    count_query = count_query.where(TradeRecord.executed_at <= datetime.combine(end, datetime.max.time()))
+                    query = query.where(
+                        TradeRecord.executed_at <= datetime.combine(end, datetime.max.time())
+                    )
+                    count_query = count_query.where(
+                        TradeRecord.executed_at <= datetime.combine(end, datetime.max.time())
+                    )
 
                 # Get total count
                 total_result = await session.execute(count_query)

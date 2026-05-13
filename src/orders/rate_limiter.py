@@ -55,6 +55,10 @@ class RateLimiter:
     def try_acquire(self) -> bool:
         """Try to acquire a token without waiting.
 
+        Note: This method does NOT hold the async lock. It is safe to call
+        from a single coroutine but must not be called concurrently from
+        multiple coroutines. Use `acquire()` for concurrent-safe access.
+
         Returns:
             True if a token was acquired, False if rate limit would be exceeded.
         """

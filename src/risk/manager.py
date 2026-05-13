@@ -6,9 +6,10 @@ checks before approving any order. Halts trading when thresholds are breached.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from decimal import Decimal
-from typing import Any, Callable, Protocol
+from typing import Any, Protocol
 
 import structlog
 

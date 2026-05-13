@@ -6,12 +6,12 @@ lifecycle stages, handles partial fills, rejections, and stale order cancellatio
 
 from __future__ import annotations
 
-import asyncio
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from enum import Enum
-from typing import Any, Callable, Protocol
+from typing import Any, Protocol
 
 import structlog
 
@@ -46,7 +46,7 @@ class ManagedOrder:
     limit_price: Decimal | None = None
     stop_price: Decimal | None = None
     status: OrderStatus = OrderStatus.PENDING
-    submitted_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    submitted_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     filled_quantity: Decimal = Decimal("0")
     avg_fill_price: Decimal | None = None
     timeout: timedelta = field(default_factory=lambda: timedelta(seconds=60))
@@ -161,7 +161,7 @@ class OrderManager:
             limit_price=signal.limit_price,
             stop_price=signal.stop_price,
             status=OrderStatus.PENDING,
-            submitted_at=datetime.now(timezone.utc),
+            submitted_at=datetime.now(UTC),
             timeout=timeout,
             exchange=target_exchange,
         )
@@ -254,15 +254,19 @@ class OrderManager:
                 action,
                 float(signal.suggested_size),
                 float(signal.limit_price) if signal.limit_price else 0.0,
-                float(signal.limit_price * Decimal("1.05")) if signal.limit_price else 0.0,
+                float(signal.limit_price * Decimal("1.05"))
+                if signal.limit_price
+                else 0.0,
                 float(signal.stop_price) if signal.stop_price else 0.0,
             )
-            # Place all bracket orders
-            for o in bracket:
+            # Place all bracket orders and return the parent trade
+            parent_trade = None
+            for i, o in enumerate(bracket):
                 o.exchange = exchange
-                ib.placeOrder(contract, o)
-            # Return the parent trade
-            return None
+                trade = ib.placeOrder(contract, o)
+                if i == 0:
+                    parent_trade = trade
+            return parent_trade
 
         return None
 
@@ -332,8 +336,16 @@ class OrderManager:
         managed = self._pending_orders[order_id]
 
         # Extract fill details
-        fill_qty = Decimal(str(fill.execution.shares)) if hasattr(fill, "execution") else Decimal("0")
-        fill_price = Decimal(str(fill.execution.price)) if hasattr(fill, "execution") else Decimal("0")
+        fill_qty = (
+            Decimal(str(fill.execution.shares))
+            if hasattr(fill, "execution")
+            else Decimal("0")
+        )
+        fill_price = (
+            Decimal(str(fill.execution.price))
+            if hasattr(fill, "execution")
+            else Decimal("0")
+        )
 
         # Update average fill price (weighted average)
         if managed.filled_quantity == Decimal("0"):
@@ -417,7 +429,7 @@ class OrderManager:
         Returns:
             List of order IDs that were cancelled.
         """
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         stale_ids: list[int] = []
 
         for order_id, managed in list(self._pending_orders.items()):

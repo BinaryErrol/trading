@@ -1,7 +1,8 @@
 """IBKR connection manager with reconnection logic and account verification."""
 
 import asyncio
-from typing import Any, Callable, Awaitable
+from collections.abc import Awaitable, Callable
+from typing import Any
 
 import structlog
 from ib_async import IB, Contract
@@ -80,7 +81,8 @@ class ConnectionManager:
     def _on_disconnected_sync(self) -> None:
         """Sync wrapper for disconnect event (ib_async fires sync events)."""
         self._connected = False
-        asyncio.ensure_future(self._on_disconnected())
+        task = asyncio.ensure_future(self._on_disconnected())
+        task.add_done_callback(self._log_task_exception)
 
     async def _on_disconnected(self) -> None:
         """Handle disconnection with exponential backoff reconnection."""
@@ -136,6 +138,19 @@ class ConnectionManager:
         )
         if self._on_connection_lost:
             await self._on_connection_lost()
+
+    @staticmethod
+    def _log_task_exception(task: asyncio.Task) -> None:
+        """Log unhandled exceptions from fire-and-forget reconnection tasks."""
+        if task.cancelled():
+            return
+        exc = task.exception()
+        if exc is not None:
+            logger.error(
+                "reconnection_task_failed",
+                error=str(exc),
+                exc_info=exc,
+            )
 
     async def _verify_account(self) -> dict[str, Any]:
         """Verify account permissions and log account type (paper/live)."""

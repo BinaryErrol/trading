@@ -440,7 +440,7 @@ class TestStrategyIsolation:
         working = WorkingStrategy()
 
         engine = StrategyEngine(strategies=[failing, working])
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
 
             # Let strategies run for a bit

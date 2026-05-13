@@ -138,7 +138,11 @@ class MarketMakingStrategy(BaseStrategy):
             # Inventory skew: shift quotes away from building inventory
             # Positive inventory → lower bid, higher ask (discourage more buying)
             # Negative inventory → higher bid, lower ask (discourage more selling)
-            inventory_ratio = self._current_inventory / self._inventory_limit if self._inventory_limit > 0 else 0.0
+            inventory_ratio = (
+                self._current_inventory / self._inventory_limit
+                if self._inventory_limit > 0
+                else 0.0
+            )
             skew = inventory_ratio * self._skew_factor * half_spread
 
             bid_price = mid_price - half_spread - skew
@@ -229,7 +233,7 @@ class MarketMakingStrategy(BaseStrategy):
             return 0.0
 
         # Use the last atr_period true ranges
-        recent_trs = true_ranges[-self._atr_period:]
+        recent_trs = true_ranges[-self._atr_period :]
         return sum(recent_trs) / len(recent_trs)
 
     def _resolve_timeframe(self) -> Timeframe:

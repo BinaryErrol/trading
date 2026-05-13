@@ -6,11 +6,11 @@ resume from the last known state after a restart or crash.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import structlog
-from sqlalchemy import select, update
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.persistence.models import OrderRecord, PositionRecord
@@ -43,7 +43,7 @@ async def save_position(
     Returns:
         The saved PositionRecord.
     """
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     opened = opened_at or now
 
     # Check for existing position

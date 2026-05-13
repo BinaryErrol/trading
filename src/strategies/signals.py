@@ -9,7 +9,7 @@ All modules that need Signal or SignalDirection should import from here.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from enum import Enum
 from typing import Any
@@ -82,5 +82,5 @@ class Signal:
     limit_price: Decimal | None = None
     stop_price: Decimal | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
-    timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = field(default_factory=lambda: datetime.now(UTC))
     option_params: OptionSignalParams | None = None

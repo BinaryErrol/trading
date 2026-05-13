@@ -1,6 +1,7 @@
 """Strategy implementations for the IBKR trading bot.
 
-Includes trend-based, mean-reversion, statistical, market making, adaptive meta, and options strategy families.
+Includes trend-based, mean-reversion, statistical, market making,
+adaptive meta, and options strategy families.
 """
 
 from src.strategies.implementations.adaptive import AdaptiveStrategy

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -20,14 +20,13 @@ import numpy as np
 import pandas as pd
 import structlog
 
-from src.backtesting.simulator import SimulatedExecution, SimulatedFill
+from src.backtesting.simulator import SimulatedExecution
 from src.config.settings import BacktestConfig
 from src.data.bar_builder import Bar, Timeframe
 from src.data.historical import load_historical_csv
 from src.portfolio.capital_allocator import AllocationMode, CapitalAllocator
-from src.risk.manager import RiskManager
 from src.strategies.base import BaseStrategy
-from src.strategies.signals import Signal, SignalDirection
+from src.strategies.signals import SignalDirection
 
 logger = structlog.get_logger(__name__)
 
@@ -173,7 +172,7 @@ class _BacktestDataHub:
                 low=float(row["low"]),
                 close=float(row["close"]),
                 volume=float(row["volume"]),
-                timestamp=row.name if isinstance(row.name, datetime) else datetime.now(timezone.utc),
+                timestamp=row.name if isinstance(row.name, datetime) else datetime.now(UTC),
             )
         except (IndexError, KeyError):
             return None
@@ -188,16 +187,18 @@ class _BacktestDataHub:
 
         bars = []
         for idx, row in tail.iterrows():
-            bars.append(Bar(
-                symbol=symbol,
-                timeframe=timeframe if timeframe else Timeframe.DAILY,
-                open=float(row["open"]),
-                high=float(row["high"]),
-                low=float(row["low"]),
-                close=float(row["close"]),
-                volume=float(row["volume"]),
-                timestamp=idx if isinstance(idx, datetime) else datetime.now(timezone.utc),
-            ))
+            bars.append(
+                Bar(
+                    symbol=symbol,
+                    timeframe=timeframe if timeframe else Timeframe.DAILY,
+                    open=float(row["open"]),
+                    high=float(row["high"]),
+                    low=float(row["low"]),
+                    close=float(row["close"]),
+                    volume=float(row["volume"]),
+                    timestamp=idx if isinstance(idx, datetime) else datetime.now(UTC),
+                )
+            )
         return bars
 
     def get_history_df(self, symbol: str, timeframe: Timeframe, periods: int) -> pd.DataFrame:
@@ -212,9 +213,7 @@ class _BacktestDataHub:
         """Async version of get_latest_bar."""
         return self.get_latest_bar(symbol, timeframe)
 
-    async def get_history_async(
-        self, symbol: str, timeframe: Timeframe, periods: int
-    ) -> list[Bar]:
+    async def get_history_async(self, symbol: str, timeframe: Timeframe, periods: int) -> list[Bar]:
         """Async version of get_history."""
         return self.get_history(symbol, timeframe, periods)
 
@@ -293,8 +292,12 @@ class BacktestEngine:
             strategy._data_hub = original_hub
 
         # Calculate metrics
-        actual_start = filtered_data.index[0].date() if hasattr(filtered_data.index[0], 'date') else start_date or date.today()
-        actual_end = filtered_data.index[-1].date() if hasattr(filtered_data.index[-1], 'date') else end_date or date.today()
+        idx_first = filtered_data.index[0]
+        idx_last = filtered_data.index[-1]
+        actual_start = (
+            idx_first.date() if hasattr(idx_first, "date") else start_date or date.today()
+        )
+        actual_end = idx_last.date() if hasattr(idx_last, "date") else end_date or date.today()
 
         result = self._calculate_metrics(
             strategy_name=strategy.name,
@@ -380,9 +383,16 @@ class BacktestEngine:
         actual_end = end_date or date.today()
 
         if not combined_equity.empty:
-            portfolio_return = Decimal(str(
-                (combined_equity.iloc[-1] - combined_equity.iloc[0]) / combined_equity.iloc[0]
-            )) if combined_equity.iloc[0] != 0 else Decimal("0")
+            portfolio_return = (
+                Decimal(
+                    str(
+                        (combined_equity.iloc[-1] - combined_equity.iloc[0])
+                        / combined_equity.iloc[0]
+                    )
+                )
+                if combined_equity.iloc[0] != 0
+                else Decimal("0")
+            )
         else:
             portfolio_return = Decimal("0")
 
@@ -432,6 +442,7 @@ class BacktestEngine:
         else:
             # IBKR source - delegate to historical module
             from src.data.historical import load_historical_ibkr
+
             return await load_historical_ibkr(symbol)
 
     def store_result(self, result: BacktestResult, filepath: Path | None = None) -> Path:
@@ -447,7 +458,7 @@ class BacktestEngine:
         if filepath is None:
             results_dir = Path(self._config.results_directory)
             results_dir.mkdir(parents=True, exist_ok=True)
-            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
             filepath = results_dir / f"{result.strategy_name}_{timestamp}.json"
 
         result_dict = {
@@ -509,7 +520,7 @@ class BacktestEngine:
         for idx in range(len(data)):
             guard.set_position(idx)
             row = data.iloc[idx]
-            current_time = row.name if isinstance(row.name, datetime) else datetime.now(timezone.utc)
+            current_time = row.name if isinstance(row.name, datetime) else datetime.now(UTC)
             current_price = Decimal(str(row["close"]))
 
             # Evaluate strategy
@@ -595,7 +606,11 @@ class BacktestEngine:
                     if pos_key not in open_positions:
                         # Calculate quantity from suggested size
                         # If suggested_size is 0, use 10% of available cash
-                        size = signal.suggested_size if signal.suggested_size > 0 else cash * Decimal("0.1")
+                        size = (
+                            signal.suggested_size
+                            if signal.suggested_size > 0
+                            else cash * Decimal("0.1")
+                        )
                         if current_price > 0:
                             quantity = size / current_price
                         else:
@@ -640,7 +655,9 @@ class BacktestEngine:
         # Close any remaining open positions at the end of the backtest
         if open_positions and len(data) > 0:
             final_price = Decimal(str(data.iloc[-1]["close"]))
-            final_time = data.index[-1] if isinstance(data.index[-1], datetime) else datetime.now(timezone.utc)
+            final_time = (
+                data.index[-1] if isinstance(data.index[-1], datetime) else datetime.now(UTC)
+            )
             for pos_key, pos in list(open_positions.items()):
                 fill = self._simulator.simulate_fill(
                     price=final_price,
@@ -733,9 +750,9 @@ class BacktestEngine:
 
         # Total return
         if not equity_curve.empty and equity_curve.iloc[0] != 0:
-            total_return = Decimal(str(
-                (equity_curve.iloc[-1] - equity_curve.iloc[0]) / equity_curve.iloc[0]
-            ))
+            total_return = Decimal(
+                str((equity_curve.iloc[-1] - equity_curve.iloc[0]) / equity_curve.iloc[0])
+            )
         else:
             total_return = Decimal("0")
 
@@ -762,18 +779,20 @@ class BacktestEngine:
         # Profit factor
         gross_profit = sum(float(t.pnl) for t in closed_trades if t.pnl > 0)
         gross_loss = abs(sum(float(t.pnl) for t in closed_trades if t.pnl < 0))
-        profit_factor = gross_profit / gross_loss if gross_loss > 0 else float("inf") if gross_profit > 0 else 0.0
+        profit_factor = (
+            gross_profit / gross_loss
+            if gross_loss > 0
+            else float("inf")
+            if gross_profit > 0
+            else 0.0
+        )
 
         # Average trade duration
         durations = []
         for t in closed_trades:
             if t.exit_time and t.entry_time:
                 durations.append(t.exit_time - t.entry_time)
-        avg_duration = (
-            sum(durations, timedelta()) / len(durations)
-            if durations
-            else timedelta()
-        )
+        avg_duration = sum(durations, timedelta()) / len(durations) if durations else timedelta()
 
         return BacktestResult(
             strategy_name=strategy_name,

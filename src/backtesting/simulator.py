@@ -10,7 +10,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
 
-from src.data.bar_builder import Bar
 from src.strategies.signals import OrderType, SignalDirection
 
 
