@@ -1,22 +1,30 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_rsi      available=1 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=BTC
-ibkr-trading-bot  | 2026-05-13 17:42:12 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=ETH
-ibkr-trading-bot  | 2026-05-13 17:42:12 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 17:43:12 [info     ] positions_synced               added=0 removed=0 total_positions=0
-PS C:\Users\binar\PycharmProjects\trading>
+IBKR Trading Bot
+Dashboard
+Overview
+Strategies
+Trades
+Disconnected
+Trade History
+Strategy
+
+All Strategies
+Symbol
+e.g. AAPL
+From
+
+yyyy/mm/dd
+To
+
+yyyy/mm/dd
+Strategy	Symbol	Direction	Entry	Exit	Qty	Realized P&L	Date
+wheel	MSFT	SELL_PUT	$3.10	—	1	+$0	2024-02-01
+trend_following	AMZN	BUY	$155.00	$162.30	100	+$730	2024-01-25
+momentum	META	BUY	$390.00	$415.50	30	+$765	2024-01-22
+wheel	AAPL	SELL_PUT	$2.45	$0.15	1	+$230	2024-01-18
+ma_crossover	SPY	BUY	$520.00	$525.80	200	+$1160	2024-01-17
+momentum	NVDA	BUY	$875.00	$920.50	40	+$1820	2024-01-16
+breakout	TSLA	BUY	$245.00	$238.70	60	$-378	2024-01-16
+mean_reversion	GOOGL	SELL	$155.00	$152.30	50	+$135	2024-01-15
+trend_following	MSFT	BUY	$410.00	$422.50	80	+$1000	2024-01-15
+momentum	AAPL	BUY	$178.50	$185.20	150	+$1005	2024-01-15
+$0k

@@ -169,7 +169,7 @@ strategies:
 
   best_per_symbol:
     enabled: true
-    frequency: "15min"
+    frequency: "1min"
     symbols:
       - "AAPL"
       - "MSFT"
@@ -192,7 +192,7 @@ strategies:
 
   momentum:
     enabled: true
-    frequency: "15min"
+    frequency: "1min"
     symbols:
       - "BTC"
       - "ETH"
