@@ -440,15 +440,38 @@ class TradingBot:
         for symbol in sorted(symbol_assets.keys()):
             asset_class = symbol_assets[symbol]
             try:
-                contract = self._make_contract(symbol)
-                # Override secType based on asset class
-                if asset_class == "crypto":
-                    # Crypto contracts are already built correctly by _make_contract
-                    pass
+                # Map config asset class names to IBKR secType
+                sec_type_map = {"equity": "STK", "option": "OPT", "future": "FUT", "forex": "FOREX", "crypto": "CRYPTO"}
+                sec_type = sec_type_map.get(asset_class.lower(), "STK")
+
+                # Build contract with correct secType
+                if sec_type == "CRYPTO":
+                    try:
+                        from ib_async import Crypto
+                        contract = Crypto(symbol, "PAXOS", "USD")
+                    except ImportError:
+                        continue
+                else:
+                    try:
+                        from ib_async import Stock
+                        contract = Stock(symbol, "SMART", "USD")
+                    except ImportError:
+                        continue
+
+                # Qualify to get conId
                 qualified = await ib.qualifyContractsAsync(contract)
                 if qualified:
-                    self._market_data_hub.subscribe(symbol, asset_class)
+                    # Subscribe using the qualified contract directly
+                    ticker = ib.reqMktData(contract)
+                    # Register in market data hub
+                    self._market_data_hub._subscriptions[symbol] = ticker
+                    if symbol not in self._market_data_hub._bar_builders:
+                        from src.data.bar_builder import BarBuilder, Timeframe
+                        self._market_data_hub._bar_builders[symbol] = {}
+                        for tf in self._market_data_hub.BAR_TIMEFRAMES:
+                            self._market_data_hub._bar_builders[symbol][tf] = BarBuilder(symbol=symbol, timeframe=tf)
                     qualified_count += 1
+                    log.info("market_data_subscribed_symbol", symbol=symbol, conId=contract.conId)
                 else:
                     log.warning("contract_qualification_failed", symbol=symbol)
             except Exception as exc:
