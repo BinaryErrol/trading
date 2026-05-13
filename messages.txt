@@ -1,60 +1,12 @@
-
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50 -f
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=ma_crossover
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=mean_reversion
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=bollinger
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=rsi_divergence
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=trend_following
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=breakout
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=vwap
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] adaptive_children_ready        children=['momentum', 'ma_crossover', 'mean_reversion', 'bollinger', 'rsi_divergence', 'trend_following', 'breakout', 'vwap'] count=8
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=vwap
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=momentum
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=trend_following
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] best_per_symbol_initialized    children=['rsi_divergence', 'vwap', 'momentum', 'ma_crossover', 'mean_reversion', 'trend_following'] mappings={'AAPL': 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_engine_starting       strategy_count=7
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=RegimeHMMStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=RegimeHMMStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=BanditStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=BanditStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=AdaptiveStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=AdaptiveStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_engine_started        active_strategies=['RegimeHMMStrategy', 'BanditStrategy', 'AdaptiveStrategy', 'MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy', 'BestPerSymbolStrategy']
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategies_started             count=7 names=['RegimeHMMStrategy', 'BanditStrategy', 'AdaptiveStrategy', 'MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy', 'BestPerSymbolStrategy']
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] pnl_tracker_started            interval=60
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] pnl_tracker_initialized
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] trading_bot_running            mode=paper
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=RegimeHMMStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=RegimeHMMStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BanditStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=BanditStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=AdaptiveStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=AdaptiveStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=1hour interval_seconds=3600.0 strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=5min interval_seconds=300.0 strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=RegimeHMMStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=BanditStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=AdaptiveStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 11:37:10 [info     ] positions_synced            
+best_per_symbol_crypto:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "BTC"
+      - "ETH"
+    asset_classes:
+      - "crypto"
+    parameters:
+      symbol_map:
+        BTC: "momentum"
+        ETH: "mean_reversion"
