@@ -1186,6 +1186,8 @@ class TradingBot:
 
 async def async_main() -> None:
     """Async entry point. Orchestrates the full startup and run sequence."""
+    import uvicorn
+
     loop = asyncio.get_running_loop()
 
     # Register signal handlers for graceful shutdown
@@ -1210,12 +1212,35 @@ async def async_main() -> None:
         await bot.shutdown()
         return
 
+    # Start the dashboard API server
+    from src.dashboard.api import create_app, set_portfolio_monitor, set_db_session_factory
+    from src.persistence.database import _session_factory
+
+    set_portfolio_monitor(bot._portfolio_monitor)
+    set_db_session_factory(_session_factory)
+    app = create_app(
+        portfolio_monitor=bot._portfolio_monitor,
+        db_session_factory=_session_factory,
+    )
+
+    dashboard_port = settings.dashboard.port
+    config = uvicorn.Config(app, host="0.0.0.0", port=dashboard_port, log_level="warning")
+    server = uvicorn.Server(config)
+    dashboard_task = asyncio.create_task(server.serve())
+    log.info("dashboard_api_started", port=dashboard_port)
+
     # Wait for shutdown signal
     log.info("trading_bot_running", msg="Waiting for shutdown signal")
     await _shutdown_event.wait()
 
     # Graceful shutdown
+    server.should_exit = True
     await bot.shutdown()
+    dashboard_task.cancel()
+    try:
+        await dashboard_task
+    except asyncio.CancelledError:
+        pass
 
 
 def main() -> None:
