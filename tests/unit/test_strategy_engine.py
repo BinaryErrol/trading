@@ -22,9 +22,9 @@ from src.strategies.engine import (
     FREQUENCY_SECONDS,
     INTRADAY_FREQUENCIES,
     StrategyEngine,
-    _is_market_open,
 )
 from src.strategies.signals import OrderType, Signal, SignalDirection
+from src.utils.market_hours import is_market_open
 
 
 # ─── Test Fixtures ───────────────────────────────────────────────────────────
@@ -313,7 +313,7 @@ class TestSignalRouting:
         engine = StrategyEngine(strategies=[strategy], on_signal=on_signal)
 
         # Patch market open to always return True
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             # Give the loop time to run at least once
             await asyncio.sleep(0.05)
@@ -338,7 +338,7 @@ class TestSignalRouting:
 
         engine = StrategyEngine(strategies=[strategy], on_signal=on_signal)
 
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             await asyncio.sleep(0.05)
             await engine.stop()
@@ -360,7 +360,7 @@ class TestSignalRouting:
 
         engine = StrategyEngine(strategies=[strategy], on_signal=bad_callback)
 
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             await asyncio.sleep(0.05)
             await engine.stop()
@@ -395,7 +395,7 @@ class TestSignalRouting:
 
         engine = StrategyEngine(strategies=[strategy])
 
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             await asyncio.sleep(0.05)
             await engine.stop()
@@ -427,7 +427,7 @@ class TestMarketHoursSuppression:
         engine = StrategyEngine(strategies=[strategy], on_signal=on_signal)
 
         # Market is closed
-        with patch("src.strategies.engine._is_market_open", return_value=False):
+        with patch("src.strategies.engine.is_market_open", return_value=False):
             await engine.start()
             await asyncio.sleep(0.1)
             await engine.stop()
@@ -453,7 +453,7 @@ class TestMarketHoursSuppression:
         engine = StrategyEngine(strategies=[strategy], on_signal=on_signal)
 
         # Market is closed, but daily should still run
-        with patch("src.strategies.engine._is_market_open", return_value=False):
+        with patch("src.strategies.engine.is_market_open", return_value=False):
             await engine.start()
             # Daily interval is 86400s, but the first evaluation happens immediately
             await asyncio.sleep(0.05)
@@ -554,7 +554,7 @@ class TestStrategyScheduling:
 
         engine = StrategyEngine(strategies=[strategy])
 
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             await asyncio.sleep(0.1)
             await engine.stop()
@@ -572,7 +572,7 @@ class TestStrategyScheduling:
 
         engine = StrategyEngine(strategies=[strategy1, strategy2])
 
-        with patch("src.strategies.engine._is_market_open", return_value=True):
+        with patch("src.strategies.engine.is_market_open", return_value=True):
             await engine.start()
             await asyncio.sleep(0.05)
             await engine.stop()

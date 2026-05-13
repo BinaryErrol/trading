@@ -26,7 +26,7 @@ from src.connection.manager import ConnectionManager
 from src.data.market_data_hub import MarketDataHub
 from src.orders.manager import ManagedOrder, OrderManager
 from src.orders.rate_limiter import RateLimiter
-from src.persistence.database import close_db, get_session, init_db
+from src.persistence.database import close_db, get_current_session_factory, get_session, init_db
 from src.persistence.reconciliation import reconcile_positions
 from src.portfolio.capital_allocator import AllocationMode, CapitalAllocator
 from src.portfolio.monitor import PortfolioMonitor
@@ -34,6 +34,7 @@ from src.portfolio.pnl_tracker import PnLTracker
 from src.risk.manager import RiskManager
 from src.strategies.engine import StrategyEngine
 from src.strategies.signals import Signal
+from src.utils.market_hours import is_market_open
 
 log = structlog.get_logger()
 
@@ -71,7 +72,8 @@ class TradingBot:
         self._stale_data_task: asyncio.Task | None = None
         self._tick_processing_task: asyncio.Task | None = None
         self._strategy_tasks: dict[str, asyncio.Task] = {}
-        # Maps strategy class names (e.g. "BestPerSymbolStrategy") to config keys (e.g. "best_per_symbol")
+        # Maps strategy class names to config keys
+        # e.g. "BestPerSymbolStrategy" -> "best_per_symbol"
         self._strategy_name_to_config: dict[str, str] = {}
 
     # ------------------------------------------------------------------
@@ -243,7 +245,7 @@ class TradingBot:
             # or config flag that confirms live mode intent
             import os
 
-            if not os.environ.get("TRADING_BOT_CONFIRM_LIVE", "").lower() in (
+            if os.environ.get("TRADING_BOT_CONFIRM_LIVE", "").lower() not in (
                 "yes",
                 "true",
                 "1",
@@ -455,7 +457,13 @@ class TradingBot:
             asset_class = symbol_assets[symbol]
             try:
                 # Map config asset class names to IBKR secType
-                sec_type_map = {"equity": "STK", "option": "OPT", "future": "FUT", "forex": "FOREX", "crypto": "CRYPTO"}
+                sec_type_map = {
+                    "equity": "STK",
+                    "option": "OPT",
+                    "future": "FUT",
+                    "forex": "FOREX",
+                    "crypto": "CRYPTO",
+                }
                 sec_type = sec_type_map.get(asset_class.lower(), "STK")
 
                 # Build contract with correct secType
@@ -477,15 +485,14 @@ class TradingBot:
                 if qualified:
                     # Subscribe using the qualified contract directly
                     ticker = ib.reqMktData(contract)
-                    # Register in market data hub
-                    self._market_data_hub._subscriptions[symbol] = ticker
-                    if symbol not in self._market_data_hub._bar_builders:
-                        from src.data.bar_builder import BarBuilder, Timeframe
-                        self._market_data_hub._bar_builders[symbol] = {}
-                        for tf in self._market_data_hub.BAR_TIMEFRAMES:
-                            self._market_data_hub._bar_builders[symbol][tf] = BarBuilder(symbol=symbol, timeframe=tf)
+                    # Register in market data hub via public API
+                    self._market_data_hub.subscribe_qualified(symbol, ticker)
                     qualified_count += 1
-                    log.info("market_data_subscribed_symbol", symbol=symbol, conId=contract.conId)
+                    log.info(
+                        "market_data_subscribed_symbol",
+                        symbol=symbol,
+                        conId=contract.conId,
+                    )
                 else:
                     log.warning("contract_qualification_failed", symbol=symbol)
             except Exception as exc:
@@ -795,7 +802,7 @@ class TradingBot:
 
             # Step 2: Capital allocation check
             if self._capital_allocator:
-                # Map class name (e.g. "BestPerSymbolStrategy") to config key (e.g. "best_per_symbol")
+                # Map class name to config key
                 config_name = self._strategy_name_to_config.get(
                     signal.strategy_name, signal.strategy_name
                 )
@@ -818,29 +825,58 @@ class TradingBot:
                         signal.strategy_name, signal.strategy_name
                     )
                     try:
-                        available = self._capital_allocator.get_available(config_name)
+                        available = self._capital_allocator.get_available(
+                            config_name
+                        )
                     except KeyError:
                         available = Decimal("0")
 
                     # Get current price from market data hub
                     price = Decimal("0")
-                    if self._market_data_hub and signal.symbol in self._market_data_hub._subscriptions:
-                        ticker = self._market_data_hub._subscriptions[signal.symbol]
-                        mp = ticker.marketPrice() if hasattr(ticker, "marketPrice") else None
+                    subs = self._market_data_hub._subscriptions
+                    if self._market_data_hub and signal.symbol in subs:
+                        ticker = subs[signal.symbol]
+                        mp = (
+                            ticker.marketPrice()
+                            if hasattr(ticker, "marketPrice")
+                            else None
+                        )
                         if mp and mp == mp and mp > 0:
                             price = Decimal(str(mp))
-                        elif hasattr(ticker, "last") and ticker.last == ticker.last and ticker.last > 0:
+                        elif (
+                            hasattr(ticker, "last")
+                            and ticker.last == ticker.last
+                            and ticker.last > 0
+                        ):
                             price = Decimal(str(ticker.last))
-                        elif hasattr(ticker, "close") and ticker.close == ticker.close and ticker.close > 0:
+                        elif (
+                            hasattr(ticker, "close")
+                            and ticker.close == ticker.close
+                            and ticker.close > 0
+                        ):
                             price = Decimal(str(ticker.close))
 
                     if price > 0:
-                        # Use up to 1/num_symbols of available capital per position
-                        num_symbols = len(self._market_data_hub.subscribed_symbols) if self._market_data_hub else 15
-                        per_symbol_capital = available / Decimal(str(max(num_symbols, 1)))
+                        # Use up to 1/num_symbols of available capital
+                        num_symbols = (
+                            len(self._market_data_hub.subscribed_symbols)
+                            if self._market_data_hub
+                            else 15
+                        )
+                        per_symbol_capital = available / Decimal(
+                            str(max(num_symbols, 1))
+                        )
                         # Apply max_position_pct limit
-                        max_position = Decimal(str(self.settings.risk.max_position_pct)) * Decimal(str(self.settings.capital.total_capital))
-                        position_capital = min(per_symbol_capital, max_position)
+                        max_pct = Decimal(
+                            str(self.settings.risk.max_position_pct)
+                        )
+                        total_cap = Decimal(
+                            str(self.settings.capital.total_capital)
+                        )
+                        max_position = max_pct * total_cap
+                        position_capital = min(
+                            per_symbol_capital, max_position
+                        )
                         shares = int(position_capital / price)
                         signal.suggested_size = Decimal(str(max(shares, 0)))
 
@@ -1065,44 +1101,24 @@ class TradingBot:
         the periodic update loop.
         """
         from src.dashboard.api import set_pnl_tracker
-        from src.persistence.database import _session_factory
 
         if self._portfolio_monitor is None:
             log.warning("pnl_tracker_skipped", reason="portfolio monitor not initialized")
             return
 
-        if _session_factory is None:
+        try:
+            session_factory = get_current_session_factory()
+        except RuntimeError:
             log.warning("pnl_tracker_skipped", reason="database not initialized")
             return
 
         self._pnl_tracker = PnLTracker(
             portfolio_monitor=self._portfolio_monitor,
-            db_session_factory=_session_factory,
+            db_session_factory=session_factory,
         )
         set_pnl_tracker(self._pnl_tracker)
         await self._pnl_tracker.start()
         log.info("pnl_tracker_initialized")
-
-    @staticmethod
-    def _is_market_hours() -> bool:
-        """Check if current time is within US equity market hours (9:30-16:00 ET)."""
-        from datetime import datetime, timezone, timedelta
-
-        # US Eastern Time (UTC-5, or UTC-4 during DST)
-        # Simplified: use UTC and approximate ET as UTC-4 (EDT)
-        now_utc = datetime.now(timezone.utc)
-        # Approximate ET offset (this is simplified; production should use pytz/zoneinfo)
-        et_offset = timedelta(hours=-4)  # EDT
-        now_et = now_utc + et_offset
-
-        # Market hours: Mon-Fri, 9:30 AM - 4:00 PM ET
-        if now_et.weekday() >= 5:  # Saturday=5, Sunday=6
-            return False
-
-        market_open = now_et.replace(hour=9, minute=30, second=0, microsecond=0)
-        market_close = now_et.replace(hour=16, minute=0, second=0, microsecond=0)
-
-        return market_open <= now_et <= market_close
 
     async def _stale_data_loop(self) -> None:
         """Periodically check for stale market data.
@@ -1118,7 +1134,7 @@ class TradingBot:
                 if not self._market_data_hub:
                     continue
 
-                if not self._is_market_hours():
+                if not is_market_open():
                     continue
 
                 for symbol in self._market_data_hub.subscribed_symbols:
@@ -1213,14 +1229,14 @@ async def async_main() -> None:
         return
 
     # Start the dashboard API server
-    from src.dashboard.api import create_app, set_portfolio_monitor, set_db_session_factory
-    from src.persistence.database import _session_factory
+    from src.dashboard.api import create_app, set_db_session_factory, set_portfolio_monitor
 
+    session_factory = get_current_session_factory()
     set_portfolio_monitor(bot._portfolio_monitor)
-    set_db_session_factory(_session_factory)
+    set_db_session_factory(session_factory)
     app = create_app(
         portfolio_monitor=bot._portfolio_monitor,
-        db_session_factory=_session_factory,
+        db_session_factory=session_factory,
     )
 
     dashboard_port = settings.dashboard.port

@@ -60,6 +60,12 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
 
+[tool.ruff.lint.per-file-ignores]
+# IBKR API protocol methods must match ib_async camelCase naming
+"src/data/options_chain.py" = ["N802", "N803"]
+# Strategy implementations use short aliases and IBKR naming
+"src/strategies/implementations/*.py" = ["N817"]
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]

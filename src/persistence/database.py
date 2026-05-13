@@ -150,3 +150,20 @@ async def close_db() -> None:
         logger.info("database_engine_closed")
         _engine = None
         _session_factory = None
+
+
+def get_current_session_factory() -> async_sessionmaker[AsyncSession]:
+    """Return the module-level session factory.
+
+    Prefer this over importing `_session_factory` directly, as it
+    always reflects the current state after init_db() has been called.
+
+    Raises:
+        RuntimeError: If init_db() has not been called.
+    """
+    if _session_factory is None:
+        raise RuntimeError(
+            "Database not initialized. Call init_db() before using "
+            "get_current_session_factory()."
+        )
+    return _session_factory

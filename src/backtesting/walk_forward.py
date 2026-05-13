@@ -7,16 +7,16 @@ This prevents overfitting by ensuring strategies are always tested on unseen dat
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import date
 from decimal import Decimal
-from typing import Any, Callable
+from typing import Any
 
 import pandas as pd
 import structlog
 
 from src.backtesting.engine import BacktestEngine, BacktestResult
-from src.config.settings import BacktestConfig
 from src.strategies.base import BaseStrategy
 
 logger = structlog.get_logger(__name__)

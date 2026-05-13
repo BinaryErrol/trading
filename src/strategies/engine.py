@@ -8,20 +8,16 @@ and routes generated signals to a callback for downstream processing.
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime, time, timezone
+from collections.abc import Callable
 from decimal import Decimal
-from typing import Callable
 
 import structlog
 
 from src.strategies.base import BaseStrategy, StrategyState
 from src.strategies.signals import Signal
+from src.utils.market_hours import is_market_open
 
 logger = structlog.get_logger(__name__)
-
-# NYSE market hours in Eastern Time (ET)
-MARKET_OPEN = time(9, 30)
-MARKET_CLOSE = time(16, 0)
 
 # Frequency to seconds mapping
 FREQUENCY_SECONDS: dict[str, float] = {
@@ -38,32 +34,6 @@ FREQUENCY_SECONDS: dict[str, float] = {
 INTRADAY_FREQUENCIES: frozenset[str] = frozenset(
     {"tick", "1min", "5min", "15min", "1hour"}
 )
-
-
-def _is_market_open() -> bool:
-    """Check if NYSE is currently open (9:30-16:00 ET, weekdays only).
-
-    Uses a simplified check based on UTC offset for US Eastern Time.
-    Does not account for holidays.
-    """
-    try:
-        import zoneinfo
-
-        et = zoneinfo.ZoneInfo("America/New_York")
-    except (ImportError, KeyError):
-        # Fallback: assume UTC-5 (EST) if zoneinfo unavailable
-        from datetime import timedelta, timezone as tz
-
-        et = tz(timedelta(hours=-5))
-
-    now_et = datetime.now(et)
-
-    # Weekday check: Monday=0, Friday=4
-    if now_et.weekday() > 4:
-        return False
-
-    current_time = now_et.time()
-    return MARKET_OPEN <= current_time < MARKET_CLOSE
 
 
 class StrategyEngine:
@@ -220,7 +190,7 @@ class StrategyEngine:
         )
 
         consecutive_failures = 0
-        MAX_CONSECUTIVE_FAILURES = 5
+        max_consecutive_failures = 5
 
         # Determine if this strategy trades 24/7 assets (crypto)
         is_always_on = "crypto" in (strategy.config.asset_classes or [])
@@ -228,7 +198,7 @@ class StrategyEngine:
         try:
             while True:
                 # Suppress intraday strategies outside market hours (except crypto)
-                if is_intraday and not is_always_on and not _is_market_open():
+                if is_intraday and not is_always_on and not is_market_open():
                     logger.debug(
                         "strategy_suppressed_market_closed",
                         strategy=strategy.name,
@@ -246,7 +216,7 @@ class StrategyEngine:
                     consecutive_failures = 0
                 except Exception as exc:
                     consecutive_failures += 1
-                    if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                    if consecutive_failures >= max_consecutive_failures:
                         strategy.state = StrategyState.HALTED
                         logger.error(
                             "strategy_halted_consecutive_failures",

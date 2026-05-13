@@ -99,7 +99,9 @@ class MACrossoverStrategy(BaseStrategy):
             fast_ma_prev = self._calculate_ma(closes[:-1], self._fast_period)
             slow_ma_prev = self._calculate_ma(closes[:-1], self._slow_period)
 
-            if any(v is None for v in [fast_ma_current, slow_ma_current, fast_ma_prev, slow_ma_prev]):
+            if any(
+                v is None for v in [fast_ma_current, slow_ma_current, fast_ma_prev, slow_ma_prev]
+            ):
                 continue
 
             # Golden cross: fast was below slow, now fast is above slow

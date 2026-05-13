@@ -92,7 +92,13 @@ class MarketDataHub:
 
         logger.info("subscribed_market_data", symbol=symbol, asset_class=asset_class)
 
-    def on_tick(self, symbol: str, price: float, volume: float = 0.0, tick_time: float | None = None) -> list[Bar]:
+    def on_tick(
+        self,
+        symbol: str,
+        price: float,
+        volume: float = 0.0,
+        tick_time: float | None = None,
+    ) -> list[Bar]:
         """Process an incoming tick, update all bar builders, cache in Redis.
 
         Args:
@@ -204,6 +210,28 @@ class MarketDataHub:
     def subscribed_symbols(self) -> list[str]:
         """Return list of currently subscribed symbols."""
         return list(self._subscriptions.keys())
+
+    def subscribe_qualified(
+        self, symbol: str, ticker: Any
+    ) -> None:
+        """Register a pre-qualified ticker subscription.
+
+        Used when the caller has already qualified the contract with IBKR
+        and obtained a ticker via reqMktData. Creates bar builders for all
+        supported timeframes.
+
+        Args:
+            symbol: The ticker symbol.
+            ticker: The IBKR Ticker object from reqMktData.
+        """
+        self._subscriptions[symbol] = ticker
+        if symbol not in self._bar_builders:
+            self._bar_builders[symbol] = {}
+            for tf in self.BAR_TIMEFRAMES:
+                self._bar_builders[symbol][tf] = BarBuilder(
+                    symbol=symbol, timeframe=tf
+                )
+        logger.info("subscribed_qualified", symbol=symbol)
 
 
 def _make_contract(symbol: str, asset_class: str) -> Any:

@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import random
 from collections import defaultdict
-from decimal import Decimal
 from typing import TYPE_CHECKING
 
 import numpy as np
@@ -327,7 +326,10 @@ class BanditStrategy(BaseStrategy):
                                     **sig.metadata,
                                     "selected_strategy": selected_strategy,
                                     "selection_probability": round(
-                                        self._compute_probabilities(symbol).get(selected_strategy, 0), 4
+                                        self._compute_probabilities(symbol).get(
+                                            selected_strategy, 0
+                                        ),
+                                        4,
                                     ),
                                 },
                                 option_params=sig.option_params,

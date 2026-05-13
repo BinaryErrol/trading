@@ -20,7 +20,6 @@ Gaussian HMM would produce, without requiring hmmlearn:
 
 from __future__ import annotations
 
-from decimal import Decimal
 from enum import Enum
 from typing import TYPE_CHECKING
 
@@ -171,20 +170,25 @@ class RegimeHMMStrategy(BaseStrategy):
 
         # Calculate rolling returns over trend_window
         if len(closes) > self._trend_window:
-            rolling_return = (closes[-1] - closes[-self._trend_window - 1]) / closes[-self._trend_window - 1]
+            rolling_return = (closes[-1] - closes[-self._trend_window - 1]) / closes[
+                -self._trend_window - 1
+            ]
         else:
             rolling_return = 0.0
 
         # Calculate rolling volatility (std of daily returns over volatility_window)
         if len(closes) > self._volatility_window:
-            recent_closes = closes[-self._volatility_window - 1:]
+            recent_closes = closes[-self._volatility_window - 1 :]
             daily_returns = np.diff(recent_closes) / recent_closes[:-1]
             rolling_volatility = float(np.std(daily_returns))
         else:
             rolling_volatility = 0.0
 
         # Rule-based regime classification
-        if rolling_volatility > self._vol_threshold and abs(rolling_return) < rolling_volatility / 2:
+        if (
+            rolling_volatility > self._vol_threshold
+            and abs(rolling_return) < rolling_volatility / 2
+        ):
             regime = MarketRegime.VOLATILE
         elif abs(rolling_return) > rolling_volatility:
             regime = MarketRegime.TRENDING

@@ -595,6 +595,7 @@ def create_app(
         tracker: PnLTracker = Depends(get_pnl_tracker),
     ) -> PaginatedTradesResponse:
         """Get paginated trade list for one strategy."""
+        limit = min(limit, 200)
         items, total = await tracker.get_trades(
             strategy_name=name, limit=limit, offset=offset
         )
@@ -631,6 +632,7 @@ def create_app(
         tracker: PnLTracker = Depends(get_pnl_tracker),
     ) -> PaginatedTradesResponse:
         """Get all trades with filters and pagination."""
+        limit = min(limit, 200)
         start_date = date.fromisoformat(start) if start else None
         end_date = date.fromisoformat(end) if end else None
 
