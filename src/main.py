@@ -71,6 +71,8 @@ class TradingBot:
         self._stale_data_task: asyncio.Task | None = None
         self._tick_processing_task: asyncio.Task | None = None
         self._strategy_tasks: dict[str, asyncio.Task] = {}
+        # Maps strategy class names (e.g. "BestPerSymbolStrategy") to config keys (e.g. "best_per_symbol")
+        self._strategy_name_to_config: dict[str, str] = {}
 
     # ------------------------------------------------------------------
     # Startup Sequence
@@ -615,6 +617,8 @@ class TradingBot:
                     strategy = cls(config=config, data_hub=self._market_data_hub)
 
                 strategies.append(strategy)
+                # Map class name to config key for capital allocation lookups
+                self._strategy_name_to_config[strategy.name] = name
             except Exception as exc:
                 log.error(
                     "strategy_instantiation_failed",
@@ -791,8 +795,12 @@ class TradingBot:
 
             # Step 2: Capital allocation check
             if self._capital_allocator:
+                # Map class name (e.g. "BestPerSymbolStrategy") to config key (e.g. "best_per_symbol")
+                config_name = self._strategy_name_to_config.get(
+                    signal.strategy_name, signal.strategy_name
+                )
                 if not self._capital_allocator.can_place_order(
-                    signal.strategy_name, signal.suggested_size
+                    config_name, signal.suggested_size
                 ):
                     log.info(
                         "signal_rejected_capital",
@@ -854,8 +862,11 @@ class TradingBot:
             # Update capital allocator
             if self._capital_allocator:
                 try:
+                    config_name = self._strategy_name_to_config.get(
+                        managed_order.strategy_name, managed_order.strategy_name
+                    )
                     self._capital_allocator.record_fill(
-                        strategy_name=managed_order.strategy_name,
+                        strategy_name=config_name,
                         fill_value=fill_value,
                     )
                 except KeyError:
