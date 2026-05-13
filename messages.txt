@@ -1,3 +1,20 @@
-docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM strategy_snapshots;"
-docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM orders;"
-docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM trades;"
+ 1 file changed, 3 insertions(+), 89 deletions(-)
+PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM strategy_snapshots;"
+ count
+-------
+     0
+(1 row)
+
+PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM orders;"
+ count
+-------
+     0
+(1 row)
+
+PS C:\Users\binar\PycharmProjects\trading> docker compose exec postgres psql -U bot -d trading -c "SELECT COUNT(*) FROM trades;"
+ count
+-------
+     0
+(1 row)
+
+PS C:\Users\binar\PycharmProjects\trading>
