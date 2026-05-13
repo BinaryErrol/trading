@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import time
 from typing import Any, Protocol
 
@@ -125,16 +126,21 @@ class MarketDataHub:
             if bar is not None:
                 completed_bars.append(bar)
 
-        # Cache latest price in Redis
+        # Cache latest price in Redis (fire-and-forget async)
         if self._redis is not None:
             try:
-                self._redis.set(
+                coro = self._redis.set(
                     f"market:{symbol}:last_price",
                     str(price),
                     ex=300,  # 5 min TTL
                 )
+                # If it's a coroutine (async redis), schedule it
+                if asyncio.iscoroutine(coro):
+                    asyncio.ensure_future(coro)
             except Exception as exc:
-                logger.warning("redis_cache_error", symbol=symbol, error=str(exc))
+                logger.warning(
+                    "redis_cache_error", symbol=symbol, error=str(exc)
+                )
 
         return completed_bars
 
