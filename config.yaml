@@ -138,18 +138,18 @@ strategies:
 #      # Z-score threshold to trigger entry (standard deviations from mean)
 #      z_score_threshold: 2.0
 
-  best_per_symbol_crypto:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "BTC"
-      - "ETH"
-    asset_classes:
-      - "crypto"
-    parameters:
-      symbol_map:
-        BTC: "momentum"
-        ETH: "mean_reversion"
+#  best_per_symbol_crypto:
+#    enabled: true
+#    frequency: "15min"
+#    symbols:
+#      - "BTC"
+#      - "ETH"
+#    asset_classes:
+#      - "crypto"
+#    parameters:
+#      symbol_map:
+#        BTC: "momentum"
+#        ETH: "mean_reversion"
 
 #  crypto_momentum:
 #    enabled: true
@@ -185,6 +185,19 @@ strategies:
     asset_classes:
       - "equity"
     parameters: {}
+
+  momentum:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "BTC"
+      - "ETH"
+    asset_classes:
+      - "crypto"
+    parameters:
+      lookback_period: 14
+      momentum_threshold: 0.02
+
   # --- Uncomment and configure additional strategies as needed ---
 
   # pairs_trading:
