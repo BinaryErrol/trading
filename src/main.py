@@ -413,25 +413,48 @@ class TradingBot:
     # ------------------------------------------------------------------
 
     async def _subscribe_market_data(self) -> None:
-        """Subscribe to market data for all symbols across all configured strategies."""
+        """Subscribe to market data for all symbols across all configured strategies.
+
+        Qualifies contracts with IBKR first (resolves conId), then subscribes.
+        """
         if not self._market_data_hub:
             log.warning("market_data_subscription_skipped", reason="no market data hub")
             return
 
-        # Collect all unique symbols from all enabled strategies
-        all_symbols: set[str] = set()
+        if not self._connection_manager or not self._connection_manager.is_connected:
+            log.warning("market_data_subscription_skipped", reason="not connected")
+            return
+
+        # Collect all unique symbols and their asset classes from all enabled strategies
+        symbol_assets: dict[str, str] = {}
         for name, config in self.settings.strategies.items():
             if config.enabled:
-                all_symbols.update(config.symbols)
+                asset_class = config.asset_classes[0] if config.asset_classes else "equity"
+                for symbol in config.symbols:
+                    symbol_assets[symbol] = asset_class
 
-        # Subscribe to each symbol
-        for symbol in sorted(all_symbols):
+        # Qualify contracts with IBKR to get conIds
+        ib = self._connection_manager.ib
+        qualified_count = 0
+
+        for symbol in sorted(symbol_assets.keys()):
+            asset_class = symbol_assets[symbol]
             try:
-                self._market_data_hub.subscribe(symbol)
+                contract = self._make_contract(symbol)
+                # Override secType based on asset class
+                if asset_class == "crypto":
+                    # Crypto contracts are already built correctly by _make_contract
+                    pass
+                qualified = await ib.qualifyContractsAsync(contract)
+                if qualified:
+                    self._market_data_hub.subscribe(symbol, asset_class)
+                    qualified_count += 1
+                else:
+                    log.warning("contract_qualification_failed", symbol=symbol)
             except Exception as exc:
                 log.warning("market_data_subscribe_failed", symbol=symbol, error=str(exc))
 
-        log.info("market_data_subscribed", symbols=sorted(all_symbols), count=len(all_symbols))
+        log.info("market_data_subscribed", count=qualified_count, total=len(symbol_assets))
 
     # ------------------------------------------------------------------
     # Strategy Startup with Isolation
