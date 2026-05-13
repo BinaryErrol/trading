@@ -28,3 +28,27 @@ mean_reversion	GOOGL	SELL	$155.00	$152.30	50	+$135	2024-01-15
 trend_following	MSFT	BUY	$410.00	$422.50	80	+$1000	2024-01-15
 momentum	AAPL	BUY	$178.50	$185.20	150	+$1005	2024-01-15
 $0k
+
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=MA
+ibkr-trading-bot  | 2026-05-13 18:07:54 [debug    ] insufficient_bars_for_ma_crossover available=20 required=31 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] mean_reversion_short_signal    symbol=META threshold=2.0 z_score=2.0418
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] mean_reversion_short_signal    symbol=MA threshold=2.0 z_score=2.0739
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] mean_reversion_short_signal    symbol=DIS threshold=2.0 z_score=2.1041
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] rsi_overbought_signal          overbought=70 rsi=78.3 symbol=META
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] rsi_overbought_signal          overbought=70 rsi=78.79 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] rsi_oversold_signal            oversold=30 rsi=28.99 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] rsi_overbought_signal          overbought=70 rsi=84.21 symbol=V
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] rsi_overbought_signal          overbought=70 rsi=79.29 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] order_approved                 size=0 strategy=BestPerSymbolStrategy symbol=META
+ibkr-trading-bot  | 2026-05-13 18:07:54 [info     ] signal_rejected_capital        size=0 strategy=BestPerSymbolStrategy symbol=META
+PS C:\Users\binar\PycharmProjects\trading>
+
