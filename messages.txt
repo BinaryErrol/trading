@@ -1,66 +1,24 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose down
-[+] Running 6/6
- ✔ Container ibkr-dashboard-ui  Removed                                                                                                                                                             0.5s 
- ✔ Container ibkr-trading-bot   Removed                                                                                                                                                             0.9s 
- ✔ Container ibkr-redis         Removed                                                                                                                                                             0.5s 
- ✔ Container ibkr-postgres      Removed                                                                                                                                                             0.6s 
- ✔ Network trading_frontend     Removed                                                                                                                                                             0.4s 
- ✔ Network trading_backend      Removed                                                                                                                                                             0.7s 
-PS C:\Users\binar\PycharmProjects\trading> docker compose build --no-cache 
-[+] Building 36.5s (20/31)
- => [internal] load local bake definitions                                                                                                                                                          0.0s
- => => reading from stdin 798B                                                                                                                                                                      0.0s
- => [trading-bot internal] load build definition from Dockerfile                                                                                                                                    0.0s
- => => transferring dockerfile: 857B                                                                                                                                                                0.0s
- => [dashboard-ui internal] load build definition from Dockerfile                                                                                                                                   0.0s
- => => transferring dockerfile: 458B                                                                                                                                                                0.0s
- => [trading-bot internal] load metadata for docker.io/library/python:3.11-slim                                                                                                                     2.6s
- => [dashboard-ui internal] load metadata for docker.io/library/nginx:alpine                                                                                                                        2.3s
- => [dashboard-ui internal] load metadata for docker.io/library/node:20-alpine                                                                                                                      2.3s
- => [dashboard-ui internal] load .dockerignore                                                                                                                                                      0.0s
- => => transferring context: 2B                                                                                                                                                                     0.0s
- => [dashboard-ui build 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293                                                          0.0s
- => [dashboard-ui internal] load build context                                                                                                                                                      1.6s
- => => transferring context: 29.98MB                                                                                                                                                                1.5s
- => CACHED [dashboard-ui stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de                                                   0.0s
- => CACHED [dashboard-ui build 2/6] WORKDIR /app                                                                                                                                                    0.0s
- => [trading-bot internal] load .dockerignore                                                                                                                                                       0.0s
- => => transferring context: 661B                                                                                                                                                                   0.0s
- => [trading-bot  1/12] FROM docker.io/library/python:3.11-slim@sha256:9a7765b36773a37061455b332f18e265e7f58f6fea9c419a550d2a8b0e9db834                                                             0.0s 
- => => resolve docker.io/library/python:3.11-slim@sha256:9a7765b36773a37061455b332f18e265e7f58f6fea9c419a550d2a8b0e9db834                                                                           0.0s 
- => [trading-bot internal] load build context                                                                                                                                                       0.0s 
- => => transferring context: 165.24kB                                                                                                                                                               0.0s
- => CACHED [trading-bot  2/12] WORKDIR /app                                                                                                                                                         0.0s 
- => CANCELED [trading-bot  3/12] RUN apt-get update && apt-get install -y --no-install-recommends     curl     dos2unix     && rm -rf /var/lib/apt/lists/*                                         33.5s 
- => [dashboard-ui build 3/6] COPY package.json ./                                                                                                                                                   0.0s 
- => [dashboard-ui build 4/6] RUN npm install                                                                                                                                                       30.5s 
- => [dashboard-ui build 5/6] COPY . .                                                                                                                                                               1.4s 
- => ERROR [dashboard-ui build 6/6] RUN ./node_modules/.bin/vite build                                                                                                                               0.2s 
-------
- > [dashboard-ui build 6/6] RUN ./node_modules/.bin/vite build:
-0.181 ./node_modules/.bin/vite: line 1: ../vite/bin/vite.js: not found
-------
-Dockerfile:10
-
---------------------
-
-   8 |
-
-   9 |     COPY . .
-
-  10 | >>> RUN ./node_modules/.bin/vite build
-
-  11 |
-
-  12 |     # Production stage
-
---------------------
-
-target dashboard-ui: failed to solve: process "/bin/sh -c ./node_modules/.bin/vite build" did not complete successfully: exit code: 127
-
-
-
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ojslm4n4hr97ezrof4vgn4z3k
-
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
+ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] best_per_symbol_initialized    children=['ma_crossover', 'trend_following', 'momentum', 'mean_reversion', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_engine_starting       strategy_count=1
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategies_started             count=1 names=['BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:01:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:01:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:02:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:02:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:03:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:03:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
 PS C:\Users\binar\PycharmProjects\trading>
-
