@@ -69,6 +69,7 @@ class TradingBot:
         self._alert_service: AlertService | None = None
         self._rate_limiter: RateLimiter | None = None
         self._stale_data_task: asyncio.Task | None = None
+        self._tick_processing_task: asyncio.Task | None = None
         self._strategy_tasks: dict[str, asyncio.Task] = {}
 
     # ------------------------------------------------------------------
@@ -109,6 +110,9 @@ class TradingBot:
         # Step 6.5: Subscribe to market data for all strategy symbols
         await self._subscribe_market_data()
 
+        # Step 6.6: Start tick processing loop
+        self._start_tick_processing()
+
         # Step 7: Start strategies with isolation
         await self._start_strategies()
 
@@ -139,6 +143,14 @@ class TradingBot:
             self._stale_data_task.cancel()
             try:
                 await self._stale_data_task
+            except asyncio.CancelledError:
+                pass
+
+        # Step 1.5: Stop tick processing
+        if self._tick_processing_task and not self._tick_processing_task.done():
+            self._tick_processing_task.cancel()
+            try:
+                await self._tick_processing_task
             except asyncio.CancelledError:
                 pass
 
@@ -911,6 +923,76 @@ class TradingBot:
                 ),
                 "trading_halted_alert",
             )
+
+    # ------------------------------------------------------------------
+    # Tick Processing
+    # ------------------------------------------------------------------
+
+    def _start_tick_processing(self) -> None:
+        """Start background task to poll IBKR tickers and feed into bar builders."""
+        self._tick_processing_task = asyncio.create_task(
+            self._tick_processing_loop(),
+            name="tick-processing",
+        )
+        log.info("tick_processing_started")
+
+    async def _tick_processing_loop(self) -> None:
+        """Poll IBKR ticker objects and feed price updates into MarketDataHub.
+
+        ib_async updates Ticker objects in the background. This loop polls
+        them every second and calls on_tick() for any that have new prices.
+        """
+        import time
+
+        # Track last seen price per symbol to avoid duplicate ticks
+        last_prices: dict[str, float] = {}
+
+        try:
+            while True:
+                await asyncio.sleep(1.0)  # Poll every second
+
+                if not self._market_data_hub:
+                    continue
+
+                for symbol, ticker in self._market_data_hub._subscriptions.items():
+                    # Get the current price from the ticker
+                    # For delayed data, use .last, .close, or .marketPrice()
+                    price = None
+                    if hasattr(ticker, "marketPrice"):
+                        mp = ticker.marketPrice()
+                        if mp == mp and mp > 0:  # not NaN and positive
+                            price = mp
+                    if price is None and hasattr(ticker, "last"):
+                        if ticker.last == ticker.last and ticker.last > 0:
+                            price = ticker.last
+                    if price is None and hasattr(ticker, "close"):
+                        if ticker.close == ticker.close and ticker.close > 0:
+                            price = ticker.close
+
+                    if price is None:
+                        continue
+
+                    # Only process if price changed
+                    if symbol in last_prices and last_prices[symbol] == price:
+                        continue
+
+                    last_prices[symbol] = price
+
+                    # Get volume if available
+                    volume = 0.0
+                    if hasattr(ticker, "volume") and ticker.volume == ticker.volume:
+                        volume = float(ticker.volume) if ticker.volume > 0 else 0.0
+
+                    # Feed into market data hub
+                    self._market_data_hub.on_tick(
+                        symbol=symbol,
+                        price=price,
+                        volume=volume,
+                        tick_time=time.time(),
+                    )
+
+        except asyncio.CancelledError:
+            pass
 
     # ------------------------------------------------------------------
     # Stale Data Handling
