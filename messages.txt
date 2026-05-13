@@ -1,54 +1,60 @@
+
 PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50 -f
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] disconnected_from_ibkr
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] ibkr_disconnected
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] redis_closed
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] database_engine_closed
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] database_closed
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] trading_bot_stopped
-ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] trading_bot_exited
-ibkr-trading-bot  | Waiting for database to be ready...
-ibkr-trading-bot  | Running database migrations...
-ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
-ibkr-trading-bot  | Starting IBKR Trading Bot...
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_starting           version=0.1.0
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] paper_trading_mode             port=7497
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_connected
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] redis_connected                url=redis://redis:6379/0
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
-ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
-ibkr-trading-bot  | 2026-05-13 11:32:57 [error    ] startup_failed                 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
-ibkr-trading-bot  | Traceback (most recent call last):
-ibkr-trading-bot  |   File "/app/src/main.py", line 987, in async_main
-ibkr-trading-bot  |     await bot.start()
-ibkr-trading-bot  |   File "/app/src/main.py", line 97, in start
-ibkr-trading-bot  |     await self._connect_ibkr()
-ibkr-trading-bot  |   File "/app/src/main.py", line 285, in _connect_ibkr
-ibkr-trading-bot  |     await self._connection_manager.connect()
-ibkr-trading-bot  |   File "/app/src/connection/manager.py", line 53, in connect
-ibkr-trading-bot  |     await self.ib.connectAsync(
-ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
-ibkr-trading-bot  |     await self.client.connectAsync(host, port, clientId, timeout)
-ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
-ibkr-trading-bot  |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
-ibkr-trading-bot  |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
-ibkr-trading-bot  |     return fut.result()
-ibkr-trading-bot  |            ^^^^^^^^^^^^
-ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
-ibkr-trading-bot  |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
-ibkr-trading-bot  |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ibkr-trading-bot  |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
-ibkr-trading-bot  |     raise OSError('Multiple exceptions: {}'.format(
-ibkr-trading-bot  | OSError: Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_shutting_down
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] disconnected_from_ibkr
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] ibkr_disconnected
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] redis_closed
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_engine_closed
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_closed
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_stopped
-ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_exited
-PS C:\Users\binar\PycharmProjects\trading>
-
-
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=bollinger
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=trend_following
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=breakout
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] adaptive_child_instantiated    child=vwap
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] adaptive_children_ready        children=['momentum', 'ma_crossover', 'mean_reversion', 'bollinger', 'rsi_divergence', 'trend_following', 'breakout', 'vwap'] count=8
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] best_per_symbol_initialized    children=['rsi_divergence', 'vwap', 'momentum', 'ma_crossover', 'mean_reversion', 'trend_following'] mappings={'AAPL': 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_engine_starting       strategy_count=7
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=RegimeHMMStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=RegimeHMMStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=BanditStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=BanditStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=AdaptiveStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=AdaptiveStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_engine_started        active_strategies=['RegimeHMMStrategy', 'BanditStrategy', 'AdaptiveStrategy', 'MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy', 'BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategies_started             count=7 names=['RegimeHMMStrategy', 'BanditStrategy', 'AdaptiveStrategy', 'MomentumStrategy', 'MACrossoverStrategy', 'MeanReversionStrategy', 'BestPerSymbolStrategy']
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=RegimeHMMStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=RegimeHMMStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BanditStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=BanditStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=AdaptiveStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=AdaptiveStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=1hour interval_seconds=3600.0 strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=5min interval_seconds=300.0 strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 11:36:09 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=RegimeHMMStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=BanditStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=AdaptiveStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MACrossoverStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=MeanReversionStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 11:37:10 [info     ] positions_synced            
