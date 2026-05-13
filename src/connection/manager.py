@@ -61,6 +61,11 @@ class ConnectionManager:
         self._reconnect_attempts = 0
         self._halted = False
 
+        # Request market data type (1=Live, 2=Frozen, 3=Delayed, 4=Delayed-Frozen)
+        mdt = getattr(self.config, "market_data_type", 1)
+        self.ib.reqMarketDataType(mdt)
+        logger.info("market_data_type_set", market_data_type=mdt)
+
         await self._verify_account()
         self._start_heartbeat()
         logger.info("connected_to_ibkr", host=self.config.host, port=self.config.port)
@@ -105,6 +110,9 @@ class ConnectionManager:
                 )
                 self._connected = True
                 self._reconnect_attempts = 0
+                # Re-apply market data type after reconnection
+                mdt = getattr(self.config, "market_data_type", 1)
+                self.ib.reqMarketDataType(mdt)
                 self._start_heartbeat()
                 logger.info("reconnected_to_ibkr")
                 return

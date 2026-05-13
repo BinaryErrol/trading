@@ -33,6 +33,13 @@ class ConnectionConfig(BaseModel):
     client_id: int = Field(description="Unique client ID for this bot instance")
     timeout: int = Field(default=30, description="Connection timeout in seconds")
     readonly: bool = Field(default=False, description="Read-only mode prevents order submission")
+    market_data_type: int = Field(
+        default=3,
+        description=(
+            "Market data type: 1=Live, 2=Frozen, 3=Delayed, 4=Delayed-Frozen. "
+            "Use 3 (delayed) if you don't have a paid market data subscription."
+        ),
+    )
 
     @field_validator("port")
     @classmethod

@@ -23,6 +23,10 @@ connection:
   timeout: 30
   # Read-only mode: true prevents order submission (useful for monitoring only)
   readonly: false
+  # Market data type: 1=Live, 2=Frozen, 3=Delayed, 4=Delayed-Frozen
+  # Use 3 if you don't have a paid market data subscription (15-min delayed data)
+  # Use 1 if you have live market data subscriptions
+  market_data_type: 3
 
 # -----------------------------------------------------------------------------
 # Strategies — Trading strategy configuration
