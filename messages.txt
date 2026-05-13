@@ -1,147 +1,286 @@
-IBKR Trading Bot
-Dashboard
-Overview
-Strategies
-Trades
-Disconnected
-Equity Curve
-01-01
-01-03
-01-05
-01-09
-01-11
-01-15
-01-17
-01-19
-01-23
-01-25
-01-29
-01-31
-02-02
-02-06
-02-08
-02-12
-02-14
-02-16
-02-20
-02-22
-02-26
-02-28
-03-01
-03-05
-03-07
-03-11
-03-13
-03-15
-03-19
-03-21
-03-25
-03-27
-03-29
-$0k
-$300k
-$600k
-$900k
-$1200k
-Strategy Comparison (% Return)
-01-01
-01-03
-01-05
-01-09
-01-11
-01-15
-01-17
-01-19
-01-23
-01-25
-01-29
-01-31
-02-02
-02-06
-02-08
-02-12
-02-14
-02-16
-02-20
-02-22
-02-26
-02-28
-03-01
-03-05
-03-07
-03-11
-03-13
-03-15
-03-19
-03-21
-03-25
-03-27
-03-29
--3%
-0%
-3%
-6%
-9%
-momentumtrend_followingmean_reversionma_crossover
--3%
-
-PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
-[+] Running 6/6
- ✔ Network trading_backend      Created                                                                                                                                                             0.0s
- ✔ Network trading_frontend     Created                                                                                                                                                             0.0s
- ✔ Container ibkr-postgres      Healthy                                                                                                                                                             5.9s
- ✔ Container ibkr-redis         Healthy                                                                                                                                                             5.9s
- ✔ Container ibkr-dashboard-ui  Started                                                                                                                                                             0.4s
- ✔ Container ibkr-trading-bot   Started                                                                                                                                                             6.2s
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=META
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=V
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-13 19:04:04 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=MomentumStrategy
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
-ibkr-trading-bot  | 2026-05-13 19:04:04 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+-05-13 20:08:45 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:08:45 [info     ] websocket_connected            total_connections=1
 ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
 ibkr-trading-bot  |   self._redis.set(
 ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
-PS C:\Users\binar\PycharmProjects
+ibkr-trading-bot  | 2026-05-13 20:08:46 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 20:08:46 [info     ] websocket_disconnected         total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:48 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:48 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:52 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:54 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:55 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:55 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:08:58 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:08:58 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] insufficient_bars_for_momentum available=1 required=15 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:09:45 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:09:45 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 20:10:42 [info     ] websocket_disconnected         total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:10:42 [info     ] websocket_disconnected         total_connections=0
+ibkr-trading-bot  | 2026-05-13 20:10:42 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:10:42 [info     ] websocket_connected            total_connections=2
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] insufficient_bars_for_momentum available=2 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] insufficient_bars_for_momentum available=2 required=15 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:10:45 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:10:45 [info     ] positions_synced               added=0 removed=0 total_positions=4
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] insufficient_bars_for_momentum available=3 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] insufficient_bars_for_momentum available=3 required=15 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] position_updated               quantity=Decimal('4.0') symbol=META
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] position_updated               quantity=Decimal('-9.0') symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] position_updated               quantity=Decimal('36.0') symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:11:45 [debug    ] position_updated               quantity=Decimal('27.0') symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:11:45 [info     ] positions_synced               added=0 removed=0 total_positions=4
+PS C:\Users\binar\PycharmProjects\trading> git pull                                 
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 10 (delta 8), reused 10 (delta 8), pack-reused 0 (from 0)
+Unpacking objects: 100% (10/10), 11.48 KiB | 511.00 KiB/s, done.
+From https://github.com/BinaryErrol/trading
+   8ca7972..70592bc  fix/code-review-issues -> origin/fix/code-review-issues
+Already up to date.
+PS C:\Users\binar\PycharmProjects\trading> docker compose down 
+[+] Running 6/6
+ ✔ Container ibkr-trading-bot   Removed                                                                                                                                                             0.8s 
+ ✔ Container ibkr-dashboard-ui  Removed                                                                                                                                                             0.5s 
+ ✔ Container ibkr-redis         Removed                                                                                                                                                             0.4s 
+ ✔ Container ibkr-postgres      Removed                                                                                                                                                             0.3s 
+ ✔ Network trading_frontend     Removed                                                                                                                                                             0.3s 
+ ✔ Network trading_backend      Removed                                                                                                                                                             0.6s 
+PS C:\Users\binar\PycharmProjects\trading> docker compose up -d
+[+] Running 6/6
+ ✔ Network trading_frontend     Created                                                                                                                                                             0.0s 
+ ✔ Network trading_backend      Created                                                                                                                                                             0.0s 
+ ✔ Container ibkr-dashboard-ui  Started                                                                                                                                                             0.3s 
+ ✔ Container ibkr-redis         Healthy                                                                                                                                                             5.9s 
+ ✔ Container ibkr-postgres      Healthy                                                                                                                                                             5.9s 
+ ✔ Container ibkr-trading-bot   Started                                                                                                                                                             6.2s 
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | Error 10089, reqId 123: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.NVDA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] tick_processing_started
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] best_per_symbol_initialized    children=['trend_following', 'ma_crossover', 'mean_reversion', 'momentum', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] dashboard_api_started          port=8080
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+ibkr-trading-bot  |   self._redis.set(
+ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ibkr-trading-bot  | 2026-05-13 20:16:17 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:16:18 [info     ] websocket_connected            total_connections=2
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | Error 10089, reqId 123: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.NVDA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] tick_processing_started
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] best_per_symbol_initialized    children=['trend_following', 'ma_crossover', 'mean_reversion', 'momentum', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] dashboard_api_started          port=8080
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+ibkr-trading-bot  |   self._redis.set(
+ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ibkr-trading-bot  | 2026-05-13 20:16:17 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:16:18 [info     ] websocket_connected            total_connections=2
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | Error 10089, reqId 123: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.NVDA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] tick_processing_started
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] best_per_symbol_initialized    children=['trend_following', 'ma_crossover', 'mean_reversion', 'momentum', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] dashboard_api_started          port=8080
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+ibkr-trading-bot  |   self._redis.set(
+ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ibkr-trading-bot  | 2026-05-13 20:16:17 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:16:18 [info     ] websocket_connected            total_connections=2
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 20:16:08 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | 2026-05-13 20:16:09 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 20:16:10 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 20:16:11 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | Error 10089, reqId 123: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.NVDA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 20:16:12 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] tick_processing_started
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] best_per_symbol_initialized    children=['trend_following', 'ma_crossover', 'mean_reversion', 'momentum', 'vwap', 'rsi_divergence'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] dashboard_api_started          port=8080
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [info     ] strategy_loop_started          frequency=1min interval_seconds=60.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 20:16:13 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | /app/src/data/market_data_hub.py:125: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+ibkr-trading-bot  |   self._redis.set(
+ibkr-trading-bot  | RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ibkr-trading-bot  | 2026-05-13 20:16:17 [info     ] websocket_connected            total_connections=1
+ibkr-trading-bot  | 2026-05-13 20:16:18 [info     ] websocket_connected            total_connections=2
+PS C:\Users\binar\PycharmProjects\trading> 
