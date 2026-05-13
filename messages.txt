@@ -1,35 +1,81 @@
-strategies:
-  best_per_symbol:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "AAPL"
-      - "MSFT"
-      - "GOOGL"
-      - "NVDA"
-      - "TSLA"
-      - "SPY"
-      - "QQQ"
-      - "META"
-      - "AMZN"
-      - "AMD"
-      - "NFLX"
-      - "JPM"
-      - "V"
-      - "MA"
-      - "DIS"
-    asset_classes:
-      - "equity"
-    parameters: {}
+ibkr-trading-bot  | Running database migrations...
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot  | Starting IBKR Trading Bot...
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] paper_trading_mode             port=7497
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] database_connected
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] account_verified               account_id=DUP075366 account_type=paper total_accounts=1
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] connected_to_ibkr              host=host.docker.internal port=7497
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] ibkr_connected                 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] components_initialized
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] positions_loaded               count=0
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] reconciliation_complete        has_discrepancies=False summary='matched=0'
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] reconciliation_clean           summary='matched=0'
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] signal_flow_wired
+ibkr-trading-bot  | 2026-05-13 12:42:48 [info     ] event_flow_wired
+ibkr-trading-bot  | 2026-05-13 12:42:49 [info     ] market_data_subscribed_symbol  conId=265598 symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 12:42:49 [info     ] market_data_subscribed_symbol  conId=4391 symbol=AMD
+ibkr-trading-bot  | Error 10089, reqId 4: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.AAPL NASDAQ.NMS/TOP/ALL, contract: Stock(conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:50 [info     ] market_data_subscribed_symbol  conId=3691937 symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 12:42:50 [info     ] market_data_subscribed_symbol  conId=479624278 symbol=BTC
+ibkr-trading-bot  | Error 10089, reqId 6: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.AMD NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4391, symbol='AMD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMD', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:50 [info     ] market_data_subscribed_symbol  conId=6459 symbol=DIS
+ibkr-trading-bot  | Error 10089, reqId 8: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.AMZN NASDAQ.NMS/TOP/ALL, contract: Stock(conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:51 [info     ] market_data_subscribed_symbol  conId=495759171 symbol=ETH
+ibkr-trading-bot  | Error 10089, reqId 12: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.DIS NYSE/TOP/ALL, contract: Stock(conId=6459, symbol='DIS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DIS', tradingClass='DIS')
+ibkr-trading-bot  | 2026-05-13 12:42:51 [info     ] market_data_subscribed_symbol  conId=208813719 symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 12:42:51 [info     ] market_data_subscribed_symbol  conId=1520593 symbol=JPM
+ibkr-trading-bot  | 2026-05-13 12:42:52 [info     ] market_data_subscribed_symbol  conId=38685693 symbol=MA
+ibkr-trading-bot  | Error 10089, reqId 16: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.GOOGL NASDAQ.NMS/TOP/ALL, contract: Stock(conId=208813719, symbol='GOOGL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GOOGL', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:52 [info     ] market_data_subscribed_symbol  conId=107113386 symbol=META
+ibkr-trading-bot  | Error 10089, reqId 18: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.JPM NYSE/TOP/ALL, contract: Stock(conId=1520593, symbol='JPM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='JPM', tradingClass='JPM')
+ibkr-trading-bot  | Error 10089, reqId 20: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.MA NYSE/TOP/ALL, contract: Stock(conId=38685693, symbol='MA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MA', tradingClass='MA')
+ibkr-trading-bot  | 2026-05-13 12:42:52 [info     ] market_data_subscribed_symbol  conId=272093 symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 12:42:53 [info     ] market_data_subscribed_symbol  conId=15124833 symbol=NFLX
+ibkr-trading-bot  | Error 10089, reqId 22: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.META NASDAQ.NMS/TOP/ALL, contract: Stock(conId=107113386, symbol='META', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='META', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:53 [info     ] market_data_subscribed_symbol  conId=4815747 symbol=NVDA
+ibkr-trading-bot  | Error 10089, reqId 24: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.MSFT NASDAQ.NMS/TOP/ALL, contract: Stock(conId=272093, symbol='MSFT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MSFT', tradingClass='NMS')
+ibkr-trading-bot  | Error 10089, reqId 26: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.NFLX NASDAQ.NMS/TOP/ALL, contract: Stock(conId=15124833, symbol='NFLX', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NFLX', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:54 [info     ] market_data_subscribed_symbol  conId=320227571 symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 12:42:54 [info     ] market_data_subscribed_symbol  conId=756733 symbol=SPY
+ibkr-trading-bot  | Error 10089, reqId 28: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.NVDA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+ibkr-trading-bot  | 2026-05-13 12:42:54 [info     ] market_data_subscribed_symbol  conId=76792991 symbol=TSLA
+ibkr-trading-bot  | Error 10089, reqId 30: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.QQQ NASDAQ.NMS/TOP/ALL, contract: Stock(conId=320227571, symbol='QQQ', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='QQQ', tradingClass='NMS')
+ibkr-trading-bot  | Error 10089, reqId 32: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.SPY ARCA/TOP/ALL, contract: Stock(conId=756733, symbol='SPY', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPY', tradingClass='SPY')
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] market_data_subscribed_symbol  conId=49462172 symbol=V
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] market_data_subscribed         count=17 total=17
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=best_per_symbol total_allocated=50000.0
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] capital_allocated              amount=50000.0 mode=equal_weight strategy=momentum total_allocated=100000.0
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=mean_reversion
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=momentum
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=ma_crossover
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=vwap
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] best_per_symbol_child_instantiated child=trend_following
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] best_per_symbol_initialized    children=['rsi_divergence', 'mean_reversion', 'momentum', 'ma_crossover', 'vwap', 'trend_following'] mappings={'AAPL':
+ 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
+following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_engine_starting       strategy_count=2
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_state_changed         new=running previous=idle strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_enabled               strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategies_started             count=2 names=['BestPerSymbolStrategy', 'MomentumStrategy']
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] pnl_tracker_started            interval=60
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] pnl_tracker_initialized
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] trading_bot_running            mode=paper
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=MomentumStrategy
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
+ibkr-trading-bot  | 2026-05-13 12:42:55 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
+ibkr-trading-bot  | Error 10089, reqId 34: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.TSLA NASDAQ.NMS/TOP/ALL, contract: Stock(conId=76792991, symbol='TSLA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TSLA', tradingClass='NMS')
+ibkr-trading-bot  | Error 10089, reqId 36: Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details.Delayed market data is available.V NYSE/TOP/ALL, contract: Stock(conId=49462172, symbol='V', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='V', tradingClass='V')
 
-  momentum:
-    enabled: true
-    frequency: "15min"
-    symbols:
-      - "BTC"
-      - "ETH"
-    asset_classes:
-      - "crypto"
-    parameters:
-      lookback_period: 14
-      momentum_threshold: 0.02
