@@ -31,8 +31,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-trading}
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    ports:
-      - "127.0.0.1:5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U bot"]
       interval: 5s
@@ -47,8 +45,6 @@ services:
     container_name: ibkr-redis
     volumes:
       - redis-data:/data
-    ports:
-      - "127.0.0.1:6379:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
