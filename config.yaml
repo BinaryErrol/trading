@@ -151,6 +151,18 @@ strategies:
         BTC: "momentum"
         ETH: "mean_reversion"
 
+  crypto_momentum:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "BTC"
+      - "ETH"
+    asset_classes:
+      - "crypto"
+    parameters:
+      lookback_period: 14
+      momentum_threshold: 0.02
+
   best_per_symbol:
     enabled: true
     frequency: "15min"

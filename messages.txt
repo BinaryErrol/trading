@@ -1,4 +1,118 @@
-crypto_momentum:
+strategies:
+
+#  regime_hmm:
+#    enabled: true
+#    frequency: "15min"
+#    symbols:
+#      - "AAPL"
+#      - "MSFT"
+#      - "GOOGL"
+#      - "AMZN"
+#      - "NVDA"
+#      - "SPY"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      hmm_lookback: 120
+#      volatility_window: 14
+#      trend_window: 14
+#      vol_threshold: 0.03
+#
+#  bandit:
+#    enabled: true
+#    frequency: "15min"
+#    symbols:
+#      - "AAPL"
+#      - "MSFT"
+#      - "GOOGL"
+#      - "AMZN"
+#      - "NVDA"
+#      - "SPY"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      gamma: 0.02
+#      switching_cost: 0.02
+#      min_rounds: 10
+#
+#  adaptive:
+#    enabled: true
+#    frequency: "15min"
+#    symbols:
+#      - "AAPL"
+#      - "MSFT"
+#      - "GOOGL"
+#      - "AMZN"
+#      - "NVDA"
+#      - "SPY"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      lookback_window: 30
+#      lookback_period: 10
+#      momentum_threshold: 0.0
+#
+#  momentum:
+#    enabled: true
+#    frequency: "15min"
+#    symbols:
+#      - "AAPL"
+#      - "MSFT"
+#      - "GOOGL"
+#      - "AMZN"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      # Number of bars to measure momentum over
+#      lookback_period: 20
+#      # Minimum momentum score to trigger a signal (0.0 to 1.0)
+#      momentum_threshold: 0.02
+#
+#  ma_crossover:
+#    enabled: true
+#    frequency: "1hour"
+#    symbols:
+#      - "SPY"
+#      - "QQQ"
+#      - "IWM"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      # Fast moving average period (bars)
+#      fast_period: 10
+#      # Slow moving average period (bars)
+#      slow_period: 30
+#      # Moving average type: "sma" or "ema"
+#      ma_type: "ema"
+#
+#  mean_reversion:
+#    enabled: true
+#    frequency: "5min"
+#    symbols:
+#      - "SPY"
+#      - "QQQ"
+#    asset_classes:
+#      - "equity"
+#    parameters:
+#      # Lookback window for mean calculation (bars)
+#      lookback_period: 20
+#      # Z-score threshold to trigger entry (standard deviations from mean)
+#      z_score_threshold: 2.0
+
+  best_per_symbol_crypto:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "BTC"
+      - "ETH"
+    asset_classes:
+      - "crypto"
+    parameters:
+      symbol_map:
+        BTC: "momentum"
+        ETH: "mean_reversion"
+        
+  crypto_momentum:
     enabled: true
     frequency: "15min"
     symbols:
@@ -9,3 +123,26 @@ crypto_momentum:
     parameters:
       lookback_period: 14
       momentum_threshold: 0.02
+
+  best_per_symbol:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "AAPL"
+      - "MSFT"
+      - "GOOGL"
+      - "NVDA"
+      - "TSLA"
+      - "SPY"
+      - "QQQ"
+      - "META"
+      - "AMZN"
+      - "AMD"
+      - "NFLX"
+      - "JPM"
+      - "V"
+      - "MA"
+      - "DIS"
+    asset_classes:
+      - "equity"
+    parameters: {}
