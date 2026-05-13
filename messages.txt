@@ -1,53 +1,54 @@
-
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=MA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_mean_reversion available=0 required=20 symbol=DIS
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AAPL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MSFT
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NVDA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=TSLA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=SPY
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=QQQ
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=META
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMZN
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=AMD
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=NFLX
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=JPM
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=V
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=MA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_vwap     available=0 required=2 symbol=DIS
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_rsi      available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AAPL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MSFT
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=GOOGL
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NVDA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=TSLA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=SPY
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=QQQ
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=META
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMZN
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=AMD
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=NFLX
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=JPM
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=V
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=MA
-ibkr-trading-bot  | 2026-05-11 16:53:39 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=DIS
-ibkr-trading-bot  | 2026-05-11 16:54:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-11 16:55:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-11 16:56:39 [info     ] positions_synced               added=0 removed=0 total_positions=0
+PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 50 -f
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] disconnected_from_ibkr
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] ibkr_disconnected
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] redis_closed
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] database_engine_closed
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] database_closed
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] trading_bot_stopped
+ibkr-trading-bot  | 2026-05-13 11:32:01 [info     ] trading_bot_exited
+ibkr-trading-bot  | Waiting for database to be ready...
+ibkr-trading-bot  | Running database migrations...
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+ibkr-trading-bot  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ibkr-trading-bot  | Starting IBKR Trading Bot...
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_starting           version=0.1.0
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] paper_trading_mode             port=7497
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_engine_created        max_overflow=10 pool_size=5 url=postgres:5432/trading
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_connected
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] redis_connected                url=redis://redis:6379/0
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] connecting_to_ibkr             client_id=1 host=host.docker.internal mode=tws port=7497
+ibkr-trading-bot  | API connection failed: OSError("Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable")
+ibkr-trading-bot  | 2026-05-13 11:32:57 [error    ] startup_failed                 error="Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable"
+ibkr-trading-bot  | Traceback (most recent call last):
+ibkr-trading-bot  |   File "/app/src/main.py", line 987, in async_main
+ibkr-trading-bot  |     await bot.start()
+ibkr-trading-bot  |   File "/app/src/main.py", line 97, in start
+ibkr-trading-bot  |     await self._connect_ibkr()
+ibkr-trading-bot  |   File "/app/src/main.py", line 285, in _connect_ibkr
+ibkr-trading-bot  |     await self._connection_manager.connect()
+ibkr-trading-bot  |   File "/app/src/connection/manager.py", line 53, in connect
+ibkr-trading-bot  |     await self.ib.connectAsync(
+ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/ib.py", line 2043, in connectAsync
+ibkr-trading-bot  |     await self.client.connectAsync(host, port, clientId, timeout)
+ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/client.py", line 216, in connectAsync
+ibkr-trading-bot  |     await asyncio.wait_for(self.conn.connectAsync(host, port), timeout)
+ibkr-trading-bot  |   File "/usr/local/lib/python3.11/asyncio/tasks.py", line 489, in wait_for
+ibkr-trading-bot  |     return fut.result()
+ibkr-trading-bot  |            ^^^^^^^^^^^^
+ibkr-trading-bot  |   File "/usr/local/lib/python3.11/site-packages/ib_async/connection.py", line 38, in connectAsync
+ibkr-trading-bot  |     self.transport, _ = await loop.create_connection(lambda: self, host, port)
+ibkr-trading-bot  |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ibkr-trading-bot  |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1094, in create_connection
+ibkr-trading-bot  |     raise OSError('Multiple exceptions: {}'.format(
+ibkr-trading-bot  | OSError: Multiple exceptions: [Errno 111] Connect call failed ('192.168.65.254', 7497), [Errno 101] Network is unreachable
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_shutting_down
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] disconnected_from_ibkr
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] ibkr_disconnected
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] redis_closed
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_engine_closed
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] database_closed
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_stopped
+ibkr-trading-bot  | 2026-05-13 11:32:57 [info     ] trading_bot_exited
 PS C:\Users\binar\PycharmProjects\trading>
+
+
