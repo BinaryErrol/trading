@@ -22,7 +22,7 @@ import {
   getMockPaginatedTrades,
 } from '../mockData';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 async function fetchApi<T>(path: string, mockData: T): Promise<T> {
   if (USE_MOCK) {
