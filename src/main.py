@@ -940,11 +940,13 @@ class TradingBot:
         """Poll IBKR ticker objects and feed price updates into MarketDataHub.
 
         ib_async updates Ticker objects in the background. This loop polls
-        them every second and calls on_tick() for any that have new prices.
+        them every second and calls on_tick() for any that have valid prices.
+        Even if the price hasn't changed, we still feed ticks so that
+        time-based bar boundaries get crossed and bars complete.
         """
         import time
 
-        # Track last seen price per symbol to avoid duplicate ticks
+        # Track last known price per symbol (to use when ticker has no update)
         last_prices: dict[str, float] = {}
 
         try:
@@ -970,11 +972,10 @@ class TradingBot:
                             price = ticker.close
 
                     if price is None:
-                        continue
-
-                    # Only process if price changed
-                    if symbol in last_prices and last_prices[symbol] == price:
-                        continue
+                        # Use last known price to keep bars advancing
+                        price = last_prices.get(symbol)
+                        if price is None:
+                            continue
 
                     last_prices[symbol] = price
 
