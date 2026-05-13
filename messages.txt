@@ -1,56 +1,81 @@
-ibkr-trading-bot  | 2026-05-13 13:20:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:21:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:21:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:22:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:22:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:23:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:23:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:24:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:24:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:25:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:25:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:26:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:26:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:27:54 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=BTC
-ibkr-trading-bot  | 2026-05-13 13:27:54 [debug    ] insufficient_bars_for_momentum available=0 required=15 symbol=ETH
-ibkr-trading-bot  | 2026-05-13 13:27:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:27:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:28:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:28:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:29:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 13:29:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=AAPL
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=AMD
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=AMZN
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=BTC
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=DIS
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=ETH
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=GOOGL
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=JPM
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=MA
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=META
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=MSFT
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=NFLX
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=NVDA
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=QQQ
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=SPY
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=TSLA
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
-ibkr-trading-bot  | 2026-05-13 13:30:25 [warning  ] stale_data_halting_signals     symbol=V
-ibkr-trading-bot  | 2026-05-13 13:30:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [warning  ] stale_data_halting_signals     symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [warning  ] stale_data_halting_signals     symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [warning  ] stale_data_halting_signals     symbol=SPY
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [warning  ] stale_data_halting_signals     symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:25 [warning  ] stale_data_halting_signals     symbol=V
+ibkr-trading-bot  | 2026-05-13 13:35:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=AMD
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=BTC
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=DIS
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=ETH
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=JPM
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=MA
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=META
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=SPY
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:35:55 [warning  ] stale_data_halting_signals     symbol=V
+ibkr-trading-bot  | 2026-05-13 13:35:55 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=AAPL
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=AMD
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=AMZN
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=BTC
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=DIS
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=ETH
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=GOOGL
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=JPM
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=MA
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=META
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=MSFT
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=NFLX
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=NVDA
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=QQQ
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=SPY
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=TSLA
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
+ibkr-trading-bot  | 2026-05-13 13:36:25 [warning  ] stale_data_halting_signals     symbol=V
+ibkr-trading-bot  | 2026-05-13 13:36:25 [debug    ] alert_no_channels_configured   event_type=error
 
