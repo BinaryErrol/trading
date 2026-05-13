@@ -1,24 +1,11 @@
-PS C:\Users\binar\PycharmProjects\trading> docker compose logs trading-bot --tail 20
-ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] best_per_symbol_child_instantiated child=vwap
-ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] best_per_symbol_child_instantiated child=rsi_divergence
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] best_per_symbol_initialized    children=['ma_crossover', 'trend_following', 'momentum', 'mean_reversion', 'vwap', 'rsi_divergence'] mappings={'AAPL':
- 'rsi_divergence', 'MSFT': 'momentum', 'GOOGL': 'momentum', 'NVDA': 'rsi_divergence', 'TSLA': 'mean_reversion', 'SPY': 'mean_reversion', 'QQQ': 'ma_crossover', 'META': 'mean_reversion', 'AMZN': 'trend_
-following', 'AMD': 'trend_following', 'NFLX': 'ma_crossover', 'JPM': 'mean_reversion', 'V': 'vwap', 'MA': 'rsi_divergence', 'DIS': 'momentum'} symbols=['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'SPY', 'QQQ', 'META', 'AMZN', 'AMD', 'NFLX', 'JPM', 'V', 'MA', 'DIS']
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_engine_starting       strategy_count=1
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_state_changed         new=running previous=idle strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_enabled               strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_engine_started        active_strategies=['BestPerSymbolStrategy']
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategies_started             count=1 names=['BestPerSymbolStrategy']
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] pnl_tracker_started            interval=60
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] pnl_tracker_initialized
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] trading_bot_running            mode=paper
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] trading_bot_running            msg='Waiting for shutdown signal'
-ibkr-trading-bot  | 2026-05-13 12:00:55 [info     ] strategy_loop_started          frequency=15min interval_seconds=900.0 strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:00:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:01:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:01:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 12:02:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:02:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-ibkr-trading-bot  | 2026-05-13 12:03:55 [debug    ] strategy_suppressed_market_closed strategy=BestPerSymbolStrategy
-ibkr-trading-bot  | 2026-05-13 12:03:55 [info     ] positions_synced               added=0 removed=0 total_positions=0
-PS C:\Users\binar\PycharmProjects\trading>
+crypto_momentum:
+    enabled: true
+    frequency: "15min"
+    symbols:
+      - "BTC"
+      - "ETH"
+    asset_classes:
+      - "crypto"
+    parameters:
+      lookback_period: 14
+      momentum_threshold: 0.02
